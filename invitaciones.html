@@ -1,0 +1,708 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#171316">
+    <meta name="description" content="Invitaciones digitales GLAM para bodas, quince años y eventos especiales. Comparte los detalles de tu celebración con una invitación elegante y personalizada. Cotiza por WhatsApp.">
+    <meta name="keywords" content="invitaciones digitales, invitaciones digitales La Paz, invitación boda, invitación quince años, GLAM">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GLAM">
+    <meta property="og:title" content="Invitaciones digitales personalizadas | GLAM">
+    <meta property="og:description" content="Invitaciones digitales elegantes y personalizadas para anunciar tu evento.">
+    <meta property="og:locale" content="es_BO">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Invitaciones digitales personalizadas | GLAM">
+    <meta name="twitter:description" content="Invitaciones digitales elegantes y personalizadas para anunciar tu evento.">
+
+    <title>GLAM | Invitaciones digitales personalizadas</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="glam-redesign.css">
+
+    <style>
+        .pagina-invitaciones {
+            min-height: 100vh;
+            background: #171316;
+            color: #fff;
+            font-family: inherit;
+        }
+
+        .inv-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 25px 7%;
+            border-bottom: 1px solid rgba(255,255,255,.09);
+        }
+
+        .inv-logo {
+            color: #fff;
+            text-decoration: none;
+            font-family: Georgia, serif;
+            font-size: 1.8rem;
+            letter-spacing: .18em;
+        }
+
+        .inv-logo span {
+            display: block;
+            margin-top: 4px;
+            color: #e7a9c9;
+            font-family: Arial, sans-serif;
+            font-size: .58rem;
+            letter-spacing: .22em;
+        }
+
+        .inv-volver {
+            color: #f1c6dc;
+            text-decoration: none;
+            font-size: .8rem;
+            letter-spacing: .08em;
+        }
+
+        .inv-volver:hover {
+            color: #fff;
+        }
+
+        .inv-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 105px 7% 95px;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(198,83,139,.22), transparent 60%),
+                #171316;
+        }
+
+        .inv-etiqueta {
+            color: #e7a9c9;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .32em;
+        }
+
+        .inv-hero h1 {
+            max-width: 850px;
+            margin: 25px auto;
+            font-family: Georgia, serif;
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.08;
+        }
+
+        .inv-hero h1 em {
+            color: #e7a9c9;
+            font-weight: 400;
+        }
+
+        .inv-hero > p:not(.inv-etiqueta) {
+            max-width: 620px;
+            margin: 0 auto;
+            color: #d4cbd1;
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .inv-acciones {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 35px;
+        }
+
+        .inv-boton {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 14px 24px;
+            border: 1px solid #e7a9c9;
+            border-radius: 30px;
+            background: #e7a9c9;
+            color: #211720;
+            text-decoration: none;
+            font-size: .8rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+            transition: .25s ease;
+        }
+
+        .inv-boton:hover {
+            transform: translateY(-3px);
+            background: #f4d4e4;
+        }
+
+        .inv-boton-secundario {
+            background: transparent;
+            color: #f1c6dc;
+        }
+
+        .inv-boton-secundario:hover {
+            background: rgba(231,169,201,.1);
+            color: #fff;
+        }
+
+        .inv-seccion {
+            padding: 75px 7%;
+        }
+
+        .inv-seccion-clara {
+            background: #f7f0f3;
+            color: #292129;
+        }
+
+        .inv-titulo {
+            max-width: 700px;
+            margin: 0 auto 15px;
+            text-align: center;
+            font-family: Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+        }
+
+        .inv-subtitulo {
+            max-width: 650px;
+            margin: 0 auto 42px;
+            color: #bfaeba;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .inv-seccion-clara .inv-subtitulo {
+            color: #746572;
+        }
+
+        .inv-tipos {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .inv-tipo {
+            padding: 30px 22px;
+            border: 1px solid rgba(231,169,201,.23);
+            border-radius: 16px;
+            background: linear-gradient(145deg, #292128, #1d191d);
+            text-align: center;
+            transition: transform .25s ease, border-color .25s ease;
+        }
+
+        .inv-tipo:hover {
+            transform: translateY(-5px);
+            border-color: #e7a9c9;
+        }
+
+        .inv-tipo-icono {
+            display: block;
+            margin-bottom: 18px;
+            color: #e7a9c9;
+            font-size: 2rem;
+        }
+
+        .inv-tipo h3 {
+            margin: 0 0 12px;
+            font-family: Georgia, serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+        }
+
+        .inv-tipo p {
+            margin: 0;
+            color: #d4cbd1;
+            font-size: .87rem;
+            line-height: 1.7;
+        }
+
+        .inv-detalles {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 55px;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .inv-detalles h2 {
+            margin: 0 0 20px;
+            font-family: Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .inv-detalles > div > p {
+            color: #d4cbd1;
+            line-height: 1.9;
+        }
+
+        .inv-lista {
+            display: grid;
+            gap: 15px;
+            margin: 25px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .inv-lista li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            line-height: 1.6;
+        }
+
+        .inv-lista li span {
+            color: #e7a9c9;
+            font-size: 1.15rem;
+        }
+
+        .inv-tarjeta {
+            padding: 35px;
+            border: 1px solid rgba(231,169,201,.3);
+            border-radius: 18px;
+            background: linear-gradient(145deg, #30232d, #201a20);
+        }
+
+        .inv-tarjeta-etiqueta {
+            color: #e7a9c9;
+            font-size: .7rem;
+            letter-spacing: .2em;
+        }
+
+        .inv-tarjeta h3 {
+            margin: 18px 0;
+            font-family: Georgia, serif;
+            font-size: 2rem;
+            font-weight: 400;
+        }
+
+        .inv-tarjeta p {
+            color: #d4cbd1;
+            line-height: 1.8;
+        }
+
+        .inv-pasos {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .inv-paso {
+            padding: 25px;
+            border-top: 1px solid #d9b6c9;
+        }
+
+        .inv-paso-numero {
+            color: #b84c83;
+            font-family: Georgia, serif;
+            font-size: 2rem;
+        }
+
+        .inv-paso h3 {
+            font-family: Georgia, serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+        }
+
+        .inv-paso p {
+            color: #746572;
+            font-size: .9rem;
+            line-height: 1.8;
+        }
+
+        .inv-final {
+            padding: 80px 7%;
+            background:
+                radial-gradient(ellipse at center, rgba(198,83,139,.18), transparent 70%),
+                #171316;
+            text-align: center;
+        }
+
+        .inv-final h2 {
+            max-width: 750px;
+            margin: 0 auto 18px;
+            font-family: Georgia, serif;
+            font-size: clamp(2.1rem, 5vw, 3.7rem);
+            font-weight: 400;
+        }
+
+        .inv-final p {
+            max-width: 570px;
+            margin: 0 auto;
+            color: #d4cbd1;
+            line-height: 1.8;
+        }
+
+        .inv-footer {
+            padding: 25px 7%;
+            border-top: 1px solid rgba(255,255,255,.09);
+            color: #bfaeba;
+            text-align: center;
+            font-size: .75rem;
+            letter-spacing: .08em;
+        }
+
+        @media (max-width: 850px) {
+            .inv-tipos {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .inv-detalles {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .inv-header {
+                padding: 20px 5%;
+            }
+
+            .inv-logo {
+                font-size: 1.4rem;
+            }
+
+            .inv-volver {
+                font-size: .68rem;
+            }
+
+            .inv-hero {
+                padding: 75px 6%;
+            }
+
+            .inv-seccion {
+                padding: 55px 6%;
+            }
+
+            .inv-tipos,
+            .inv-pasos {
+                grid-template-columns: 1fr;
+            }
+
+            .inv-tipo {
+                padding: 25px;
+            }
+
+            .inv-tarjeta {
+                padding: 25px;
+            }
+
+            .inv-final {
+                padding: 60px 6%;
+            }
+        }
+
+        /* Categorías de invitaciones GLAM */
+        .inv-categorias { background: linear-gradient(145deg, #fff8f0 0%, #f8e3ec 100%); color: #251923; }
+        .inv-categorias .inv-titulo, .inv-categorias .inv-subtitulo { color: #251923; }
+        .inv-categorias-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; max-width: 1180px; margin: 38px auto 0; align-items: stretch; }
+        .inv-categoria-card { position: relative; display: flex; flex-direction: column; padding: 30px 26px 26px; border: 1px solid rgba(113, 57, 87, .16); border-radius: 22px; background: rgba(255,255,255,.86); box-shadow: 0 16px 40px rgba(73, 37, 57, .08); }
+        .inv-categoria-destacada { background: #fff; border: 1.5px solid #df1680; box-shadow: 0 20px 46px rgba(178, 31, 111, .14); transform: translateY(-8px); }
+        .inv-categoria-numero { display: inline-flex; width: 42px; height: 42px; align-items: center; justify-content: center; border-radius: 50%; background: #f8e3ec; color: #a70f60; font-weight: 800; font-size: .9rem; margin-bottom: 20px; }
+        .inv-categoria-tipo { color: #b5166a; font-size: .72rem; letter-spacing: .14em; font-weight: 800; margin: 0 0 8px; }
+        .inv-categoria-card h3 { color: #251923; font-size: clamp(1.55rem, 2.2vw, 2rem); margin: 0 0 10px; }
+        .inv-categoria-intro { color: #65515f; line-height: 1.65; min-height: 54px; margin: 0 0 18px; }
+        .inv-categoria-card ul { list-style: none; padding: 0; margin: 0 0 26px; flex: 1; }
+        .inv-categoria-card li { position: relative; padding: 10px 0 10px 25px; border-bottom: 1px solid rgba(90, 51, 72, .1); color: #42323e; line-height: 1.45; }
+        .inv-categoria-card li::before { content: '✓'; position: absolute; left: 0; top: 10px; color: #c01470; font-weight: 900; }
+        .inv-categoria-card .inv-boton { align-self: stretch; text-align: center; justify-content: center; }
+        .inv-categorias-nota { max-width: 850px; margin: 24px auto 0; text-align: center; color: #6b5865; font-size: .85rem; line-height: 1.6; }
+        @media (max-width: 900px) { .inv-categorias-grid { grid-template-columns: 1fr; max-width: 560px; } .inv-categoria-destacada { transform: none; } .inv-categoria-intro { min-height: 0; } }
+
+    
+        /* Portafolio de muestras de invitaciones: mockups ilustrativos */
+        .inv-portafolio{background:#fffaf5;color:#2b1d27}.inv-portafolio .inv-titulo,.inv-portafolio .inv-subtitulo{color:#2b1d27}.inv-muestras-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;max-width:1120px;margin:36px auto 0}.inv-muestra{overflow:hidden;border-radius:20px;background:#fff;border:1px solid rgba(112,59,86,.13);box-shadow:0 16px 40px rgba(64,32,48,.08)}.inv-mockup{aspect-ratio:4/5;min-height:300px;margin:14px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;position:relative;overflow:hidden;gap:13px}.inv-mockup-boda{background:radial-gradient(ellipse at top,#fff 0%,#fff9f1 58%,#f1dfd7 100%);color:#75564e;border:1px solid #ead7cc}.inv-mockup-xv{background:radial-gradient(ellipse at top,#fff3f8,#edc5d8 58%,#a72d68 150%);color:#7b2852;border:1px solid #e8b4cd}.inv-mockup-corp{background:linear-gradient(145deg,#261d28,#55354a 58%,#b21a69);color:#fff}.mockup-mini{font-size:.61rem;letter-spacing:.22em;font-weight:800}.inv-mockup strong{font-family:Georgia,serif;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:500;line-height:1.05}.inv-mockup strong i{font-weight:400;font-size:.75em}.mockup-flor,.mockup-corona{font-size:2rem;opacity:.75}.mockup-line{width:45px;height:1px;background:currentColor;opacity:.6}.inv-mockup small{font-size:.55rem;letter-spacing:.15em}.inv-muestra-info{padding:4px 22px 24px}.inv-muestra-info>span{font-size:.65rem;letter-spacing:.12em;color:#bd176d;font-weight:800}.inv-muestra-info h3{font-size:1.25rem;margin:8px 0;color:#2b1d27}.inv-muestra-info p{margin:0;color:#695461;line-height:1.6;font-size:.92rem}.inv-portafolio-cta{text-align:center;margin:30px auto 0;color:#5c4755}.inv-portafolio-cta a{color:#bd176d;font-weight:800;text-decoration:underline;text-underline-offset:4px}@media(max-width:850px){.inv-muestras-grid{grid-template-columns:1fr;max-width:480px}.inv-mockup{min-height:380px}.inv-mockup strong{font-size:2.4rem}}
+
+    </style>
+</head>
+
+<body class="pagina-invitaciones">
+<main>
+        <section class="inv-hero">
+            <p class="inv-etiqueta">DETALLES QUE EMOCIONAN</p>
+
+            <h1>
+                Todo gran momento<br>
+                comienza con una <em>invitación.</em>
+            </h1>
+
+            <p>
+                Anuncia tu celebración de una forma especial.
+                Creamos invitaciones digitales con personalidad,
+                elegancia y detalles que reflejan tu evento.
+            </p>
+
+            <div class="inv-acciones">
+                <a
+                    class="inv-boton"
+                    href="https://wa.me/59172514906?text=Hola%20GLAM%2C%20quiero%20informaci%C3%B3n%20sobre%20las%20invitaciones%20digitales."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    QUIERO MI INVITACIÓN ↗
+                </a>
+
+                <a href="#tipos" class="inv-boton inv-boton-secundario">
+                    DESCUBRIR OPCIONES
+                </a>
+            </div>
+        </section>
+
+        <section id="tipos" class="inv-seccion">
+            <h2 class="inv-titulo">Una invitación para cada historia</h2>
+            <p class="inv-subtitulo">
+                Cada celebración es diferente. Cuéntanos qué estás preparando
+                y encontraremos una propuesta que vaya contigo.
+            </p>
+
+            <div class="inv-tipos">
+                <article class="inv-tipo">
+                    <span class="inv-tipo-icono">♡</span>
+                    <h3>Bodas</h3>
+                    <p>Una primera impresión romántica y elegante para compartir el inicio de una nueva historia.</p>
+                </article>
+
+                <article class="inv-tipo">
+                    <span class="inv-tipo-icono">✧</span>
+                    <h3>15 años</h3>
+                    <p>Una invitación especial para anunciar una noche llena de magia, estilo y emoción.</p>
+                </article>
+
+                <article class="inv-tipo">
+                    <span class="inv-tipo-icono">✦</span>
+                    <h3>Cumpleaños</h3>
+                    <p>Diseños personalizados para celebrar a tu manera y reunir a las personas importantes.</p>
+                </article>
+
+                <article class="inv-tipo">
+                    <span class="inv-tipo-icono">◇</span>
+                    <h3>Corporativos</h3>
+                    <p>Una presentación cuidada para eventos empresariales, inauguraciones y encuentros especiales.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="categorias-invitacion" class="inv-seccion inv-categorias">
+            <p class="inv-etiqueta">ENCUENTRA TU ESTILO</p>
+            <h2 class="inv-titulo">Tres formas de invitar con GLAM</h2>
+            <p class="inv-subtitulo">
+                Elige el nivel de experiencia que imaginas. Cada propuesta se personaliza
+                según tu evento y las funciones que necesites.
+            </p>
+
+            <div class="inv-categorias-grid">
+                <article class="inv-categoria-card">
+                    <span class="inv-categoria-numero">01</span>
+                    <p class="inv-categoria-tipo">SIMPLE Y ELEGANTE</p>
+                    <h3>Esencial</h3>
+                    <p class="inv-categoria-intro">Lo importante de tu evento, presentado con estilo.</p>
+                    <ul>
+                        <li>Diseño personalizado</li>
+                        <li>Nombres o título del evento</li>
+                        <li>Fecha, hora y lugar</li>
+                        <li>Formato digital para compartir</li>
+                    </ul>
+                    <a class="inv-boton" href="https://wa.me/59172514906?text=Hola%20GLAM%2C%20quiero%20cotizar%20una%20invitaci%C3%B3n%20digital%20de%20categor%C3%ADa%20Esencial." target="_blank" rel="noopener noreferrer">CONSULTAR ESENCIAL ↗</a>
+                </article>
+
+                <article class="inv-categoria-card inv-categoria-destacada">
+                    <span class="inv-categoria-numero">02</span>
+                    <p class="inv-categoria-tipo">MÁS INTERACTIVA</p>
+                    <h3>Interactiva</h3>
+                    <p class="inv-categoria-intro">Una invitación que ayuda a tus invitados a organizarse.</p>
+                    <ul>
+                        <li>Todo lo incluido en Esencial</li>
+                        <li>Botón o enlace de ubicación</li>
+                        <li>Confirmación de asistencia (RSVP), según configuración</li>
+                        <li>Código QR o enlaces útiles, según propuesta</li>
+                    </ul>
+                    <a class="inv-boton" href="https://wa.me/59172514906?text=Hola%20GLAM%2C%20quiero%20cotizar%20una%20invitaci%C3%B3n%20digital%20de%20categor%C3%ADa%20Interactiva." target="_blank" rel="noopener noreferrer">CONSULTAR INTERACTIVA ↗</a>
+                </article>
+
+                <article class="inv-categoria-card">
+                    <span class="inv-categoria-numero">03</span>
+                    <p class="inv-categoria-tipo">UNA EXPERIENCIA ESPECIAL</p>
+                    <h3>Premium</h3>
+                    <p class="inv-categoria-intro">Más detalles visuales para anunciar una celebración única.</p>
+                    <ul>
+                        <li>Todo lo definido para tu invitación</li>
+                        <li>Fotografías personales</li>
+                        <li>Música o elementos animados, según formato</li>
+                        <li>Personalización visual ampliada</li>
+                    </ul>
+                    <a class="inv-boton" href="https://wa.me/59172514906?text=Hola%20GLAM%2C%20quiero%20cotizar%20una%20invitaci%C3%B3n%20digital%20de%20categor%C3%ADa%20Premium." target="_blank" rel="noopener noreferrer">CONSULTAR PREMIUM ↗</a>
+                </article>
+            </div>
+            <p class="inv-categorias-nota">Las funciones finales, el formato y el precio se confirman en la cotización. No todas las opciones están disponibles en todos los formatos.</p>
+        </section>
+
+        <section id="muestras-invitaciones" class="inv-seccion inv-portafolio"><p class="inv-etiqueta">INSPÍRATE CON GLAM</p><h2 class="inv-titulo">Diseños que cuentan tu historia</h2><p class="inv-subtitulo">Explora estilos de referencia y descubre cómo podría verse la invitación de tu evento. Estas muestras son conceptos visuales; cada diseño final se personaliza.</p>
+          <div class="inv-muestras-grid">
+            <article class="inv-muestra"><div class="inv-mockup inv-mockup-boda"><span class="mockup-mini">SAVE THE DATE</span><span class="mockup-flor">✦</span><strong>María<br><i>&amp;</i> Daniel</strong><span class="mockup-line"></span><small>UNA HISTORIA PARA SIEMPRE</small><small>15 · 11 · 2026</small></div><div class="inv-muestra-info"><span>BODAS · ROMÁNTICA</span><h3>Romance atemporal</h3><p>Tipografía delicada, tonos suaves y composición elegante.</p></div></article>
+            <article class="inv-muestra"><div class="inv-mockup inv-mockup-xv"><span class="mockup-mini">MIS XV AÑOS</span><span class="mockup-corona">♕</span><strong>Valentina</strong><span class="mockup-line"></span><small>UNA NOCHE MÁGICA</small><small>18 · 12 · 2026</small></div><div class="inv-muestra-info"><span>QUINCE AÑOS · GLAM</span><h3>Noche de ensueño</h3><p>Rosa empolvado, acentos fucsia y detalles de celebración.</p></div></article>
+            <article class="inv-muestra"><div class="inv-mockup inv-mockup-corp"><span class="mockup-mini">ESTÁS INVITADO/A</span><strong>GRAN<br>INAUGURACIÓN</strong><span class="mockup-line"></span><small>UNA NUEVA EXPERIENCIA</small><small>FECHA · HORA · LUGAR</small></div><div class="inv-muestra-info"><span>CORPORATIVA · MODERNA</span><h3>Impacto minimalista</h3><p>Diseño limpio para inauguraciones, marcas y eventos empresariales.</p></div></article>
+          </div><p class="inv-portafolio-cta">¿Tienes una idea o una referencia? <a href="https://wa.me/59172514906?text=Hola%20GLAM%2C%20quiero%20ver%20muestras%20y%20cotizar%20una%20invitaci%C3%B3n%20digital." target="_blank" rel="noopener noreferrer">Conversemos por WhatsApp ↗</a></p>
+        </section>
+
+        <section class="inv-seccion inv-seccion-clara">
+            <div class="inv-detalles">
+                <div>
+                    <p class="inv-etiqueta">TU EVENTO, TU ESTILO</p>
+                    <h2>Los detalles hacen que todo se sienta especial.</h2>
+                    <p>
+                        Tu invitación puede convertirse en mucho más que un
+                        anuncio: puede ser el primer vistazo a la experiencia
+                        que vivirán tus invitados.
+                    </p>
+
+                    <ul class="inv-lista">
+                        <li><span>✓</span> Diseño personalizado para tu celebración.</li>
+                        <li><span>✓</span> Información de fecha, hora y ubicación.</li>
+                        <li><span>✓</span> Opciones de confirmación de asistencia (RSVP).</li>
+                        <li><span>✓</span> Posibilidad de incorporar música, fotografías y código QR, según la propuesta.</li>
+                    </ul>
+                </div>
+
+                <div class="inv-tarjeta">
+                    <p class="inv-tarjeta-etiqueta">UNA EXPERIENCIA GLAM</p>
+                    <h3>Desde el primer mensaje hasta el gran día.</h3>
+                    <p>
+                        Cuéntanos la fecha, el tipo de evento y el estilo que
+                        imaginas. Te orientaremos sobre las alternativas
+                        disponibles para tu invitación.
+                    </p>
+
+                    <a
+                        class="inv-boton"
+                        href="https://wa.me/59172514906?text=Hola%20GLAM%2C%20quiero%20cotizar%20una%20invitaci%C3%B3n%20digital."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        SOLICITAR COTIZACIÓN ↗
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="inv-seccion inv-seccion-clara">
+            <h2 class="inv-titulo">Así comienza tu invitación</h2>
+            <p class="inv-subtitulo">
+                Un proceso sencillo para transformar tu idea en una propuesta personalizada.
+            </p>
+
+            <div class="inv-pasos">
+                <article class="inv-paso">
+                    <span class="inv-paso-numero">01</span>
+                    <h3>Nos cuentas tu idea</h3>
+                    <p>Comparte el tipo de evento, la fecha y el estilo que te gustaría transmitir.</p>
+                </article>
+
+                <article class="inv-paso">
+                    <span class="inv-paso-numero">02</span>
+                    <h3>Definimos la propuesta</h3>
+                    <p>Revisamos contigo el diseño y las características disponibles para tu invitación.</p>
+                </article>
+
+                <article class="inv-paso">
+                    <span class="inv-paso-numero">03</span>
+                    <h3>Comparte tu momento</h3>
+                    <p>Una vez aprobada y preparada, podrás compartir tu invitación con tus invitados.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="inv-final">
+            <p class="inv-etiqueta">TU HISTORIA MERECE SER ANUNCIADA</p>
+            <h2>Hagamos que la primera impresión sea inolvidable.</h2>
+            <p>
+                Escríbenos y conversemos sobre la invitación que tienes en mente.
+            </p>
+
+            <div class="inv-acciones">
+                <a
+                    class="inv-boton"
+                    href="https://wa.me/59172514906?text=Hola%20GLAM%2C%20quiero%20crear%20una%20invitaci%C3%B3n%20digital."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    HABLAR CON GLAM ↗
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="inv-footer">
+        GLAM · EXPERIENCIAS QUE TODOS RECUERDAN
+    </footer>
+
+    <!-- WHATSAPP FLOTANTE -->
+    <a
+        href="https://wa.me/59172514906?text=Hola%20GLAM%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios."
+        class="whatsapp-flotante"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contactar a GLAM por WhatsApp"
+        title="Contactar por WhatsApp"
+    >
+        <svg viewBox="0 0 32 32" width="30" height="30"
+             aria-hidden="true" fill="currentColor">
+            <path d="M16 .5A15.4 15.4 0 0 0 2.7 23.7L.5 31.5l8-2.1A15.5 15.5 0 1 0 16 .5zm0 28.2a12.7 12.7 0 0 1-6.5-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5A12.7 12.7 0 1 1 16 28.7zm7-9.5c-.4-.2-2.1-1-2.4-1.1-.3-.1-.6-.2-.8.2-.3.4-.9 1.1-1.1 1.3-.2.3-.4.3-.8.1-.4-.2-1.5-.6-2.9-1.8-1.1-1-1.8-2.1-2-2.5-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.2 0-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.7.1-1 .5-.4.4-1.3 1.2-1.3 3s1.3 3.5 1.5 3.7c0 0 2.6 4 6.3 5.6.9.4 1.6.6 2.1.7.9.3 1.7.2 2.3.1.7-.1 2.1-.9 2.4-1.7.3-.8.3-1.6.2-1.7-.1-.2-.3-.3-.7-.5z"/>
+        </svg>
+        <span>¡Hablemos!</span>
+    </a>
+
+    <!-- MENÚ FLOTANTE DE SERVICIOS -->
+    <div class="servicios-flotantes">
+        <div id="opcionesServicios" class="opciones-servicios oculto">
+            <a href="index.html#contenido" class="opcion-flotante" data-destino="mirror">
+                <span>✦</span> Mirror Experience
+            </a>
+            <a href="invitaciones.html" class="opcion-flotante">
+                <span>✉</span> Invitaciones
+            </a>
+            <a href="vajilleria.html" class="opcion-flotante">
+                <span>◇</span> Vajillería
+            </a>
+            <a href="wedding-week.html" class="opcion-flotante">
+                <span>♡</span> Wedding Week <span class="badge-new">NEW ✨</span>
+            </a>
+        </div>
+
+        <button
+            id="botonServicios"
+            class="boton-servicios"
+            type="button"
+            aria-label="Abrir menú de servicios"
+            aria-controls="opcionesServicios"
+            aria-expanded="false"
+        >
+            <span id="iconoServicios">✦</span>
+        </button>
+    </div>
+
+    <!-- MÚSICA -->
+    <audio id="musicaBoda" loop>
+        <source src="musica/cancion.mp3" type="audio/mpeg">
+    </audio>
+
+    <button
+        id="botonMusica"
+        type="button"
+        aria-label="Reproducir música"
+        aria-pressed="false"
+    >♪</button>
+
+    <script src="datos.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Atribución de campañas: conserva UTM durante esta sesión y los añade al mensaje de WhatsApp. -->
+    <script src="marketing.js" defer></script>
+
+</body>
+</html>

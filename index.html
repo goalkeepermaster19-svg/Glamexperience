@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#171316">
+    <title>GLAM | Mirror Experience para eventos en La Paz</title>
+    <meta name="description" content="Dale a tu evento una experiencia inolvidable con GLAM Mirror Experience. Fotos, videos y recuerdos personalizados para bodas, quince años y eventos corporativos en La Paz. Consulta por WhatsApp.">
+    <meta name="keywords" content="GLAM, Mirror Experience La Paz, espejo mágico, cabina de fotos, bodas La Paz, quince años, eventos corporativos">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GLAM">
+    <meta property="og:title" content="GLAM Mirror Experience | Recuerdos que se viven">
+    <meta property="og:description" content="Una experiencia interactiva para bodas, quince años y eventos especiales. Consulta disponibilidad por WhatsApp.">
+    <meta property="og:locale" content="es_BO">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GLAM Mirror Experience | Recuerdos que se viven">
+    <meta name="twitter:description" content="Una experiencia interactiva para bodas, quince años y eventos especiales. Consulta disponibilidad por WhatsApp.">
+
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="glam-redesign.css">
+</head>
+
+<!-- BOTÓN FLOTANTE DE WHATSAPP -->
+<a
+    href="https://wa.me/59172514906?text=Hola%20GLAM%20Mirror%20Experience%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios."
+    class="whatsapp-flotante"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar a GLAM por WhatsApp"
+    title="¡Hablemos por WhatsApp!"
+>
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" fill="currentColor">
+        <path d="M16 .5A15.4 15.4 0 0 0 2.7 23.7L.5 31.5l8-2.1A15.5 15.5 0 1 0 16 .5zm0 28.2a12.7 12.7 0 0 1-6.5-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5A12.7 12.7 0 1 1 16 28.7zm7-9.5c-.4-.2-2.1-1-2.4-1.1-.3-.1-.6-.2-.8.2-.3.4-.9 1.1-1.1 1.3-.2.3-.4.3-.8.1-.4-.2-1.5-.6-2.9-1.8-1.1-1-1.8-2.1-2-2.5-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.2 0-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.7.1-1 .5-.4.4-1.3 1.2-1.3 3s1.3 3.5 1.5 3.7c.2.3 2.6 4 6.3 5.6.9.4 1.6.6 2.1.7.9.3 1.7.2 2.3.1.7-.1 2.1-.9 2.4-1.7.3-.8.3-1.6.2-1.7-.1-.2-.3-.3-.7-.5z"/>
+    </svg>
+    <span>¡Hablemos!</span>
+</a>
+
+<body>
+    <!-- PORTADA -->
+    <section class="portada">
+        <div class="portada-contenido">
+            <p class="pequeno">PRESENTA</p>
+
+            <h1>
+                <span id="nombreNovia">GLAM</span>
+                <span class="ampersand" id="nombreNovio">MIRROR EXPERIENCE</span>
+            </h1>
+
+            <div class="fecha" id="mesAnio">
+                <br>
+                <strong id="numeroDia">TODOS RECUERDAN</strong>
+            </div>
+
+            <p class="mensaje">
+                Haz que tus invitados sean
+                <br>
+                parte del espectáculo.
+            </p>
+
+            <button id="abrirInvitacion" class="boton-glam-experiencia" type="button">
+                <span>DESCUBRE</span>
+                <strong>LA EXPERIENCIA</strong>
+                <i>↗</i>
+            </button>
+        </div>
+    </section>
+
+    
+<!-- SELECTOR PRINCIPAL DE SERVICIOS GLAM -->
+<section id="selectorServicios" class="selector-servicios oculto">
+    <div class="selector-servicios-contenido">
+        <p class="etiqueta-glam">BIENVENIDO A GLAM</p>
+
+        <h2>
+            Descubre tu
+            <span>experiencia</span>
+        </h2>
+
+        <p class="selector-descripcion">
+            Todo lo que necesitas para crear momentos inolvidables.
+        </p>
+
+        <div class="selector-servicios-grid">
+            <button class="servicio-opcion" type="button" data-servicio="mirror">
+                <span class="servicio-opcion-numero">01</span>
+                <span class="servicio-opcion-icono">✦</span>
+                <strong>Mirror Experience</strong>
+                <span>Momentos que se convierten en recuerdos.</span>
+                <i>DESCUBRIR EXPERIENCIA ↗</i>
+            </button>
+
+            <button class="servicio-opcion" type="button" data-servicio="invitaciones">
+                <span class="servicio-opcion-numero">02</span>
+                <span class="servicio-opcion-icono">✉</span>
+                <strong>Invitaciones</strong>
+                <span>El primer detalle de un gran evento.</span>
+                <i>DESCUBRIR SERVICIO ↗</i>
+            </button>
+
+            <button class="servicio-opcion" type="button" data-servicio="vajilleria">
+                <span class="servicio-opcion-numero">03</span>
+                <span class="servicio-opcion-icono">◇</span>
+                <strong>Vajillería</strong>
+                <span>Detalles que elevan tu celebración.</span>
+                <i>DESCUBRIR SERVICIO ↗</i>
+            </button>
+
+            <button class="servicio-opcion" type="button" data-servicio="weddingweek">
+                <span class="servicio-opcion-numero">04</span>
+                <span class="servicio-opcion-icono">♡</span>
+                <strong>Wedding Week</strong>
+                <span>Beneficios especiales para tu gran día.</span>
+                <i>DESCUBRIR SERVICIO ↗</i>
+            </button>
+        </div>
+
+        <button id="volverPortada" class="selector-volver" type="button">
+            ← Volver a la portada
+        </button>
+    </div>
+</section>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="contenido" class="oculto">
+
+        <!-- BARRA SUPERIOR DERECHA ELIMINADA ÚNICAMENTE -->
+
+        <!-- PRESENTACIÓN -->
+        <section class="bienvenida">
+            <div class="glam-presentacion">
+                <div class="glam-espejo">
+                    <img src="imagenes/bienvenida.jpg" alt="GLAM Espejo Mágico">
+                </div>
+
+                <div class="glam-presentacion-texto">
+                    <p class="etiqueta-glam">BIENVENIDO A</p>
+
+                    <h2>
+                        GLAM
+                        <span>MIRROR EXPERIENCE</span>
+                    </h2>
+
+                    <p>
+                        Hay momentos que merecen ser recordados
+                        de una manera diferente.
+                    </p>
+
+                    <p>
+                        GLAM convierte tu celebración en una
+                        experiencia donde tus invitados no solo
+                        toman fotografías: se convierten en parte
+                        del espectáculo.
+                    </p>
+
+                    <p>
+                        Fotos, videos, efectos, accesorios y mucha
+                        diversión para crear recuerdos que todos
+                        quieran volver a mirar.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICIOS -->
+        <section id="servicios" class="contador-seccion servicios-glam">
+            <div class="seccion-encabezado">
+                <p class="etiqueta-glam">LA EXPERIENCIA</p>
+                <h2>¿QUÉ INCLUYE <span>GLAM?</span></h2>
+                <p>
+                    Todo lo necesario para convertir cada momento
+                    en un recuerdo extraordinario.
+                </p>
+            </div>
+
+            <div class="servicios-grid">
+                <article class="servicio-card">
+                    <div class="servicio-icono">📸</div>
+                    <h3>FOTOS ILIMITADAS</h3>
+                    <p>Tus invitados pueden disfrutar de la experiencia todas las veces que quieran.</p>
+                </article>
+
+                <article class="servicio-card">
+                    <div class="servicio-icono">🎬</div>
+                    <h3>VIDEOS &amp; BOOMERANGS</h3>
+                    <p>Capturamos momentos divertidos en formatos dinámicos para compartir.</p>
+                </article>
+
+                <article class="servicio-card">
+                    <div class="servicio-icono">✨</div>
+                    <h3>EFECTOS GLAM</h3>
+                    <p>Efectos, animaciones y detalles que hacen diferente cada captura.</p>
+                </article>
+
+                <article class="servicio-card">
+                    <div class="servicio-icono">🎭</div>
+                    <h3>ACCESORIOS</h3>
+                    <p>Props y accesorios para que tus invitados se diviertan y sean protagonistas.</p>
+                </article>
+
+                <article class="servicio-card">
+                    <div class="servicio-icono">💖</div>
+                    <h3>PERSONALIZACIÓN</h3>
+                    <p>Diseñamos la experiencia para que combine con el estilo de tu evento.</p>
+                </article>
+
+                <article class="servicio-card">
+                    <div class="servicio-icono">👑</div>
+                    <h3>ASISTENCIA GLAM</h3>
+                    <p>Nuestro equipo se encarga de acompañar la experiencia durante tu celebración.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- EVENTOS -->
+        <section id="eventos" class="eventos eventos-glam">
+            <div class="seccion-encabezado">
+                <p class="etiqueta-glam">PARA CADA OCASIÓN</p>
+                <h2>EVENTOS <span>GLAM</span></h2>
+                <p>
+                    Cada celebración tiene su propia historia.
+                    Nosotros ponemos el espejo, tú pones el momento.
+                </p>
+            </div>
+
+            <div class="eventos-grid" id="eventosGrid">
+                <article class="evento-glam-card">
+                    <div class="evento-glam-imagen">
+                        <img src="imagenes/bodas.jpg" alt="Espejo mágico para bodas">
+                        <div class="evento-glam-numero">01</div>
+                    </div>
+                    <div class="evento-glam-info">
+                        <p class="evento-glam-etiqueta">CELEBRA EL AMOR</p>
+                        <h3>BODAS</h3>
+                        <p>Convierte cada abrazo, sonrisa y celebración en un recuerdo inolvidable.</p>
+                    </div>
+                </article>
+
+                <article class="evento-glam-card">
+                    <div class="evento-glam-imagen">
+                        <img src="imagenes/cumpleanos.jpg" alt="Espejo mágico para cumpleaños">
+                        <div class="evento-glam-numero">02</div>
+                    </div>
+                    <div class="evento-glam-info">
+                        <p class="evento-glam-etiqueta">CELEBRA A LO GRANDE</p>
+                        <h3>CUMPLEAÑOS</h3>
+                        <p>Una experiencia diferente para compartir, reír y crear recuerdos con tus invitados.</p>
+                    </div>
+                </article>
+
+                <article class="evento-glam-card">
+                    <div class="evento-glam-imagen">
+                        <img src="imagenes/xv.jpg" alt="Espejo mágico para XV años">
+                        <div class="evento-glam-numero">03</div>
+                    </div>
+                    <div class="evento-glam-info">
+                        <p class="evento-glam-etiqueta">UNA NOCHE PARA BRILLAR</p>
+                        <h3>XV AÑOS</h3>
+                        <p>Haz que una noche tan especial tenga recuerdos tan únicos como tú.</p>
+                    </div>
+                </article>
+
+                <article class="evento-glam-card">
+                    <div class="evento-glam-imagen">
+                        <img src="imagenes/graduaciones.jpg" alt="Espejo mágico para graduaciones">
+                        <div class="evento-glam-numero">04</div>
+                    </div>
+                    <div class="evento-glam-info">
+                        <p class="evento-glam-etiqueta">CELEBRA TU LOGRO</p>
+                        <h3>GRADUACIONES</h3>
+                        <p>Celebra todo lo que lograste junto a las personas que compartieron este camino.</p>
+                    </div>
+                </article>
+
+                <article class="evento-glam-card">
+                    <div class="evento-glam-imagen">
+                        <img src="imagenes/empresariales.jpg" alt="Espejo mágico para eventos empresariales">
+                        <div class="evento-glam-numero">05</div>
+                    </div>
+                    <div class="evento-glam-info">
+                        <p class="evento-glam-etiqueta">TU MARCA TAMBIÉN CELEBRA</p>
+                        <h3>EMPRESARIALES</h3>
+                        <p>Dale una experiencia diferente a tus colaboradores, clientes e invitados.</p>
+                    </div>
+                </article>
+
+                <article class="evento-glam-card">
+                    <div class="evento-glam-imagen">
+                        <img src="imagenes/privados.jpg" alt="Espejo mágico para eventos privados">
+                        <div class="evento-glam-numero">06</div>
+                    </div>
+                    <div class="evento-glam-info">
+                        <p class="evento-glam-etiqueta">TU MOMENTO, TU ESTILO</p>
+                        <h3>EVENTOS PRIVADOS</h3>
+                        <p>Reuniones, celebraciones y momentos especiales también pueden ser GLAM.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- GALERÍA -->
+        <section id="galeria" class="momentos-glam">
+            <div class="seccion-encabezado">
+                <p class="etiqueta-glam">RECUERDOS QUE PERDURAN</p>
+                <h2>MOMENTOS <span>GLAM</span></h2>
+                <p>
+                    Cada fotografía cuenta una historia.
+                    Descubre algunos de los momentos que pueden
+                    convertirse en parte de tu celebración.
+                </p>
+            </div>
+
+            <div class="galeria-glam">
+                <div class="foto-glam"><img src="imagenes/momento1.jpeg" alt="Momento GLAM 1" data-indice="0"></div>
+                <div class="foto-glam"><img src="imagenes/momento2.jpeg" alt="Momento GLAM 2" data-indice="1"></div>
+                <div class="foto-glam"><img src="imagenes/momento3.jpeg" alt="Momento GLAM 3" data-indice="2"></div>
+                <div class="foto-glam"><img src="imagenes/momento4.jpeg" alt="Momento GLAM 4" data-indice="3"></div>
+                <div class="foto-glam"><img src="imagenes/momento5.jpeg" alt="Momento GLAM 5" data-indice="4"></div>
+                <div class="foto-glam"><img src="imagenes/momento6.jpeg" alt="Momento GLAM 6" data-indice="5"></div>
+            </div>
+        </section>
+
+        <!-- VIDEOS MIRROR EXPERIENCE -->
+        <section id="videos-mirror" class="mirror-video-showcase">
+            <div class="mirror-video-heading"><p class="etiqueta-glam">MÍRALO EN ACCIÓN</p><h2>LA EXPERIENCIA <span>GLAM</span> EN VIDEO</h2><p>Así se vive el espejo mágico: poses, sonrisas y recuerdos que tus invitados se llevan.</p></div>
+            <div class="mirror-video-grid">
+                <article class="mirror-video-card"><div class="mirror-video-frame"><video controls playsinline preload="metadata"><source src="videos/mirror-evento-01.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video></div><div class="mirror-video-caption"><span>01 / EN EL EVENTO</span><h3>La magia sucede frente al espejo</h3><p>Un momento divertido para compartir con tus invitados.</p></div></article>
+                <article class="mirror-video-card"><div class="mirror-video-frame mirror-video-frame-alt"><video controls playsinline preload="metadata"><source src="videos/mirror-recuerdos-02.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video></div><div class="mirror-video-caption"><span>02 / EL RECUERDO</span><h3>Tu estilo, tus fotos, tu historia</h3><p>Personalizamos la experiencia para que combine con tu celebración.</p></div></article>
+            </div><p class="mirror-video-note">Añade tus archivos MP4 a la carpeta <strong>videos</strong> para que aparezcan aquí. Recomendado: MP4 (H.264), vertical 9:16, 720p o 1080p, comprimido para web.</p>
+        </section>
+
+        <!-- VISOR DE FOTOGRAFÍAS -->
+        <div id="visorFoto" role="dialog" aria-modal="true" aria-label="Visor de fotografías">
+            <button id="cerrarFoto" type="button" aria-label="Cerrar fotografía">×</button>
+            <button id="fotoAnterior" class="flecha izquierda" type="button" aria-label="Fotografía anterior">‹</button>
+            <img id="fotoGrande" src="" alt="Foto GLAM ampliada">
+            <button id="fotoSiguiente" class="flecha derecha" type="button" aria-label="Fotografía siguiente">›</button>
+        </div>
+
+        <!-- PAQUETES -->
+        <section id="paquetes" class="paquetes-glam">
+            <div class="seccion-encabezado">
+                <p class="etiqueta-glam">ELIGE TU EXPERIENCIA</p>
+                <h2>PAQUETES <span>GLAM EXPERIENCE</span></h2>
+                <p>Elige la experiencia que mejor se adapte a tu celebración.</p>
+            </div>
+            <div class="paquetes-grid" id="paquetesGrid"></div>
+        </section>
+
+        <!-- COTIZACIÓN PERSONALIZADA -->
+        <section class="cotizacion-glam">
+            <div class="seccion-encabezado">
+                <p class="etiqueta-glam">¿TIENES UNA IDEA?</p>
+                <h2>HABLEMOS DE <span>TU EVENTO</span></h2>
+                <p>
+                    Cuéntanos qué tienes en mente. Podemos conversar
+                    sobre alternativas para que GLAM EXPERIENCE se adapte
+                    a tu presupuesto, intercambios de servicios o una
+                    experiencia completamente personalizada.
+                </p>
+                <button id="abrirCotizacion" class="boton-cotizacion-principal" type="button">
+                    QUIERO QUE ME CONTACTEN
+                </button>
+            </div>
+        </section>
+
+        <!-- MODAL Y FORMULARIO -->
+        <div id="modalCotizacion" class="modal-cotizacion" role="dialog" aria-modal="true" aria-labelledby="tituloModalCotizacion">
+            <div class="cotizacion-contenido">
+                <button id="cerrarCotizacion" class="cerrar-cotizacion" type="button" aria-label="Cerrar formulario">×</button>
+
+                <p class="etiqueta-glam">CUÉNTANOS TU IDEA</p>
+                <h2 id="tituloModalCotizacion">HABLEMOS DE <span>TU EVENTO</span></h2>
+
+                <p class="descripcion-glam">
+                    Déjanos tus datos y cuéntanos qué necesitas.
+                    Nosotros nos comunicaremos contigo para conversar
+                    personalmente sobre tu evento.
+                </p>
+
+                <form id="formularioCotizacion">
+                    <div class="campo-glam">
+                        <label for="nombreCliente">NOMBRE</label>
+                        <input type="text" id="nombreCliente" name="nombre" placeholder="Tu nombre" autocomplete="name" required>
+                    </div>
+
+                    <div class="campo-glam">
+                        <label for="telefonoCliente">TELÉFONO / WHATSAPP</label>
+                        <input type="tel" id="telefonoCliente" name="telefono" placeholder="Tu número" autocomplete="tel" required>
+                    </div>
+
+                    <div class="campo-glam">
+                        <label for="tipoEvento">TIPO DE EVENTO</label>
+                        <select id="tipoEvento" name="tipoEvento" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="Bodas">Bodas</option>
+                            <option value="Cumpleaños">Cumpleaños</option>
+                            <option value="XV Años">XV Años</option>
+                            <option value="Graduación">Graduación</option>
+                            <option value="Empresarial">Empresarial</option>
+                            <option value="Evento privado">Evento privado</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-glam">
+                        <label for="fechaEvento">FECHA DEL EVENTO</label>
+                        <input type="date" id="fechaEvento" name="fechaEvento" required>
+                    </div>
+
+                    <div class="campo-glam">
+                        <label for="ciudadEvento">CIUDAD</label>
+                        <input type="text" id="ciudadEvento" name="ciudadEvento" placeholder="Ej. La Paz" required>
+                    </div>
+
+                    <div class="campo-glam">
+                        <label for="propuestaEvento">CUÉNTANOS SOBRE TU EVENTO</label>
+                        <textarea id="propuestaEvento" name="propuesta" rows="5" placeholder="Cuéntanos qué tienes en mente, tu presupuesto o si necesitas algo personalizado..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="boton-whatsapp">ENVIAR SOLICITUD</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- CONTACTO -->
+        <section id="contacto" class="contacto-glam">
+            <div class="contacto-glam-contenido">
+                <div class="contacto-texto">
+                    <p class="etiqueta-glam">HABLEMOS</p>
+                    <h2>¿LISTO PARA HACER <span>ALGO INOLVIDABLE?</span></h2>
+                    <p>Reserva tu fecha y convierte tu evento en una experiencia que todos recordarán.</p>
+
+                    <div class="contacto-datos">
+                        <div><strong>📱 WhatsApp</strong><span>72514906</span></div>
+                        <div><strong>📸 Instagram</strong><span>@GLAM</span></div>
+                        <div><strong>📘 Facebook</strong><span>GLAM Espejo Mágico</span></div>
+                    </div>
+                </div>
+
+                <div class="contacto-qr">
+                    <div id="codigoQR">
+                        <img src="imagenes/qr-glam.png" alt="Código QR GLAM">
+                    </div>
+                    <p>ESCANEA PARA<br><strong>COTIZAR</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CIERRE -->
+        <section class="final">
+            <div>
+                <p>GLAM</p>
+                <h2 id="nombresFinales">MIRROR EXPERIENCE</h2>
+                <p>Tu evento, nuestra magia. ✨</p>
+                <p>📱 72514906</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- MÚSICA -->
+    <audio id="musicaBoda" loop>
+        <source src="musica/cancion.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="botonMusica" type="button" aria-label="Reproducir música" aria-pressed="false">♪</button>
+
+    <!-- MENÚ FLOTANTE DE SERVICIOS GLAM -->
+    <div class="servicios-flotantes">
+        <div id="opcionesServicios" class="opciones-servicios oculto">
+            <a href="#contenido" class="opcion-flotante" data-destino="mirror">
+                <span>✦</span> Mirror Experience
+            </a>
+            <a href="invitaciones.html" class="opcion-flotante">
+                <span>✉</span> Invitaciones
+            </a>
+            <a href="vajilleria.html" class="opcion-flotante">
+                <span>◇</span> Vajillería
+            </a>
+            <a href="wedding-week.html" class="opcion-flotante">
+                <span>♡</span> Wedding Week <span class="badge-new">NEW ✨</span>
+            </a>
+        </div>
+
+        <button id="botonServicios" class="boton-servicios" type="button" aria-label="Abrir menú de servicios" aria-controls="opcionesServicios" aria-expanded="false">
+            <span id="iconoServicios">✦</span>
+        </button>
+    </div>
+
+    <script src="datos.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Atribución de campañas: conserva UTM durante esta sesión y los añade al mensaje de WhatsApp. -->
+    <script src="marketing.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+/* GLAM — dirección visual editorial 2026 */
+:root{--glam-ink:#111111;--glam-plum:#171217;--glam-berry:#e6007e;--glam-rose:#ff4fa8;--glam-blush:#fff0f7;--glam-paper:#fff8f0;--glam-white:#ffffff;--glam-muted:#62565e;--glam-line:#f0c9dd;--glam-gold:#e6007e;--glam-radius:22px;--glam-shadow:0 18px 55px rgba(46,24,38,.09)}
+html{scroll-behavior:smooth;scroll-padding-top:90px}body{background:var(--glam-paper);color:var(--glam-ink);font-family:'DM Sans',Arial,sans-serif;line-height:1.7}button,input,select,textarea{font:inherit}a{transition:color .2s,background .2s,transform .2s}img{max-width:100%}::selection{background:var(--glam-rose);color:var(--glam-ink)}
+/* Lenguaje común: marca, etiquetas, titulares, aire */
+.inv-header,.vaj-header,.ww-header,.barra{padding:20px clamp(22px,6vw,88px)!important;min-height:86px;background:rgba(251,247,243,.94)!important;border-bottom:1px solid var(--glam-line)!important;backdrop-filter:blur(16px);}
+.inv-logo,.vaj-logo,.ww-logo,.marca{color:var(--glam-ink)!important;font-family:'Playfair Display',Georgia,serif!important;font-size:1.7rem!important;letter-spacing:.19em!important;line-height:1.1}.inv-logo span,.vaj-logo small,.ww-logo small,.marca span{color:var(--glam-berry)!important;font-family:'DM Sans',Arial,sans-serif!important;font-size:.58rem!important;letter-spacing:.24em!important;margin-top:8px!important}.inv-volver,.vaj-back,.ww-back,.inv-header a:not(.inv-logo),.vaj-header a:not(.vaj-logo),.ww-header a:not(.ww-logo){color:var(--glam-berry)!important;font-weight:700;letter-spacing:.05em}
+.inv-hero,.vaj-hero,.ww-hero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(78px,10vw,142px) 24px clamp(76px,9vw,120px)!important;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(217,169,189,.42),transparent 48%),linear-gradient(145deg,#f7ecef 0%,#fbf7f3 58%,#efe0e5 100%)!important;color:var(--glam-ink)!important}
+.inv-hero:after,.vaj-hero:after,.ww-hero:after{content:'GLAM';position:absolute;z-index:-1;left:50%;top:50%;transform:translate(-50%,-44%);font:500 clamp(7rem,23vw,20rem)/.8 'Playfair Display',Georgia,serif;letter-spacing:.08em;color:rgba(116,68,95,.045);white-space:nowrap;pointer-events:none}
+.inv-etiqueta,.vaj-label,.ww-label{color:var(--glam-berry)!important;font-size:.72rem!important;letter-spacing:.28em!important;font-weight:800!important;margin:0 auto 24px!important}.inv-hero h1,.vaj-hero h1,.ww-hero h1{max-width:1000px!important;margin:0 auto 28px!important;font-family:'Playfair Display',Georgia,serif!important;font-weight:500!important;font-size:clamp(2.8rem,6.5vw,6rem)!important;line-height:1.04!important;letter-spacing:-.035em}.inv-hero h1 em,.vaj-hero h1 em,.ww-hero h1 em{color:var(--glam-berry)!important}.inv-hero>p:not(.inv-etiqueta),.vaj-hero>p:not(.vaj-label),.ww-hero>p:not(.ww-label){max-width:650px!important;margin:0 auto!important;color:#665761!important;font-size:clamp(1rem,1.3vw,1.12rem)!important;line-height:1.9!important}
+.inv-acciones,.vaj-actions{gap:16px!important;margin-top:38px!important}.inv-boton,.vaj-btn,.ww-button,.boton-glam-experiencia{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px!important;padding:16px 29px!important;border:1px solid var(--glam-plum)!important;border-radius:999px!important;background:var(--glam-plum)!important;color:#fff!important;text-decoration:none!important;font-size:.78rem!important;font-weight:800!important;letter-spacing:.09em!important;box-shadow:0 8px 20px rgba(64,37,56,.12);transition:transform .25s,box-shadow .25s,background .25s!important}.inv-boton:hover,.vaj-btn:hover,.ww-button:hover,.boton-glam-experiencia:hover{transform:translateY(-3px);background:var(--glam-berry)!important;box-shadow:0 14px 28px rgba(64,37,56,.2)}.inv-boton-secundario,.vaj-btn-outline,.ww-button-outline{background:transparent!important;color:var(--glam-plum)!important;border-color:#b99aa9!important;box-shadow:none!important}.inv-boton-secundario:hover,.vaj-btn-outline:hover,.ww-button-outline:hover{color:#fff!important}
+.inv-seccion,.vaj-section,.ww-section,.contador-seccion,.servicios-glam{padding:clamp(64px,8vw,112px) clamp(22px,6vw,88px)!important}.inv-seccion,.vaj-section,.ww-section{background:var(--glam-paper)!important;color:var(--glam-ink)!important}.inv-seccion-clara,.vaj-light,.ww-light{background:var(--glam-blush)!important;color:var(--glam-ink)!important}.inv-titulo,.vaj-heading,.ww-heading,.seccion-encabezado h2,.selector-servicios h2{font-family:'Playfair Display',Georgia,serif!important;font-weight:500!important;font-size:clamp(2rem,4vw,3.6rem)!important;line-height:1.12!important;letter-spacing:-.025em!important;color:var(--glam-ink)!important;margin:0 0 20px!important}.inv-subtitulo,.vaj-subheading,.ww-subheading,.seccion-encabezado p{color:var(--glam-muted)!important;line-height:1.85!important;max-width:720px;margin:0 auto 36px!important}
+.inv-tipos,.inv-detalles,.inv-pasos,.vaj-grid,.ww-services,.ww-steps,.servicios-grid,.eventos-grid,.paquetes-grid,.selector-servicios-grid{gap:clamp(20px,2.6vw,34px)!important}.inv-tarjeta,.inv-tipo,.inv-paso,.vaj-card,.vaj-quote-card,.ww-service,.ww-step,.servicio-opcion,.servicio-card,.evento-card,.paquete-card,.paquete,.tarjeta-servicio{border-radius:var(--glam-radius)!important;overflow:hidden;box-shadow:var(--glam-shadow)!important}
+/* Cards: amplio padding, títulos con respiración y contraste garantizado */
+.inv-tarjeta,.inv-tipo,.inv-paso,.vaj-card,.ww-service,.ww-step,.servicio-opcion,.servicio-card,.evento-card,.paquete-card,.paquete,.tarjeta-servicio{padding:clamp(26px,3.1vw,42px)!important;background:var(--glam-white)!important;border:1px solid var(--glam-line)!important;color:var(--glam-ink)!important;min-width:0}
+.inv-tarjeta h3,.inv-tipo h3,.inv-paso h3,.vaj-card h3,.ww-service h3,.ww-step h3,.servicio-opcion strong,.servicio-card h3,.evento-card h3,.paquete-card h3,.paquete h3,.tarjeta-servicio h3{color:var(--glam-ink)!important;line-height:1.25!important;margin:12px 0 16px!important;font-size:1.2rem!important}.inv-tarjeta p,.inv-tipo p,.inv-paso p,.vaj-card p,.ww-service p,.ww-step p,.servicio-opcion span,.servicio-card p,.evento-card p,.paquete-card p,.paquete p,.tarjeta-servicio p{color:#6c5d66!important;line-height:1.85!important}.inv-tipo-icono,.servicio-opcion-icono,.ww-service-icon{display:grid;place-items:center;width:58px;height:58px;border-radius:18px;background:var(--glam-blush);color:var(--glam-berry);font-size:1.5rem;margin-bottom:22px}.inv-tarjeta-etiqueta,.servicio-opcion-numero,.ww-step-number,.inv-paso-numero{color:var(--glam-berry)!important;font-weight:800!important;letter-spacing:.12em}.inv-lista,.vaj-checklist,.ww-terms{line-height:1.9!important}.inv-lista li,.vaj-checklist li{margin:0 0 12px!important;padding-left:5px}
+/* Las tarjetas con fondo oscuro conservan el contraste correcto */
+.paquete-card.destacado,.paquete.destacado,.paquete-card.recomendado,.paquete.recomendado,.inv-tarjeta.destacada,.vaj-quote-card{background:var(--glam-plum)!important;color:#fff!important;border-color:var(--glam-plum)!important}.paquete-card.destacado *,.paquete.destacado *,.paquete-card.recomendado *,.paquete.recomendado *,.inv-tarjeta.destacada *,.vaj-quote-card *{color:#fff!important}.paquete-card.destacado a,.paquete.destacado a{background:var(--glam-rose)!important;color:var(--glam-ink)!important}
+.vaj-image{min-height:220px!important;border-radius:16px!important;overflow:hidden;background:linear-gradient(135deg,#ead8df,#f7eee9)!important}.vaj-placeholder{min-height:220px!important;display:grid;place-items:center;background:linear-gradient(135deg,#f3e4e9,#e7d1db)!important;color:var(--glam-berry)!important;font-size:2.5rem}.vaj-card-body{padding:24px 4px 4px!important}.vaj-split{gap:clamp(28px,5vw,70px)!important;align-items:center!important}.vaj-quote-card{padding:clamp(30px,4vw,52px)!important;border-radius:var(--glam-radius)!important;box-shadow:var(--glam-shadow)!important}
+.ww-discount{max-width:760px;margin:46px auto 0!important;padding:clamp(28px,4vw,48px)!important;border:1px solid #e0c2ce!important;border-radius:28px!important;background:rgba(255,253,251,.78)!important;box-shadow:0 20px 60px rgba(64,37,56,.09)!important;color:var(--glam-ink)!important}.ww-discount-label,.ww-code-label{color:var(--glam-berry)!important;letter-spacing:.14em!important;font-weight:800!important}.ww-discount-number{color:var(--glam-berry)!important;font-family:'Playfair Display',Georgia,serif!important;font-size:clamp(4rem,10vw,7rem)!important;line-height:1.05!important}.ww-discount-description{color:#6c5d66!important;line-height:1.8!important}.ww-code-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px!important;margin-top:24px!important}.ww-code-row code{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:14px 24px!important;border:1px dashed #b58a9f!important;border-radius:14px!important;background:#f8edf1!important;color:var(--glam-plum)!important;font-size:1rem!important;letter-spacing:.13em!important}.ww-terms{padding:clamp(24px,3vw,36px)!important;border:1px solid var(--glam-line)!important;border-radius:var(--glam-radius)!important;background:var(--glam-white)!important;color:#6c5d66!important}
+.inv-final,.vaj-final,.ww-final,.final{padding:clamp(70px,9vw,115px) 24px!important;background:var(--glam-plum)!important;color:#fff!important;text-align:center}.inv-final h2,.vaj-final h2,.ww-final h2,.final h2,.inv-final p,.vaj-final p,.ww-final p,.final p{color:#fff!important}.inv-final h2,.vaj-final h2,.ww-final h2,.final h2{font-family:'Playfair Display',Georgia,serif!important;font-size:clamp(2.2rem,5vw,4.2rem)!important;line-height:1.1!important;margin:0 auto 24px!important}.inv-footer,.vaj-footer,.ww-footer,footer{padding:28px 22px!important;background:#24151f!important;color:#e8dce2!important;text-align:center!important;font-size:.84rem!important}.inv-footer a,.vaj-footer a,.ww-footer a,footer a{color:#e5bdcf!important}
+/* Inicio Mirror Experience y navegación compartida */
+.portada{background:linear-gradient(120deg,rgba(36,21,31,.78),rgba(64,37,56,.38)),url('imagenes/portada.jpg') center/cover no-repeat,#402538!important}.portada:before{inset:22px!important;border-color:rgba(255,255,255,.42)!important}.portada h1{font-family:'Playfair Display',Georgia,serif!important;letter-spacing:.035em!important}.portada h1 .ampersand{font-family:'DM Sans',Arial,sans-serif!important;letter-spacing:.2em!important}.portada .mensaje{max-width:620px;margin:28px auto 38px!important}.selector-servicios{min-height:100vh;background:var(--glam-paper)!important;color:var(--glam-ink)!important;padding:clamp(70px,8vw,110px) clamp(22px,6vw,88px)!important}.selector-servicios-contenido{max-width:1200px;margin:auto}.etiqueta-glam{color:var(--glam-berry)!important;letter-spacing:.25em!important;font-weight:800}.selector-descripcion{color:var(--glam-muted)!important;max-width:650px;line-height:1.9}.servicio-opcion{text-align:left!important;display:flex;flex-direction:column;align-items:flex-start;gap:12px!important;min-height:290px;cursor:pointer;transition:transform .25s,box-shadow .25s!important}.servicio-opcion:hover{transform:translateY(-5px);box-shadow:0 24px 55px rgba(46,24,38,.14)!important}.servicio-opcion i{font-style:normal;color:var(--glam-berry)!important;font-size:.72rem;font-weight:800;letter-spacing:.1em;margin-top:auto;padding-top:20px}.barra .marca{font-size:1.25rem!important}.whatsapp-flotante{box-shadow:0 10px 28px rgba(24,133,78,.24)!important;z-index:30}
+/* Marca de agua decorativa, discreta y nunca cortada sobre contenido */
+@media(min-width:900px){.inv-seccion,.vaj-section,.ww-section{position:relative}.inv-seccion:after,.vaj-section:after,.ww-section:after{content:'G';position:absolute;right:2%;bottom:0;font:500 clamp(8rem,18vw,17rem)/.8 'Playfair Display',Georgia,serif;color:rgba(116,68,95,.035);pointer-events:none;z-index:0}.inv-seccion>*,.vaj-section>*,.ww-section>*{position:relative;z-index:1}}
+@media(max-width:700px){.inv-header,.vaj-header,.ww-header,.barra{padding:16px 20px!important;min-height:72px!important;gap:14px!important}.inv-logo,.vaj-logo,.ww-logo{font-size:1.35rem!important}.inv-hero,.vaj-hero,.ww-hero{padding:72px 22px 68px!important}.inv-hero h1,.vaj-hero h1,.ww-hero h1{font-size:clamp(2.45rem,11vw,4rem)!important}.inv-seccion,.vaj-section,.ww-section,.contador-seccion,.servicios-glam{padding:60px 21px!important}.inv-tarjeta,.inv-tipo,.inv-paso,.vaj-card,.ww-service,.ww-step,.servicio-opcion,.servicio-card,.evento-card,.paquete-card,.paquete,.tarjeta-servicio{padding:26px!important;border-radius:18px!important}.inv-acciones,.vaj-actions{display:flex!important;flex-direction:column!important;align-items:stretch!important}.inv-boton,.vaj-btn,.ww-button,.boton-glam-experiencia{width:100%;max-width:100%;min-height:54px!important;padding:15px 20px!important}.ww-discount{padding:26px 20px!important;margin-top:32px!important;border-radius:22px!important}.ww-code-row{flex-direction:column!important}.ww-code-row code{width:100%;letter-spacing:.08em!important}.vaj-image,.vaj-placeholder{min-height:190px!important}.inv-final,.vaj-final,.ww-final,.final{padding:65px 22px!important}.servicio-opcion{min-height:unset}.inv-hero:after,.vaj-hero:after,.ww-hero:after{font-size:30vw}.whatsapp-flotante span{display:none!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+
+/* GLAM palette agreed: black, pink/fuchsia, cream and white. */
+:root{--glam-ink:#111111;--glam-plum:#151115;--glam-berry:#e6007e;--glam-rose:#ff4fa8;--glam-blush:#fff0f7;--glam-paper:#fff8f0;--glam-white:#ffffff;--glam-muted:#62565e;--glam-line:#f0c9dd;--glam-gold:#e6007e;--glam-radius:24px;--glam-shadow:0 18px 48px rgba(20,10,17,.10)}
+/* Eliminar encabezados superiores en todas las páginas, según lo solicitado. */
+.inv-header,.vaj-header,.ww-header,.barra{display:none!important}
+html{scroll-padding-top:18px}
+body{background:var(--glam-paper)!important;color:var(--glam-ink)!important}
+.inv-hero,.vaj-hero,.ww-hero{background:radial-gradient(ellipse at 50% 0%,rgba(230,0,126,.13),transparent 48%),linear-gradient(145deg,#fff0f7 0%,#fff8f0 62%,#ffffff 100%)!important;color:#111!important}
+.inv-hero:after,.vaj-hero:after,.ww-hero:after{color:rgba(230,0,126,.045)!important}
+.inv-etiqueta,.vaj-label,.ww-label,.etiqueta-glam,.inv-hero h1 em,.vaj-hero h1 em,.ww-hero h1 em{color:#e6007e!important}
+.inv-boton,.vaj-btn,.ww-button,.boton-glam-experiencia{background:#151115!important;border-color:#151115!important;color:#fff!important}
+.inv-boton:hover,.vaj-btn:hover,.ww-button:hover,.boton-glam-experiencia:hover{background:#e6007e!important;border-color:#e6007e!important}
+.inv-boton-secundario,.vaj-btn-outline,.ww-button-outline{background:transparent!important;color:#151115!important;border-color:#e6007e!important}
+.inv-seccion,.vaj-section,.ww-section,.selector-servicios{background:#fff8f0!important;color:#111!important}
+.inv-seccion-clara,.vaj-light,.ww-light{background:#fff0f7!important;color:#111!important}
+.inv-tarjeta,.inv-tipo,.inv-paso,.vaj-card,.ww-service,.ww-step,.servicio-opcion,.servicio-card,.evento-card,.paquete-card,.paquete,.tarjeta-servicio{background:#fff!important;border:1px solid #f0c9dd!important;color:#111!important;box-shadow:0 18px 48px rgba(20,10,17,.09)!important;padding:clamp(32px,4vw,52px)!important}
+.inv-tarjeta h3,.inv-tipo h3,.inv-paso h3,.vaj-card h3,.ww-service h3,.ww-step h3,.servicio-opcion strong,.servicio-card h3,.evento-card h3,.paquete-card h3,.paquete h3,.tarjeta-servicio h3{color:#111!important;margin:16px 0 18px!important;line-height:1.3!important}
+.inv-tarjeta p,.inv-tipo p,.inv-paso p,.vaj-card p,.ww-service p,.ww-step p,.servicio-opcion span,.servicio-card p,.evento-card p,.paquete-card p,.paquete p,.tarjeta-servicio p{color:#62565e!important;line-height:1.9!important}
+.inv-tipo-icono,.servicio-opcion-icono,.ww-service-icon{background:#fff0f7!important;color:#e6007e!important}
+.paquete-card.destacado,.paquete.destacado,.paquete-card.recomendado,.paquete.recomendado,.inv-tarjeta.destacada,.vaj-quote-card{background:#151115!important;color:#fff!important;border-color:#151115!important}
+.paquete-card.destacado *,.paquete.destacado *,.paquete-card.recomendado *,.paquete.recomendado *,.inv-tarjeta.destacada *,.vaj-quote-card *{color:#fff!important}
+.ww-discount{background:#fff!important;border:1px solid #f0c9dd!important}
+.ww-discount-number,.ww-discount-label,.ww-code-label{color:#e6007e!important}
+.ww-code-row code{background:#fff0f7!important;color:#151115!important;border-color:#e6007e!important}
+.inv-final,.vaj-final,.ww-final,.final{background:#151115!important;color:#fff!important}
+.inv-footer,.vaj-footer,.ww-footer,footer{background:#111!important;color:#fff!important}
+.inv-footer a,.vaj-footer a,.ww-footer a,footer a{color:#ff4fa8!important}
+.portada{background:linear-gradient(120deg,rgba(17,17,17,.80),rgba(230,0,126,.26)),url('imagenes/portada.jpg') center/cover no-repeat,#151115!important}
+.opcion-flotante .badge-new,.badge-new{display:inline-flex;align-items:center;margin-left:8px;padding:4px 8px;border-radius:999px;background:#e6007e;color:#fff;font-size:.62rem;font-weight:900;letter-spacing:.04em;white-space:nowrap}
+@media(max-width:700px){.inv-tarjeta,.inv-tipo,.inv-paso,.vaj-card,.ww-service,.ww-step,.servicio-opcion,.servicio-card,.evento-card,.paquete-card,.paquete,.tarjeta-servicio{padding:28px!important}}
+
+.ww-code-entry input{flex:1 1 260px;min-width:0;min-height:56px;padding:16px 20px;border:1px solid #e6b4ce;border-radius:14px;background:#fff;color:#151115;outline:none}
+.ww-code-entry input:focus{border-color:#e6007e;box-shadow:0 0 0 4px rgba(230,0,126,.12)}
+.ww-code-note{max-width:560px;margin:16px auto 0;color:#62565e;font-size:.92rem;line-height:1.8}
+@media(max-width:700px){.ww-code-entry input{width:100%;flex-basis:100%}}
+
+
+/* AJUSTES FINOS solicitados: cierre negro con difuminado fucsia, sin gris en tarjetas y badge legible */
+:root{--glam-card:#fff8f0;--glam-card-alt:#fff0f7}
+/* Ninguna tarjeta de contenido usa gris plomo: alternar crema y rosa muy suave */
+.inv-tarjeta,.inv-tipo,.inv-paso,.vaj-card,.ww-service,.ww-step,.servicio-opcion,.servicio-card,.evento-card,.paquete-card,.paquete,.tarjeta-servicio,
+.inv-detalle-card,.inv-paso-card,.vaj-producto,.ww-card,.beneficio-card,.detalle-card{
+  background:var(--glam-card)!important;
+  color:var(--glam-ink)!important;
+}
+.inv-tarjeta:nth-child(even),.inv-tipo:nth-child(even),.inv-paso:nth-child(even),.vaj-card:nth-child(even),.ww-service:nth-child(even),.ww-step:nth-child(even),.servicio-opcion:nth-child(even),.servicio-card:nth-child(even),.evento-card:nth-child(even),.paquete-card:nth-child(even),.paquete:nth-child(even),.tarjeta-servicio:nth-child(even){background:var(--glam-card-alt)!important}
+/* Se conservan fondos oscuros solo en elementos que deben ser oscuros */
+.paquete-card.destacado,.paquete.destacado,.paquete-card.recomendado,.paquete.recomendado,.inv-tarjeta.destacada,.vaj-quote-card{background:linear-gradient(145deg,#25121f 0%,#171217 65%,#301025 100%)!important;color:#fff!important}
+/* Cierre final: negro/plum con un halo fucsia elegante, no un bloque negro plano */
+.inv-final,.vaj-final,.ww-final,.final{
+  position:relative!important;isolation:isolate!important;overflow:hidden!important;
+  background:radial-gradient(ellipse at 50% 110%,rgba(230,0,126,.58) 0%,rgba(230,0,126,.25) 27%,rgba(230,0,126,0) 62%),
+             radial-gradient(ellipse at 85% 0%,rgba(255,79,168,.16) 0%,rgba(255,79,168,0) 44%),
+             linear-gradient(135deg,#100d10 0%,#171217 58%,#21101d 100%)!important;
+}
+.inv-final:before,.vaj-final:before,.ww-final:before,.final:before{content:"";position:absolute;z-index:-1;left:50%;bottom:-170px;transform:translateX(-50%);width:min(850px,110vw);height:330px;border-radius:50%;background:rgba(230,0,126,.18);filter:blur(70px);pointer-events:none}
+/* Badge MÁS ELEGIDO: dentro de la tarjeta, separado del borde y sin recortar */
+.paquete-card:nth-child(2),.paquete:nth-child(2){padding-top:76px!important;overflow:visible!important}
+.paquete-card:nth-child(2)::before,.paquete:nth-child(2)::before{
+  top:18px!important;left:50%!important;transform:translateX(-50%)!important;z-index:5!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  min-height:28px!important;padding:6px 15px!important;border-radius:999px!important;
+  white-space:nowrap!important;font-size:9px!important;line-height:1.2!important;letter-spacing:1.4px!important;
+  background:var(--glam-berry)!important;color:#fff!important;box-shadow:0 6px 16px rgba(230,0,126,.22)!important;
+}
+.paquete-badge{top:18px!important;left:50%!important;transform:translateX(-50%)!important;z-index:5!important;white-space:nowrap!important;line-height:1.2!important;padding:7px 15px!important;border-radius:999px!important}
+@media(max-width:700px){.paquete-card:nth-child(2),.paquete:nth-child(2){padding-top:70px!important}.inv-final,.vaj-final,.ww-final,.final{background:radial-gradient(ellipse at 50% 110%,rgba(230,0,126,.48),transparent 65%),linear-gradient(135deg,#100d10,#21101d)!important}}
+
+/* AJUSTES SOLICITADOS: fondos suaves y botones fucsia coherentes con Mirror */
+/* Mirror: las tarjetas de "¿Qué incluye GLAM?" dejan el blanco puro */
+#servicios .servicio-card,
+.servicios-glam .servicio-card,
+.servicios-grid .servicio-card{
+  background:linear-gradient(145deg,#fff0f7 0%,#fff8f0 100%)!important;
+  border:1px solid #f0c9dd!important;
+  color:#21151d!important;
+  box-shadow:0 16px 42px rgba(83,25,57,.08)!important;
+}
+#servicios .servicio-card h3,.servicios-glam .servicio-card h3,.servicios-grid .servicio-card h3{color:#21151d!important}
+#servicios .servicio-card p,.servicios-glam .servicio-card p,.servicios-grid .servicio-card p{color:#66535f!important}
+#servicios .servicio-icono,.servicios-glam .servicio-icono,.servicios-grid .servicio-icono{background:#e6007e!important;color:#fff!important;border-radius:16px!important}
+/* Vajillería: "Planifica con GLAM" ya no usa caja negra; tipografía legible */
+.vaj-quote-card{
+  background:linear-gradient(145deg,#fff0f7 0%,#fff8f0 100%)!important;
+  border:1px solid #f0c9dd!important;
+  color:#21151d!important;
+  box-shadow:0 18px 48px rgba(83,25,57,.09)!important;
+}
+.vaj-quote-card .vaj-label{color:#e6007e!important}
+.vaj-quote-card h3{color:#21151d!important}
+.vaj-quote-card p:not(.vaj-label){color:#66535f!important}
+.vaj-quote-card .vaj-btn{background:#e6007e!important;border-color:#e6007e!important;color:#fff!important}
+/* Wedding Week: bloque del código promocional en crema/rosa, incluidos input y textos */
+.ww-discount,.ww-code-row,.ww-code-entry{
+  background:linear-gradient(145deg,#fff0f7 0%,#fff8f0 100%)!important;
+  color:#21151d!important;
+}
+.ww-code-entry input{background:#fff!important;color:#21151d!important;border-color:#e6b4ce!important}
+.ww-code-label,.ww-discount-label{color:#e6007e!important}
+.ww-discount-description{color:#66535f!important}
+.ww-code-note{color:#66535f!important}
+/* Botones de Invitaciones, Wedding Week, Vajillería y portada: fucsia como Mirror */
+.inv-boton,.vaj-btn,.ww-button,.boton-glam-experiencia,
+.inv-boton-secundario,.vaj-btn-outline,.ww-button-outline{
+  background:#e6007e!important;border-color:#e6007e!important;color:#fff!important;
+  box-shadow:0 10px 24px rgba(230,0,126,.2)!important;
+}
+.inv-boton:hover,.vaj-btn:hover,.ww-button:hover,.boton-glam-experiencia:hover,
+.inv-boton-secundario:hover,.vaj-btn-outline:hover,.ww-button-outline:hover{
+  background:#c9006e!important;border-color:#c9006e!important;color:#fff!important;
+  box-shadow:0 14px 30px rgba(230,0,126,.28)!important;
+}
+.portada .boton-glam-experiencia,#abrirInvitacion{
+  background:#e6007e!important;border:1px solid #ff7cbd!important;color:#fff!important;
+}
+
+
+/* Correcciones finales solicitadas */
+/* Mirror: volver al fondo blanco anterior en las tarjetas de "¿Qué incluye GLAM?" */
+#servicios .servicio-card,.servicios-glam .servicio-card,.servicios-grid .servicio-card{background:#ffffff!important;color:#21151d!important;border:1px solid #f0c9dd!important}
+#servicios .servicio-card h3,.servicios-glam .servicio-card h3,.servicios-grid .servicio-card h3{color:#21151d!important}
+#servicios .servicio-card p,.servicios-glam .servicio-card p,.servicios-grid .servicio-card p{color:#66535f!important}
+/* Evitar que la fila del CTA final de Wedding Week se convierta en una franja */
+.ww-final .ww-code-row{display:block!important;width:max-content!important;max-width:100%!important;margin:28px auto 0!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+.ww-final .ww-button{display:inline-flex!important;width:auto!important;min-width:220px!important}
+/* Etiqueta NEW animada para Wedding Week en el menú flotante */
+.badge-new{animation:glamNewPulse 1.2s ease-in-out infinite;box-shadow:0 0 0 0 rgba(230,0,126,.42)}
+@keyframes glamNewPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(230,0,126,.35)}50%{transform:scale(1.07);box-shadow:0 0 0 6px rgba(230,0,126,0)}}
+@media(prefers-reduced-motion:reduce){.badge-new{animation:none!important}}
+
+
+/* Ajuste puntual: íconos de la sección de servicios sobre fondo blanco */
+#selectorServicios .servicio-opcion-icono{background:#ffffff!important;color:#e6007e!important;border:1px solid #f0c9dd!important;box-shadow:0 8px 22px rgba(83,25,57,.06)!important}
+#selectorServicios .servicio-opcion{background:#ffffff!important;color:#21151d!important;border:1px solid #f0c9dd!important}
+#selectorServicios .servicio-opcion span:not(.servicio-opcion-icono){color:inherit}
+#selectorServicios .servicio-opcion strong{color:#21151d!important}
+#selectorServicios .servicio-opcion i{color:#e6007e!important}
+/* El distintivo NEW también aparece en el menú flotante de Wedding Week */
+.opcion-flotante .badge-new{display:inline-flex!important;align-items:center;vertical-align:middle;margin-left:7px;padding:4px 8px;border-radius:999px;background:#e6007e;color:#fff!important;font-size:.62rem;font-weight:900;letter-spacing:.04em;white-space:nowrap;animation:glamNewPulse 1.2s ease-in-out infinite;box-shadow:0 0 0 0 rgba(230,0,126,.42)}
+@keyframes glamNewPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(230,0,126,.35)}50%{transform:scale(1.07);box-shadow:0 0 0 6px rgba(230,0,126,0)}}
+@media(prefers-reduced-motion:reduce){.opcion-flotante .badge-new{animation:none!important}}
+
+
+/* REVISIÓN VISUAL: tarjetas de servicios alternadas en crema y fucsia */
+#servicios .servicios-grid .servicio-card,
+.servicios-glam .servicios-grid .servicio-card,
+.servicios-grid .servicio-card {
+  padding: clamp(28px,3vw,44px) !important;
+  border-radius: 28px !important;
+  min-height: 300px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  gap: 14px !important;
+  box-shadow: 0 16px 40px rgba(65,24,47,.09) !important;
+}
+.servicios-grid .servicio-card:nth-child(odd) {
+  background: linear-gradient(145deg,#fff8f0 0%,#fff0f7 100%) !important;
+  border: 1px solid #f0c9dd !important;
+  color: #21151d !important;
+}
+.servicios-grid .servicio-card:nth-child(odd) h3 { color:#21151d !important; }
+.servicios-grid .servicio-card:nth-child(odd) p { color:#66535f !important; }
+.servicios-grid .servicio-card:nth-child(odd) .servicio-icono {
+  background:#e6007e !important; color:#fff !important;
+}
+.servicios-grid .servicio-card:nth-child(even) {
+  background: linear-gradient(145deg,#e6007e 0%,#c9006e 100%) !important;
+  border: 1px solid #e6007e !important;
+  color: #fff !important;
+}
+.servicios-grid .servicio-card:nth-child(even) h3,
+.servicios-grid .servicio-card:nth-child(even) p { color:#fff !important; }
+.servicios-grid .servicio-card:nth-child(even) .servicio-icono {
+  background:#fff8f0 !important; color:#e6007e !important;
+}
+.servicios-grid .servicio-card .servicio-icono {
+  width:100% !important; min-height:70px !important;
+  border-radius:20px !important; display:flex !important;
+  align-items:center !important; justify-content:flex-start !important;
+  padding:14px 18px !important; box-sizing:border-box !important;
+}
+.servicios-grid .servicio-card h3 { margin: 4px 0 0 !important; line-height:1.25 !important; }
+.servicios-grid .servicio-card p { line-height:1.75 !important; margin: 8px 0 0 !important; }
+@media(max-width:700px){
+ .servicios-grid .servicio-card { min-height:0 !important; padding:26px !important; }
+}
+
+
+/* CORRECCION REAL: TARJETAS ALTERNADAS, SIN BARRAS ROSADAS GIGANTES */
+/* Sección "¿Qué incluye GLAM?" en Mirror Experience */
+#servicios .servicios-grid .servicio-card {
+  display:flex !important; flex-direction:column !important; align-items:flex-start !important;
+  padding:30px 30px 32px !important; gap:0 !important; min-height:300px !important;
+  border-radius:26px !important; border:1px solid #efd0df !important;
+  box-shadow:0 14px 35px rgba(49,23,39,.08) !important;
+  background:#fff8ef !important; color:#24151f !important;
+}
+#servicios .servicios-grid .servicio-card:nth-child(even) {
+  background:linear-gradient(145deg,#ed0080 0%,#c90068 100%) !important;
+  border-color:#ed0080 !important; color:#fff !important;
+}
+#servicios .servicios-grid .servicio-card h3 { color:#24151f !important; margin:22px 0 14px !important; line-height:1.3 !important; }
+#servicios .servicios-grid .servicio-card p { color:#65515e !important; margin:0 !important; line-height:1.8 !important; }
+#servicios .servicios-grid .servicio-card:nth-child(even) h3,
+#servicios .servicios-grid .servicio-card:nth-child(even) p { color:#fff !important; }
+#servicios .servicios-grid .servicio-card .servicio-icono {
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  width:62px !important; height:62px !important; min-height:62px !important; flex:0 0 62px !important;
+  padding:0 !important; margin:0 !important; border-radius:18px !important;
+  background:#ed0080 !important; color:#fff !important; font-size:1.85rem !important;
+  line-height:1 !important; box-sizing:border-box !important;
+}
+#servicios .servicios-grid .servicio-card:nth-child(even) .servicio-icono { background:#fff8ef !important; color:#ed0080 !important; }
+/* Segunda lámina: selector de los cuatro servicios, alternancia crema/fucsia */
+#selectorServicios .selector-servicios-grid .servicio-opcion {
+  background:#fff8ef !important; color:#24151f !important; border:1px solid #efd0df !important;
+  border-radius:24px !important; padding:30px !important; box-shadow:0 14px 35px rgba(49,23,39,.08) !important;
+}
+#selectorServicios .selector-servicios-grid .servicio-opcion:nth-child(even) {
+  background:linear-gradient(145deg,#ed0080 0%,#c90068 100%) !important;
+  border-color:#ed0080 !important; color:#fff !important;
+}
+#selectorServicios .servicio-opcion-numero { color:#ed0080 !important; }
+#selectorServicios .servicio-opcion:nth-child(even) .servicio-opcion-numero,
+#selectorServicios .servicio-opcion:nth-child(even) strong,
+#selectorServicios .servicio-opcion:nth-child(even) span,
+#selectorServicios .servicio-opcion:nth-child(even) i { color:#fff !important; }
+#selectorServicios .servicio-opcion-icono { background:#ed0080 !important; color:#fff !important; }
+#selectorServicios .servicio-opcion:nth-child(even) .servicio-opcion-icono { background:#fff8ef !important; color:#ed0080 !important; }
+@media(max-width:700px) {
+ #servicios .servicios-grid .servicio-card { min-height:0 !important; padding:25px !important; }
+ #selectorServicios .selector-servicios-grid .servicio-opcion { padding:24px !important; }
+}
+
+
+/* AJUSTE SOLICITADO: usar los dos tonos suaves de la referencia en las tarjetas de Mirror */
+:root { --glam-ref-cream:#fff8f0; --glam-ref-pink:#fff0f7; }
+/* Segunda lámina: servicios, alternancia crema y rosa pálido */
+#selectorServicios .selector-servicios-grid .servicio-opcion,
+.selector-servicios-grid .servicio-opcion {
+  background: var(--glam-ref-cream) !important;
+  color: #24151f !important;
+  border: 1px solid #f0d9e3 !important;
+  box-shadow: 0 12px 32px rgba(49,23,39,.07) !important;
+}
+#selectorServicios .selector-servicios-grid .servicio-opcion:nth-child(even),
+.selector-servicios-grid .servicio-opcion:nth-child(even) {
+  background: var(--glam-ref-pink) !important;
+  color: #24151f !important;
+  border-color: #f0d1e0 !important;
+}
+#selectorServicios .selector-servicios-grid .servicio-opcion:nth-child(even) strong,
+#selectorServicios .selector-servicios-grid .servicio-opcion:nth-child(even) span,
+#selectorServicios .selector-servicios-grid .servicio-opcion:nth-child(even) i,
+.selector-servicios-grid .servicio-opcion:nth-child(even) strong,
+.selector-servicios-grid .servicio-opcion:nth-child(even) span,
+.selector-servicios-grid .servicio-opcion:nth-child(even) i { color:#24151f !important; }
+#selectorServicios .servicio-opcion-numero,
+.selector-servicios-grid .servicio-opcion-numero { color:#e6007e !important; }
+#selectorServicios .servicio-opcion-icono,
+.selector-servicios-grid .servicio-opcion-icono {
+  display:inline-flex !important; align-items:center !important; justify-content:center !important;
+  width:54px !important; min-width:54px !important; max-width:54px !important;
+  height:54px !important; min-height:54px !important; max-height:54px !important;
+  flex:0 0 54px !important; padding:0 !important; margin:0 0 10px !important;
+  border-radius:16px !important; background:#fff0f7 !important; color:#e6007e !important;
+  font-size:1.45rem !important; line-height:1 !important; box-sizing:border-box !important;
+}
+#selectorServicios .servicio-opcion:nth-child(even) .servicio-opcion-icono,
+.selector-servicios-grid .servicio-opcion:nth-child(even) .servicio-opcion-icono {
+  background:#fff8f0 !important; color:#e6007e !important;
+}
+/* Lámina «Qué incluye GLAM»: alternancia crema y rosa pálido, nunca fucsia intenso */
+#servicios .servicios-grid .servicio-card {
+  background:#fff8f0 !important; color:#24151f !important;
+  border:1px solid #f0d9e3 !important; box-shadow:0 12px 32px rgba(49,23,39,.07) !important;
+}
+#servicios .servicios-grid .servicio-card:nth-child(even) {
+  background:#fff0f7 !important; color:#24151f !important; border-color:#f0d1e0 !important;
+}
+#servicios .servicios-grid .servicio-card h3,
+#servicios .servicios-grid .servicio-card p,
+#servicios .servicios-grid .servicio-card:nth-child(even) h3,
+#servicios .servicios-grid .servicio-card:nth-child(even) p { color:#62565e !important; }
+#servicios .servicios-grid .servicio-card h3 { color:#24151f !important; }
+#servicios .servicios-grid .servicio-card .servicio-icono {
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  width:58px !important; min-width:58px !important; max-width:58px !important;
+  height:58px !important; min-height:58px !important; max-height:58px !important;
+  flex:0 0 58px !important; padding:0 !important; margin:0 0 20px !important;
+  border-radius:16px !important; background:#fff0f7 !important; color:#e6007e !important;
+  font-size:1.8rem !important; line-height:1 !important; box-sizing:border-box !important;
+}
+#servicios .servicios-grid .servicio-card:nth-child(even) .servicio-icono {
+  background:#fff8f0 !important; color:#e6007e !important;
+}
+
+
+/* WEDDING WEEK: hacer visible la campaña promocional y el NEW en todos los menús */
+.opciones-servicios .opcion-flotante .badge-new{
+  display:inline-flex!important;align-items:center;justify-content:center;vertical-align:middle;
+  margin-left:7px;padding:4px 9px;border-radius:999px;background:#e6007e;color:#fff!important;
+  font:900 .62rem/1.1 Arial,sans-serif;letter-spacing:.05em;white-space:nowrap;
+  animation:glamNewPulse 1.2s ease-in-out infinite;
+}
+
+/* Identidad de campaña: rosa pastel + crema, descuento protagonista */
+.ww-page .ww-hero{
+  background:radial-gradient(ellipse at 50% 0%,rgba(230,0,126,.16),transparent 44%),
+             linear-gradient(135deg,#fff8f0 0%,#fff0f7 55%,#fbe2ed 100%)!important;
+  color:#21151d!important;
+}
+.ww-page .ww-hero:before{
+  content:'PROMOCIÓN ESPECIAL';display:inline-flex;align-items:center;justify-content:center;
+  margin:0 auto 24px;padding:10px 18px;border:1px solid #e6007e;border-radius:999px;
+  background:#e6007e;color:#fff;font:800 .7rem/1 Arial,sans-serif;letter-spacing:.18em;
+  box-shadow:0 8px 24px rgba(230,0,126,.18);
+}
+.ww-page .ww-hero .ww-label{color:#e6007e!important;font-weight:800!important}
+.ww-page .ww-hero h1{color:#21151d!important}
+.ww-page .ww-hero h1 span{color:#e6007e!important}
+.ww-page .ww-hero>p:not(.ww-label){color:#66535f!important}
+.ww-page .ww-discount{
+  position:relative;max-width:620px!important;margin:36px auto 0!important;
+  padding:clamp(28px,5vw,46px)!important;border:2px dashed #e6007e!important;
+  border-radius:28px!important;background:linear-gradient(145deg,#fff0f7 0%,#fff8f0 100%)!important;
+  color:#21151d!important;box-shadow:0 22px 55px rgba(130,45,85,.12)!important;
+}
+.ww-page .ww-discount-label{display:inline-block;padding:8px 13px;border-radius:999px;background:#e6007e;color:#fff!important;letter-spacing:.12em!important}
+.ww-page .ww-discount-number{color:#e6007e!important;font-weight:700!important;text-shadow:0 5px 22px rgba(230,0,126,.12)}
+.ww-page .ww-discount-number span{color:#e6007e!important}
+.ww-page .ww-discount-description{color:#66535f!important;font-weight:800;letter-spacing:.09em}
+.ww-page .ww-code-label{color:#21151d!important;font-weight:800!important}
+.ww-page #codigoWedding{background:#fff!important;color:#21151d!important;border:1px solid #e6b4ce!important;border-radius:12px!important;min-height:50px}
+.ww-page .ww-code-note{color:#66535f!important}
+.ww-page .ww-button{background:#e6007e!important;border-color:#e6007e!important;color:#fff!important}
+.ww-page .ww-button:hover{background:#c9006e!important}
+@media(max-width:700px){.ww-page .ww-hero:before{font-size:.62rem;letter-spacing:.12em}.ww-page .ww-discount{padding:25px 18px!important}}
+
+
+/* GLAM PREMIUM — acabado final: consistencia, legibilidad y conversión */
+:root{--glam-berry:#df1680;--glam-blush:#f8e3ec;--glam-paper:#fff8f0;--glam-ink:#201820;--glam-line:#ead2dc;--glam-radius:22px;--glam-shadow:0 16px 42px rgba(62,27,47,.09)}
+/* CTA uniforme fucsia, coherente con Mirror */
+.inv-boton,.vaj-btn,.ww-button,.boton-glam-experiencia,.inv-acciones a,.vaj-actions a,.ww-hero a[href*="wa.me"],.ww-section a[href*="wa.me"]{background:#df1680!important;border-color:#df1680!important;color:#fff!important;box-shadow:0 9px 24px rgba(223,22,128,.18)!important}
+.inv-boton:hover,.vaj-btn:hover,.ww-button:hover,.boton-glam-experiencia:hover,.inv-acciones a:hover,.vaj-actions a:hover{background:#bd0e69!important;border-color:#bd0e69!important;transform:translateY(-2px)}
+/* Tarjetas: espacio y contraste para lectura premium */
+.inv-tipos>*,.inv-detalles>*,.inv-pasos>*,.vaj-grid>*,.ww-services>*,.ww-steps>*,.servicios-grid>*,.eventos-grid>*,.paquetes-grid>*,.paquete-card,.servicio-card,.incluye-card{padding:clamp(22px,3vw,34px)!important;border-radius:var(--glam-radius)!important;line-height:1.7!important;box-shadow:var(--glam-shadow)}
+.inv-tipos h3,.inv-detalles h3,.inv-pasos h3,.vaj-grid h3,.ww-services h3,.servicios-grid h3,.eventos-grid h3,.paquete-card h3,.servicio-card h3{line-height:1.25!important;margin-bottom:14px!important}
+.inv-tipos p,.inv-detalles p,.inv-pasos p,.vaj-grid p,.ww-services p,.servicios-grid p,.eventos-grid p,.paquete-card p,.servicio-card p{line-height:1.75!important;margin-bottom:0!important}
+/* Superficies claras, evitar gris plomo y mantener el texto legible */
+.inv-tipos>*,.inv-detalles>*,.inv-pasos>*,.vaj-grid>*,.ww-services>*,.ww-steps>*,.servicios-grid>*,.eventos-grid>*,.paquetes-grid>*,.paquete-card,.servicio-card,.incluye-card{background:#fff8f0!important;color:#201820!important}
+.inv-tipos>*:nth-child(even),.inv-detalles>*:nth-child(even),.inv-pasos>*:nth-child(even),.vaj-grid>*:nth-child(even),.ww-services>*:nth-child(even),.ww-steps>*:nth-child(even),.servicios-grid>*:nth-child(even),.eventos-grid>*:nth-child(even){background:#f8e3ec!important;color:#201820!important}
+/* Etiquetas de paquetes con aire superior y sin solaparse */
+.mas-elegido,.badge-popular,.popular-badge,.etiqueta-popular{position:relative!important;top:auto!important;right:auto!important;display:inline-flex!important;align-items:center;margin:0 0 16px!important;padding:7px 13px!important;border-radius:999px!important;background:#df1680!important;color:#fff!important;line-height:1.2!important;z-index:2}
+/* Formulario promocional: campos claros y accesibles */
+.ww-section input,.ww-section select,.ww-section textarea,.ww-hero input,.ww-hero select,.ww-hero textarea{background:#fff!important;color:#201820!important;border:1px solid #e8c5d6!important;border-radius:14px!important;padding:14px 16px!important;min-height:48px}
+/* Accesibilidad y móvil */
+:focus-visible{outline:3px solid #df1680!important;outline-offset:3px!important}
+@media(max-width:700px){.inv-seccion,.vaj-section,.ww-section,.contador-seccion,.servicios-glam{padding:54px 18px!important}.inv-tipos>*,.inv-detalles>*,.inv-pasos>*,.vaj-grid>*,.ww-services>*,.ww-steps>*,.servicios-grid>*,.eventos-grid>*{padding:22px!important}.inv-boton,.vaj-btn,.ww-button,.boton-glam-experiencia{width:100%;max-width:100%;white-space:normal;text-align:center}}
+
+/* GLAM — showcase de videos Mirror */
+.mirror-video-showcase{padding:clamp(58px,8vw,104px) 6%;background:linear-gradient(145deg,#fffaf4 0%,#f8e5ed 100%);color:#2b1d27}.mirror-video-heading{max-width:780px;margin:0 auto 38px;text-align:center}.mirror-video-heading h2{font-size:clamp(1.8rem,4vw,3.1rem);line-height:1.1;margin:10px 0 15px;letter-spacing:.02em}.mirror-video-heading h2 span{color:#c21870}.mirror-video-heading>p:last-child{max-width:620px;margin:0 auto;color:#66515f;line-height:1.7}.mirror-video-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}.mirror-video-card{overflow:hidden;background:#fff;border:1px solid rgba(130,60,95,.13);border-radius:22px;box-shadow:0 18px 45px rgba(74,31,55,.09)}.mirror-video-frame{aspect-ratio:9/16;max-height:510px;background:linear-gradient(150deg,#3c2034,#bd4b86 55%,#f1c7d9);display:flex;align-items:center;justify-content:center}.mirror-video-frame-alt{background:linear-gradient(150deg,#5b314c,#edb9d0 60%,#fff4f8)}.mirror-video-frame video{display:block;width:100%;height:100%;object-fit:contain}.mirror-video-caption{padding:22px 24px 24px}.mirror-video-caption span{font-size:.68rem;letter-spacing:.15em;font-weight:800;color:#bd176d}.mirror-video-caption h3{font-size:1.22rem;margin:9px 0;color:#2b1d27}.mirror-video-caption p,.mirror-video-note{color:#685461;line-height:1.65}.mirror-video-caption p{margin:0}.mirror-video-note{max-width:850px;text-align:center;margin:24px auto 0;font-size:.86rem}@media(max-width:700px){.mirror-video-grid{grid-template-columns:1fr;max-width:460px}.mirror-video-frame{max-height:560px}.mirror-video-caption{padding:18px}}

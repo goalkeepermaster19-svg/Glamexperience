@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#171316">
+    <meta name="description" content="Descubre Wedding Week by GLAM y consulta por el beneficio promocional del 10% en los servicios participantes. Envía tu código por WhatsApp para validación manual.">
+    <meta name="keywords" content="Wedding Week, promoción bodas, descuento eventos, GLAM, eventos La Paz">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GLAM">
+    <meta property="og:title" content="Wedding Week by GLAM | Beneficio promocional">
+    <meta property="og:description" content="Consulta por el beneficio del 10% y envía tu código para validación manual por WhatsApp.">
+    <meta property="og:locale" content="es_BO">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wedding Week by GLAM | Beneficio promocional">
+    <meta name="twitter:description" content="Consulta por el beneficio del 10% y envía tu código para validación manual por WhatsApp.">
+
+    <title>Wedding Week by GLAM | Consulta el beneficio del 10%</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="glam-redesign.css">
+
+    <style>
+        .ww-page {
+            min-height: 100vh;
+            background: #171316;
+            color: #fff;
+        }
+
+        .ww-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 24px 7%;
+            border-bottom: 1px solid rgba(255,255,255,.1);
+        }
+
+        .ww-logo {
+            color: #fff;
+            text-decoration: none;
+            font: 1.8rem Georgia, serif;
+            letter-spacing: .18em;
+        }
+
+        .ww-logo small {
+            display: block;
+            margin-top: 5px;
+            color: #e7a9c9;
+            font: .58rem Arial, sans-serif;
+            letter-spacing: .22em;
+        }
+
+        .ww-back {
+            color: #e7a9c9;
+            font-size: .8rem;
+            text-decoration: none;
+        }
+
+        .ww-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 90px 7% 85px;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(201,155,119,.22), transparent 60%),
+                #171316;
+        }
+
+        .ww-label {
+            color: #e7a9c9;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .34em;
+        }
+
+        .ww-hero h1 {
+            margin: 24px auto;
+            font: 400 clamp(3.2rem, 9vw, 7rem)/1 Georgia, serif;
+            letter-spacing: .04em;
+        }
+
+        .ww-hero h1 span {
+            display: block;
+            margin-top: 14px;
+            color: #e7a9c9;
+            font-size: .45em;
+            letter-spacing: .3em;
+        }
+
+        .ww-hero > p:not(.ww-label) {
+            max-width: 620px;
+            margin: 25px auto 0;
+            color: #d4cbd1;
+            line-height: 1.9;
+        }
+
+        .ww-discount {
+            max-width: 580px;
+            margin: 40px auto 0;
+            padding: 35px 25px;
+            border: 1px solid rgba(231,169,201,.55);
+            border-radius: 20px;
+            background: linear-gradient(145deg, rgba(231,169,201,.12), rgba(255,255,255,.025));
+            box-shadow: 0 20px 70px rgba(0,0,0,.2);
+        }
+
+        .ww-discount-label {
+            color: #e7a9c9;
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .25em;
+        }
+
+        .ww-discount-number {
+            margin: 10px 0;
+            font: 400 clamp(4rem, 12vw, 7rem)/1 Georgia, serif;
+        }
+
+        .ww-discount-number span {
+            color: #e7a9c9;
+        }
+
+        .ww-discount-description {
+            color: #e3d7df;
+            font-size: .9rem;
+            line-height: 1.7;
+        }
+
+        .ww-code-label {
+            display: block;
+            margin: 25px 0 10px;
+            color: #c9bbc5;
+            font-size: .7rem;
+            letter-spacing: .18em;
+        }
+
+        .ww-code-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        #codigoWedding {
+            padding: 14px 20px;
+            border: 1px dashed #e7a9c9;
+            border-radius: 9px;
+            background: #201a20;
+            color: #fff;
+            font: 700 1.1rem Arial, sans-serif;
+            letter-spacing: .12em;
+        }
+
+        .ww-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 14px 23px;
+            border: 1px solid #e7a9c9;
+            border-radius: 30px;
+            background: #e7a9c9;
+            color: #251a22;
+            font-size: .76rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-decoration: none;
+            cursor: pointer;
+            transition: .25s ease;
+        }
+
+        .ww-button:hover {
+            transform: translateY(-3px);
+            background: #f4d4e4;
+        }
+
+        .ww-button-outline {
+            background: transparent;
+            color: #f1c6dc;
+        }
+
+        .ww-button-outline:hover {
+            background: rgba(231,169,201,.1);
+            color: #fff;
+        }
+
+        #estadoCopia {
+            min-height: 20px;
+            margin-top: 12px;
+            color: #f1c6dc;
+            font-size: .8rem;
+        }
+
+        .ww-section {
+            padding: 75px 7%;
+        }
+
+        .ww-light {
+            background: #f7f0f3;
+            color: #292129;
+        }
+
+        .ww-heading {
+            max-width: 760px;
+            margin: 0 auto 16px;
+            font: 400 clamp(2rem, 4vw, 3.2rem)/1.2 Georgia, serif;
+            text-align: center;
+        }
+
+        .ww-subheading {
+            max-width: 650px;
+            margin: 0 auto 40px;
+            color: #c9bbc5;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .ww-light .ww-subheading {
+            color: #766a73;
+        }
+
+        .ww-services {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .ww-service {
+            padding: 30px 25px;
+            border: 1px solid rgba(231,169,201,.25);
+            border-radius: 16px;
+            background: linear-gradient(145deg, #2a2229, #1d191d);
+        }
+
+        .ww-service-icon {
+            color: #e7a9c9;
+            font-size: 1.8rem;
+        }
+
+        .ww-service h3 {
+            margin: 18px 0 12px;
+            font: 400 1.45rem Georgia, serif;
+        }
+
+        .ww-service p {
+            color: #d4cbd1;
+            font-size: .9rem;
+            line-height: 1.8;
+        }
+
+        .ww-steps {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .ww-step {
+            padding: 24px;
+            border-top: 1px solid #d7b2c6;
+        }
+
+        .ww-step-number {
+            color: #b84c83;
+            font: 2rem Georgia, serif;
+        }
+
+        .ww-step h3 {
+            font: 400 1.35rem Georgia, serif;
+        }
+
+        .ww-step p {
+            color: #766a73;
+            font-size: .9rem;
+            line-height: 1.8;
+        }
+
+        .ww-terms {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 28px;
+            border: 1px solid #e6d9e0;
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .ww-terms h3 {
+            font: 400 1.4rem Georgia, serif;
+        }
+
+        .ww-terms p,
+        .ww-terms li {
+            color: #766a73;
+            font-size: .9rem;
+            line-height: 1.8;
+        }
+
+        .ww-terms ul {
+            padding-left: 20px;
+        }
+
+        .ww-final {
+            padding: 80px 7%;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at center, rgba(201,155,119,.16), transparent 70%),
+                #171316;
+        }
+
+        .ww-final h2 {
+            max-width: 750px;
+            margin: 20px auto;
+            font: 400 clamp(2.2rem, 5vw, 3.8rem)/1.15 Georgia, serif;
+        }
+
+        .ww-final p {
+            max-width: 580px;
+            margin: 0 auto;
+            color: #d4cbd1;
+            line-height: 1.8;
+        }
+
+        .ww-footer {
+            padding: 25px;
+            border-top: 1px solid rgba(255,255,255,.1);
+            color: #c9bbc5;
+            font-size: .75rem;
+            letter-spacing: .08em;
+            text-align: center;
+        }
+
+        @media (max-width: 800px) {
+            .ww-services,
+            .ww-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .ww-header {
+                padding: 20px 5%;
+            }
+
+            .ww-logo {
+                font-size: 1.4rem;
+            }
+
+            .ww-back {
+                font-size: .7rem;
+            }
+
+            .ww-hero {
+                padding: 65px 6%;
+            }
+
+            .ww-section {
+                padding: 55px 6%;
+            }
+
+            .ww-discount {
+                padding: 28px 16px;
+            }
+
+            .ww-final {
+                padding: 60px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body class="ww-page">
+<main>
+        <section class="ww-hero">
+            <p class="ww-label">UNA CAMPAÑA ESPECIAL DE GLAM</p>
+
+            <h1>
+                WEDDING
+                <span>W E E K</span>
+            </h1>
+
+            <p>
+                Celebra el amor, cuida cada detalle y crea momentos que
+                recordarás para siempre. Descubre las experiencias GLAM
+                y consulta por el beneficio especial de Wedding Week.
+            </p>
+
+            <div class="ww-discount">
+                <div class="ww-discount-label">UN BENEFICIO PARA TU CELEBRACIÓN</div>
+
+                <div class="ww-discount-number">
+                    10<span>%</span>
+                </div>
+
+                <div class="ww-discount-description">
+                    DE DESCUENTO EN LOS SERVICIOS GLAM
+                </div>
+
+                <label class="ww-code-label" for="codigoWedding">
+                    ESCRIBE EL CÓDIGO DE TU FLYER
+                </label>
+
+                <div class="ww-code-row ww-code-entry">
+                    <input id="codigoWedding" name="codigoWedding" type="text"
+                        placeholder="Ingresa tu código promocional" autocomplete="off"
+                        aria-describedby="notaCodigo" maxlength="40" required>
+                    <button type="button" id="consultarCodigo" class="ww-button">
+                        CONSULTAR POR WHATSAPP ↗
+                    </button>
+                </div>
+                <p id="notaCodigo" class="ww-code-note">
+                    Tu código se enviará a GLAM por WhatsApp. Nuestro equipo revisará manualmente si corresponde el beneficio del 10%.
+                </p>
+                <p id="estadoCopia" aria-live="polite"></p>
+
+            </div>
+        </section>
+
+        <section class="ww-section">
+            <h2 class="ww-heading">Detalles que hacen especial tu evento</h2>
+            <p class="ww-subheading">
+                Conoce algunas de las experiencias GLAM que puedes consultar
+                para complementar tu celebración.
+            </p>
+
+            <div class="ww-services">
+                <article class="ww-service">
+                    <span class="ww-service-icon">✦</span>
+                    <h3>Mirror Experience</h3>
+                    <p>
+                        Una experiencia interactiva de fotografías para
+                        entretener a tus invitados y crear recuerdos.
+                    </p>
+                    <a class="ww-button ww-button-outline" href="index.html">
+                        DESCUBRIR SERVICIO
+                    </a>
+                </article>
+
+                <article class="ww-service">
+                    <span class="ww-service-icon">♡</span>
+                    <h3>Invitaciones digitales</h3>
+                    <p>
+                        Anuncia tu celebración con una invitación personalizada
+                        y comparte los detalles con tus invitados.
+                    </p>
+                    <a class="ww-button ww-button-outline" href="invitaciones.html">
+                        VER INVITACIONES
+                    </a>
+                </article>
+
+                <article class="ww-service">
+                    <span class="ww-service-icon">◇</span>
+                    <h3>Alquiler de vajillería</h3>
+                    <p>
+                        Consulta las opciones de vajilla disponibles para
+                        completar la presentación de tu mesa.
+                    </p>
+                    <a class="ww-button ww-button-outline" href="vajilleria.html">
+                        VER VAJILLERÍA
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <section class="ww-section ww-light">
+            <h2 class="ww-heading">¿Cómo aprovechar Wedding Week?</h2>
+            <p class="ww-subheading">
+                Sigue estos pasos para consultar el beneficio.
+            </p>
+
+            <div class="ww-steps">
+                <article class="ww-step">
+                    <span class="ww-step-number">01</span>
+                    <h3>Elige tu servicio</h3>
+                    <p>Cuéntanos qué experiencia GLAM te interesa para tu evento.</p>
+                </article>
+
+                <article class="ww-step">
+                    <span class="ww-step-number">02</span>
+                    <h3>Comparte el código</h3>
+                    <p>Menciona WEDDINGWEEK al solicitar tu cotización.</p>
+                </article>
+
+                <article class="ww-step">
+                    <span class="ww-step-number">03</span>
+                    <h3>Confirma tu beneficio</h3>
+                    <p>GLAM revisará tu solicitud y te confirmará el descuento aplicable.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="ww-section ww-light">
+            <div class="ww-terms">
+                <h3>Información de la promoción</h3>
+                <p>
+                    El código WEDDINGWEEK identifica la promoción del 10%
+                    para clientes elegibles de Wedding Week.
+                </p>
+                <ul>
+                    <li>El descuento se consulta para los servicios GLAM.</li>
+                    <li>La aplicación del beneficio debe ser confirmada por GLAM al cotizar.</li>
+                    <li>La disponibilidad y las condiciones del servicio se confirman por WhatsApp.</li>
+                </ul>
+                <p>
+                    Si la campaña tiene fechas específicas, requisitos de
+                    elegibilidad o exclusiones, deben comunicarse al cliente
+                    antes de confirmar la cotización.
+                </p>
+            </div>
+        </section>
+
+        <section class="ww-final">
+            <p class="ww-label">WEDDING WEEK · GLAM</p>
+            <h2>Tu próxima celebración merece algo extraordinario.</h2>
+            <p>
+                Cuéntanos qué estás preparando y consulta cómo aprovechar
+                tu beneficio especial.
+            </p>
+
+            <div class="ww-code-row" style="margin-top: 28px;">
+                <a
+                    class="ww-button"
+                    href="https://wa.me/59172514906?text=Hola%20GLAM%2C%20quiero%20consultar%20por%20Wedding%20Week%20y%20el%20c%C3%B3digo%20WEDDINGWEEK."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    HABLAR CON GLAM ↗
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="ww-footer">
+        GLAM · WEDDING WEEK · EXPERIENCIAS QUE TODOS RECUERDAN
+    </footer>
+
+    <!-- WHATSAPP FLOTANTE -->
+    <a
+        href="https://wa.me/59172514906?text=Hola%20GLAM%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios."
+        class="whatsapp-flotante"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contactar a GLAM por WhatsApp"
+        title="Contactar por WhatsApp"
+    >
+        <svg viewBox="0 0 32 32" width="30" height="30"
+             aria-hidden="true" fill="currentColor">
+            <path d="M16 .5A15.4 15.4 0 0 0 2.7 23.7L.5 31.5l8-2.1A15.5 15.5 0 1 0 16 .5zm0 28.2a12.7 12.7 0 0 1-6.5-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5A12.7 12.7 0 1 1 16 28.7zm7-9.5c-.4-.2-2.1-1-2.4-1.1-.3-.1-.6-.2-.8.2-.3.4-.9 1.1-1.1 1.3-.2.3-.4.3-.8.1-.4-.2-1.5-.6-2.9-1.8-1.1-1-1.8-2.1-2-2.5-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.2 0-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.7.1-1 .5-.4.4-1.3 1.2-1.3 3s1.3 3.5 1.5 3.7c0 0 2.6 4 6.3 5.6.9.4 1.6.6 2.1.7.9.3 1.7.2 2.3.1.7-.1 2.1-.9 2.4-1.7.3-.8.3-1.6.2-1.7-.1-.2-.3-.3-.7-.5z"/>
+        </svg>
+        <span>¡Hablemos!</span>
+    </a>
+
+    <!-- MENÚ FLOTANTE -->
+    <div class="servicios-flotantes">
+        <div id="opcionesServicios" class="opciones-servicios oculto">
+            <a href="index.html#contenido" class="opcion-flotante">
+                <span>✦</span> Mirror Experience
+            </a>
+            <a href="invitaciones.html" class="opcion-flotante">
+                <span>✉</span> Invitaciones
+            </a>
+            <a href="vajilleria.html" class="opcion-flotante">
+                <span>◇</span> Vajillería
+            </a>
+            <a href="wedding-week.html" class="opcion-flotante">
+                <span>♡</span> Wedding Week <span class="badge-new">NEW ✨</span>
+            </a>
+        </div>
+
+        <button
+            id="botonServicios"
+            class="boton-servicios"
+            type="button"
+            aria-label="Abrir menú de servicios"
+            aria-controls="opcionesServicios"
+            aria-expanded="false"
+        >
+            <span id="iconoServicios">✦</span>
+        </button>
+    </div>
+
+    <button
+        id="botonMusica"
+        type="button"
+        aria-label="Reproducir música"
+        aria-pressed="false"
+    >♪</button>
+
+    <script>
+        const campoCodigo = document.getElementById("codigoWedding");
+        const botonConsultar = document.getElementById("consultarCodigo");
+        botonConsultar.addEventListener("click", function () {
+            const codigo = campoCodigo.value.trim();
+            if (!codigo) {
+                campoCodigo.focus();
+                campoCodigo.setCustomValidity("Escribe el código que aparece en tu flyer.");
+                campoCodigo.reportValidity();
+                return;
+            }
+            campoCodigo.setCustomValidity("");
+            const mensaje = "Hola GLAM, quiero consultar por Wedding Week y el descuento del 10%. El código que aparece en mi flyer es: " + codigo + ". ¿Podrían verificar manualmente si aplica a mi cotización?";
+            window.open("https://wa.me/59172514906?text=" + encodeURIComponent(mensaje), "_blank", "noopener,noreferrer");
+        });
+
+        const botonServicios = document.getElementById("botonServicios");
+        const opcionesServicios = document.getElementById("opcionesServicios");
+        const iconoServicios = document.getElementById("iconoServicios");
+
+        botonServicios.addEventListener("click", function () {
+            const abierto = botonServicios.getAttribute("aria-expanded") === "true";
+
+            opcionesServicios.classList.toggle("oculto", abierto);
+            botonServicios.setAttribute("aria-expanded", String(!abierto));
+            botonServicios.setAttribute(
+                "aria-label",
+                abierto ? "Abrir menú de servicios" : "Cerrar menú de servicios"
+            );
+
+            iconoServicios.textContent = abierto ? "✦" : "×";
+        });
+
+        document.addEventListener("keydown", function (evento) {
+            if (evento.key === "Escape") {
+                opcionesServicios.classList.add("oculto");
+                botonServicios.setAttribute("aria-expanded", "false");
+                botonServicios.setAttribute("aria-label", "Abrir menú de servicios");
+                iconoServicios.textContent = "✦";
+            }
+        });
+    </script>
+
+    <!-- Atribución de campañas: conserva UTM durante esta sesión y los añade al mensaje de WhatsApp. -->
+    <script src="marketing.js" defer></script>
+
+</body>
+</html>

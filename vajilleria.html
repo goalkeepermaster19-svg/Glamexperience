@@ -1,0 +1,740 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#171316">
+    <meta name="description" content="Alquiler de vajillería para bodas, quince años y eventos especiales con GLAM. Consulta opciones, disponibilidad y cotización por WhatsApp en La Paz.">
+    <meta name="keywords" content="alquiler vajillería La Paz, vajilla para eventos, vajilla bodas, vajilla quince años, GLAM">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GLAM">
+    <meta property="og:title" content="Vajillería para eventos | GLAM">
+    <meta property="og:description" content="Completa la mesa de tu celebración con opciones de vajillería para eventos.">
+    <meta property="og:locale" content="es_BO">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vajillería para eventos | GLAM">
+    <meta name="twitter:description" content="Completa la mesa de tu celebración con opciones de vajillería para eventos.">
+
+    <title>GLAM | Alquiler de vajillería para eventos en La Paz</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="glam-redesign.css">
+
+    <style>
+        .vaj-page {
+            background: #171316;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .vaj-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 24px 7%;
+            border-bottom: 1px solid rgba(255,255,255,.1);
+        }
+
+        .vaj-logo {
+            color: #fff;
+            font-family: Georgia, serif;
+            font-size: 1.8rem;
+            letter-spacing: .18em;
+            text-decoration: none;
+        }
+
+        .vaj-logo small {
+            display: block;
+            margin-top: 5px;
+            color: #e7a9c9;
+            font-family: Arial, sans-serif;
+            font-size: .58rem;
+            letter-spacing: .22em;
+        }
+
+        .vaj-back {
+            color: #e7a9c9;
+            text-decoration: none;
+            font-size: .8rem;
+        }
+
+        .vaj-hero {
+            padding: 100px 7% 90px;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at top, rgba(205,157,116,.18), transparent 60%),
+                #171316;
+        }
+
+        .vaj-label {
+            color: #e7a9c9;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .3em;
+        }
+
+        .vaj-hero h1 {
+            max-width: 900px;
+            margin: 24px auto;
+            font-family: Georgia, serif;
+            font-size: clamp(2.8rem, 7vw, 5.4rem);
+            font-weight: 400;
+            line-height: 1.08;
+        }
+
+        .vaj-hero h1 em {
+            color: #e7a9c9;
+            font-weight: 400;
+        }
+
+        .vaj-hero > p:not(.vaj-label) {
+            max-width: 650px;
+            margin: 0 auto;
+            color: #d4cbd1;
+            line-height: 1.9;
+        }
+
+        .vaj-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 32px;
+        }
+
+        .vaj-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 24px;
+            min-height: 48px;
+            border: 1px solid #e7a9c9;
+            border-radius: 30px;
+            background: #e7a9c9;
+            color: #251a22;
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-decoration: none;
+            transition: .25s ease;
+        }
+
+        .vaj-btn:hover {
+            transform: translateY(-3px);
+            background: #f4d4e4;
+        }
+
+        .vaj-btn-outline {
+            background: transparent;
+            color: #f1c6dc;
+        }
+
+        .vaj-btn-outline:hover {
+            background: rgba(231,169,201,.1);
+            color: #fff;
+        }
+
+        .vaj-section {
+            padding: 75px 7%;
+        }
+
+        .vaj-light {
+            background: #f7f0f3;
+            color: #292129;
+        }
+
+        .vaj-heading {
+            max-width: 750px;
+            margin: 0 auto 15px;
+            font-family: Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .vaj-subheading {
+            max-width: 650px;
+            margin: 0 auto 42px;
+            color: #c9bbc5;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .vaj-light .vaj-subheading {
+            color: #766a73;
+        }
+
+        .vaj-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .vaj-card {
+            overflow: hidden;
+            border: 1px solid rgba(231,169,201,.22);
+            border-radius: 16px;
+            background: linear-gradient(145deg, #2a2229, #1d191d);
+            transition: transform .25s ease, border-color .25s ease;
+        }
+
+        .vaj-card:hover {
+            transform: translateY(-5px);
+            border-color: #e7a9c9;
+        }
+
+        .vaj-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 4 / 3;
+            background: #e8dfe3;
+            color: #6d5866;
+            overflow: hidden;
+        }
+
+        .vaj-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .vaj-placeholder {
+            padding: 20px;
+            text-align: center;
+            font-family: Georgia, serif;
+            font-size: 1.2rem;
+        }
+
+        .vaj-card-body {
+            padding: 24px;
+        }
+
+        .vaj-card h3 {
+            margin: 0 0 12px;
+            font-family: Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
+
+        .vaj-card p {
+            margin: 0;
+            color: #d4cbd1;
+            font-size: .9rem;
+            line-height: 1.8;
+        }
+
+        .vaj-light .vaj-card {
+            border-color: #e6d9e0;
+            background: #fff;
+        }
+
+        .vaj-light .vaj-card p {
+            color: #746572;
+        }
+
+        .vaj-note {
+            max-width: 800px;
+            margin: 30px auto 0;
+            color: #c9bbc5;
+            font-size: .82rem;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        .vaj-light .vaj-note {
+            color: #746572;
+        }
+
+        .vaj-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 55px;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .vaj-split h2 {
+            margin: 0 0 20px;
+            font-family: Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .vaj-split p {
+            color: #d4cbd1;
+            line-height: 1.9;
+        }
+
+        .vaj-checklist {
+            display: grid;
+            gap: 15px;
+            margin: 24px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .vaj-checklist li {
+            display: flex;
+            gap: 12px;
+            line-height: 1.6;
+        }
+
+        .vaj-checklist li span {
+            color: #e7a9c9;
+        }
+
+        .vaj-quote-card {
+            padding: 34px;
+            border: 1px solid rgba(231,169,201,.3);
+            border-radius: 18px;
+            background: linear-gradient(145deg, #30232d, #201a20);
+        }
+
+        .vaj-quote-card h3 {
+            margin: 16px 0;
+            font-family: Georgia, serif;
+            font-size: 2rem;
+            font-weight: 400;
+        }
+
+        .vaj-form {
+            display: grid;
+            gap: 16px;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .vaj-form label {
+            display: grid;
+            gap: 8px;
+            font-size: .85rem;
+        }
+
+        .vaj-form input,
+        .vaj-form select,
+        .vaj-form textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px;
+            border: 1px solid #d9c9d3;
+            border-radius: 8px;
+            background: #fff;
+            color: #292129;
+            font: inherit;
+        }
+
+        .vaj-form textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .vaj-form .vaj-btn {
+            justify-self: start;
+            border: none;
+            cursor: pointer;
+        }
+
+        .vaj-form-note {
+            color: #766a73;
+            font-size: .8rem;
+            line-height: 1.6;
+        }
+
+        .vaj-final {
+            padding: 80px 7%;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at center, rgba(205,157,116,.14), transparent 70%),
+                #171316;
+        }
+
+        .vaj-final h2 {
+            max-width: 750px;
+            margin: 0 auto 18px;
+            font-family: Georgia, serif;
+            font-size: clamp(2.1rem, 5vw, 3.7rem);
+            font-weight: 400;
+        }
+
+        .vaj-final p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #d4cbd1;
+            line-height: 1.8;
+        }
+
+        .vaj-footer {
+            padding: 25px;
+            border-top: 1px solid rgba(255,255,255,.1);
+            color: #c9bbc5;
+            font-size: .75rem;
+            letter-spacing: .08em;
+            text-align: center;
+        }
+
+        @media (max-width: 850px) {
+            .vaj-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .vaj-split {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .vaj-header {
+                padding: 20px 5%;
+            }
+
+            .vaj-logo {
+                font-size: 1.4rem;
+            }
+
+            .vaj-back {
+                font-size: .7rem;
+            }
+
+            .vaj-hero {
+                padding: 70px 6%;
+            }
+
+            .vaj-section {
+                padding: 55px 6%;
+            }
+
+            .vaj-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vaj-quote-card {
+                padding: 24px;
+            }
+
+            .vaj-final {
+                padding: 60px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body class="vaj-page">
+<main>
+        <section class="vaj-hero">
+            <p class="vaj-label">EL ARTE DE RECIBIR</p>
+
+            <h1>
+                Tu mesa merece<br>
+                una presentación <em>inolvidable.</em>
+            </h1>
+
+            <p>
+                Alquiler de vajillería para celebraciones que merecen
+                algo especial. Cuida cada detalle de tu mesa y dedica
+                más tiempo a disfrutar de tu evento.
+            </p>
+
+            <div class="vaj-actions">
+                <a href="#cotizar" class="vaj-btn">COTIZAR MI EVENTO ↗</a>
+                <a href="#categorias" class="vaj-btn vaj-btn-outline">EXPLORAR CATEGORÍAS</a>
+            </div>
+        </section>
+
+        <section id="categorias" class="vaj-section">
+            <h2 class="vaj-heading">Los detalles que visten tu mesa</h2>
+            <p class="vaj-subheading">
+                Consulta las piezas disponibles para crear una mesa
+                acorde con el estilo y el tamaño de tu celebración.
+            </p>
+
+            <div class="vaj-grid">
+                <article class="vaj-card">
+                    <div class="vaj-image">
+                        <div class="vaj-placeholder">Fotografía de platos</div>
+                    </div>
+                    <div class="vaj-card-body">
+                        <h3>Platos</h3>
+                        <p>Opciones para la presentación de entradas, platos principales y postres, según disponibilidad.</p>
+                    </div>
+                </article>
+
+                <article class="vaj-card">
+                    <div class="vaj-image">
+                        <div class="vaj-placeholder">Fotografía de copas y vasos</div>
+                    </div>
+                    <div class="vaj-card-body">
+                        <h3>Cristalería</h3>
+                        <p>Copas y vasos para acompañar el servicio de mesa de tu evento, según inventario.</p>
+                    </div>
+                </article>
+
+                <article class="vaj-card">
+                    <div class="vaj-image">
+                        <div class="vaj-placeholder">Fotografía de cubiertos</div>
+                    </div>
+                    <div class="vaj-card-body">
+                        <h3>Cubiertos</h3>
+                        <p>Piezas para completar la presentación de cada puesto en la mesa.</p>
+                    </div>
+                </article>
+
+                <article class="vaj-card">
+                    <div class="vaj-image">
+                        <div class="vaj-placeholder">Fotografía de tazas y fuentes</div>
+                    </div>
+                    <div class="vaj-card-body">
+                        <h3>Tazas y fuentes</h3>
+                        <p>Alternativas para complementar el servicio y la presentación de alimentos.</p>
+                    </div>
+                </article>
+
+                <article class="vaj-card">
+                    <div class="vaj-image">
+                        <div class="vaj-placeholder">Fotografía de vajilla elegante</div>
+                    </div>
+                    <div class="vaj-card-body">
+                        <h3>Estilos especiales</h3>
+                        <p>Consulta si contamos con piezas o combinaciones acordes con el concepto de tu evento.</p>
+                    </div>
+                </article>
+
+                <article class="vaj-card">
+                    <div class="vaj-image">
+                        <div class="vaj-placeholder">Fotografía de mesa montada</div>
+                    </div>
+                    <div class="vaj-card-body">
+                        <h3>Conjuntos para eventos</h3>
+                        <p>Cuéntanos cuántos invitados tendrás para consultar las piezas que podemos reunir para ti.</p>
+                    </div>
+                </article>
+            </div>
+
+            <p class="vaj-note">
+                Las categorías son orientativas. La disponibilidad, cantidades,
+                modelos y condiciones se confirman al solicitar la cotización.
+            </p>
+        </section>
+
+        <section class="vaj-section vaj-light">
+            <div class="vaj-split">
+                <div>
+                    <p class="vaj-label">PARA CADA CELEBRACIÓN</p>
+                    <h2>Una mesa bien presentada cambia la experiencia.</h2>
+                    <p>
+                        Desde una celebración íntima hasta un evento con
+                        numerosos invitados, queremos ayudarte a encontrar
+                        una alternativa adecuada para tu ocasión.
+                    </p>
+
+                    <ul class="vaj-checklist">
+                        <li><span>✦</span> Bodas y aniversarios.</li>
+                        <li><span>✦</span> Quince años y cumpleaños.</li>
+                        <li><span>✦</span> Eventos empresariales.</li>
+                        <li><span>✦</span> Reuniones y celebraciones familiares.</li>
+                    </ul>
+                </div>
+
+                <div class="vaj-quote-card">
+                    <p class="vaj-label">PLANIFICA CON GLAM</p>
+                    <h3>Tu evento comienza con una buena planificación.</h3>
+                    <p>
+                        Indícanos la fecha, la cantidad de invitados y las
+                        piezas que buscas. Te responderemos para revisar
+                        disponibilidad y condiciones de alquiler.
+                    </p>
+                    <a href="#cotizar" class="vaj-btn">SOLICITAR COTIZACIÓN ↗</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="cotizar" class="vaj-section vaj-light">
+            <h2 class="vaj-heading">Cuéntanos sobre tu evento</h2>
+            <p class="vaj-subheading">
+                Completa estos datos y se abrirá WhatsApp con tu solicitud preparada.
+            </p>
+
+            <form class="vaj-form" id="formularioVajilleria">
+                <label>
+                    Nombre
+                    <input type="text" id="vajNombre" placeholder="¿Cómo te llamas?" required>
+                </label>
+
+                <label>
+                    Tipo de evento
+                    <select id="vajEvento" required>
+                        <option value="">Selecciona una opción</option>
+                        <option>Boda</option>
+                        <option>Quince años</option>
+                        <option>Cumpleaños</option>
+                        <option>Evento corporativo</option>
+                        <option>Celebración familiar</option>
+                        <option>Otro</option>
+                    </select>
+                </label>
+
+                <label>
+                    Fecha del evento
+                    <input type="date" id="vajFecha" required>
+                </label>
+
+                <label>
+                    Cantidad aproximada de invitados
+                    <input type="number" id="vajInvitados" min="1" placeholder="Ej. 100" required>
+                </label>
+
+                <label>
+                    ¿Qué piezas necesitas?
+                    <textarea id="vajPiezas" placeholder="Ej. platos, copas, cubiertos... Indica también si buscas algo especial."></textarea>
+                </label>
+
+                <button type="submit" class="vaj-btn">PREPARAR MI CONSULTA ↗</button>
+
+                <p class="vaj-form-note">
+                    Enviar la consulta no confirma una reserva.
+                    La disponibilidad, el precio, la entrega y las condiciones
+                    se coordinan directamente con GLAM.
+                </p>
+            </form>
+        </section>
+
+        <section class="vaj-final">
+            <p class="vaj-label">CADA DETALLE CUENTA</p>
+            <h2>Preparemos una mesa a la altura de tu celebración.</h2>
+            <p>
+                Escríbenos y conversemos sobre las opciones de alquiler
+                para tu próximo evento.
+            </p>
+
+            <div class="vaj-actions">
+                <a
+                    class="vaj-btn"
+                    href="https://wa.me/59172514906?text=Hola%20GLAM%2C%20quiero%20consultar%20sobre%20el%20alquiler%20de%20vajiller%C3%ADa."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    HABLAR CON GLAM ↗
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vaj-footer">
+        GLAM · ALQUILER DE VAJILLERÍA · EXPERIENCIAS QUE TODOS RECUERDAN
+    </footer>
+
+    <!-- WHATSAPP FLOTANTE -->
+    <a
+        href="https://wa.me/59172514906?text=Hola%20GLAM%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios."
+        class="whatsapp-flotante"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contactar a GLAM por WhatsApp"
+        title="Contactar por WhatsApp"
+    >
+        <svg viewBox="0 0 32 32" width="30" height="30"
+             aria-hidden="true" fill="currentColor">
+            <path d="M16 .5A15.4 15.4 0 0 0 2.7 23.7L.5 31.5l8-2.1A15.5 15.5 0 1 0 16 .5zm0 28.2a12.7 12.7 0 0 1-6.5-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5A12.7 12.7 0 1 1 16 28.7zm7-9.5c-.4-.2-2.1-1-2.4-1.1-.3-.1-.6-.2-.8.2-.3.4-.9 1.1-1.1 1.3-.2.3-.4.3-.8.1-.4-.2-1.5-.6-2.9-1.8-1.1-1-1.8-2.1-2-2.5-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.2 0-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.7.1-1 .5-.4.4-1.3 1.2-1.3 3s1.3 3.5 1.5 3.7c0 0 2.6 4 6.3 5.6.9.4 1.6.6 2.1.7.9.3 1.7.2 2.3.1.7-.1 2.1-.9 2.4-1.7.3-.8.3-1.6.2-1.7-.1-.2-.3-.3-.7-.5z"/>
+        </svg>
+        <span>¡Hablemos!</span>
+    </a>
+
+    <!-- MENÚ FLOTANTE -->
+    <div class="servicios-flotantes">
+        <div id="opcionesServicios" class="opciones-servicios oculto">
+            <a href="index.html#contenido" class="opcion-flotante">
+                <span>✦</span> Mirror Experience
+            </a>
+            <a href="invitaciones.html" class="opcion-flotante">
+                <span>✉</span> Invitaciones
+            </a>
+            <a href="vajilleria.html" class="opcion-flotante">
+                <span>◇</span> Vajillería
+            </a>
+            <a href="wedding-week.html" class="opcion-flotante">
+                <span>♡</span> Wedding Week <span class="badge-new">NEW ✨</span>
+            </a>
+        </div>
+
+        <button
+            id="botonServicios"
+            class="boton-servicios"
+            type="button"
+            aria-label="Abrir menú de servicios"
+            aria-controls="opcionesServicios"
+            aria-expanded="false"
+        >
+            <span id="iconoServicios">✦</span>
+        </button>
+    </div>
+
+    <button
+        id="botonMusica"
+        type="button"
+        aria-label="Reproducir música"
+        aria-pressed="false"
+    >♪</button>
+
+    <script>
+        const formularioVajilleria = document.getElementById("formularioVajilleria");
+
+        formularioVajilleria.addEventListener("submit", function (evento) {
+            evento.preventDefault();
+
+            const nombre = document.getElementById("vajNombre").value.trim();
+            const tipoEvento = document.getElementById("vajEvento").value;
+            const fecha = document.getElementById("vajFecha").value;
+            const invitados = document.getElementById("vajInvitados").value;
+            const piezas = document.getElementById("vajPiezas").value.trim();
+
+            const mensaje =
+                "Hola GLAM, quisiera cotizar el alquiler de vajillería.%0A%0A" +
+                "Nombre: " + encodeURIComponent(nombre) + "%0A" +
+                "Evento: " + encodeURIComponent(tipoEvento) + "%0A" +
+                "Fecha: " + encodeURIComponent(fecha) + "%0A" +
+                "Invitados: " + encodeURIComponent(invitados) + "%0A" +
+                "Piezas solicitadas: " + encodeURIComponent(piezas || "Quisiera conocer las opciones disponibles.");
+
+            window.open("https://wa.me/59172514906?text=" + mensaje, "_blank");
+        });
+
+        const botonServicios = document.getElementById("botonServicios");
+        const opcionesServicios = document.getElementById("opcionesServicios");
+        const iconoServicios = document.getElementById("iconoServicios");
+
+        botonServicios.addEventListener("click", function () {
+            const abierto = botonServicios.getAttribute("aria-expanded") === "true";
+
+            opcionesServicios.classList.toggle("oculto", abierto);
+            botonServicios.setAttribute("aria-expanded", String(!abierto));
+            botonServicios.setAttribute(
+                "aria-label",
+                abierto ? "Abrir menú de servicios" : "Cerrar menú de servicios"
+            );
+
+            iconoServicios.textContent = abierto ? "✦" : "×";
+        });
+
+        document.addEventListener("keydown", function (evento) {
+            if (evento.key === "Escape") {
+                opcionesServicios.classList.add("oculto");
+                botonServicios.setAttribute("aria-expanded", "false");
+                botonServicios.setAttribute("aria-label", "Abrir menú de servicios");
+                iconoServicios.textContent = "✦";
+            }
+        });
+    </script>
+
+    <!-- Atribución de campañas: conserva UTM durante esta sesión y los añade al mensaje de WhatsApp. -->
+    <script src="marketing.js" defer></script>
+
+</body>
+</html>
