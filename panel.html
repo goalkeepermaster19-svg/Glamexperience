@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLAM | Panel Administrativo</title>
 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #fff8f0;
+      font-family: Arial, sans-serif;
+    }
+
+    .panel-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-header {
+      height: 58px;
+      min-height: 58px;
+      background: #201820;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 25px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .logo span {
+      color: #df1680;
+    }
+
+    .panel-label {
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: #f8e3ec;
+    }
+
+    iframe {
+      width: 100%;
+      flex: 1;
+      border: none;
+      background: #fff8f0;
+    }
+
+    @media (max-width: 600px) {
+      .panel-header {
+        padding: 0 15px;
+      }
+
+      .panel-label {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="panel-container">
+
+    <header class="panel-header">
+      <div class="logo">GLAM<span>.</span></div>
+      <div class="panel-label">PANEL ADMINISTRATIVO</div>
+    </header>
+
+    <iframe
+      src="https://script.google.com/macros/s/AKfycbyCNw7z1eAWgfhUT-tpO7wNErQLXyZu9VvUVTBEWJLMwX2FuUYr3NbWaJUphT7yjkkXvg/exec?panel=1"
+      allow="clipboard-read; clipboard-write"
+      title="Panel privado GLAM">
+    </iframe>
+
+  </div>
+
+</body>
+</html>
