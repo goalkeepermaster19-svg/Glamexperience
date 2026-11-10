@@ -1,1 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111111">
+
+    <title>GLAM | Panel de Control</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        :root {
+            --dorado: #c9a96e;
+            --negro: #111;
+            --gris: #1d1d1d;
+            --blanco: #fff;
+        }
+
+        .oculto {
+            display: none !important;
+        }
+
+        /* ENCABEZADO */
+
+        header {
+            padding: 22px 7%;
+            border-bottom: 1px solid rgba(201,169,110,.25);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            letter-spacing: 5px;
+            color: var(--dorado);
+        }
+
+        .logo small {
+            display: block;
+            font-size: 9px;
+            letter-spacing: 4px;
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+        .volver {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .volver:hover {
+            color: var(--dorado);
+        }
+
+        /* LOGIN */
+
+        .login-contenedor {
+            min-height: calc(100vh - 85px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+
+        .login {
+            width: 100%;
+            max-width: 420px;
+            background: #1b1b1b;
+            border: 1px solid rgba(201,169,110,.35);
+            padding: 42px 32px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0,0,0,.4);
+        }
+
+        .login h1 {
+            font-size: 25px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .login .subtitulo {
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 32px;
+        }
+
+        .campo {
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        .campo label {
+            display: block;
+            font-size: 11px;
+            color: var(--dorado);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .campo input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background: #111;
+            color: white;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .campo input:focus {
+            border-color: var(--dorado);
+        }
+
+        .boton {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            background: var(--dorado);
+            color: #111;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .boton:hover {
+            background: #dfc18b;
+        }
+
+        .boton:disabled {
+            opacity: .5;
+            cursor: wait;
+        }
+
+        .mensaje {
+            margin-top: 18px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .error {
+            color: #ff7777;
+        }
+
+        .exito {
+            color: #8bd69b;
+        }
+
+        /* PANEL */
+
+        .panel {
+            max-width: 1200px;
+            margin: auto;
+            padding: 45px 25px;
+        }
+
+        .bienvenida {
+            margin-bottom: 35px;
+        }
+
+        .bienvenida h1 {
+            font-size: 29px;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .bienvenida h1 span {
+            color: var(--dorado);
+        }
+
+        .bienvenida p {
+            color: #999;
+            font-size: 13px;
+        }
+
+        .estado {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 8px 13px;
+            border: 1px solid rgba(201,169,110,.4);
+            border-radius: 30px;
+            color: var(--dorado);
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .titulo-seccion {
+            color: var(--dorado);
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .modulos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .modulo {
+            background: var(--gris);
+            border: 1px solid #333;
+            padding: 28px;
+            border-radius: 10px;
+            min-height: 155px;
+            transition: .3s;
+        }
+
+        .modulo:hover {
+            border-color: var(--dorado);
+            transform: translateY(-3px);
+        }
+
+        .modulo .icono {
+            font-size: 27px;
+            margin-bottom: 15px;
+        }
+
+        .modulo h3 {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 9px;
+        }
+
+        .modulo p {
+            color: #999;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 9px;
+            color: var(--dorado);
+            letter-spacing: 1px;
+        }
+
+        .acciones {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 35px;
+        }
+
+        .cerrar {
+            background: transparent;
+            color: #aaa;
+            border: 1px solid #444;
+            padding: 11px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .cerrar:hover {
+            border-color: var(--dorado);
+            color: var(--dorado);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        @media(max-width: 650px) {
+            header {
+                padding: 20px;
+            }
+
+            .modulos {
+                grid-template-columns: 1fr;
+            }
+
+            .panel {
+                padding: 35px 20px;
+            }
+
+            .login {
+                padding: 35px 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CONEXIÓN CON APPS SCRIPT -->
+    <iframe
+        id="puenteGLAM"
+        src="https://script.google.com/macros/s/AKfycbyCNw7z1eAWgfhUT-tpO7wNErQLXyZu9VvUVTBEWJLMwX2FuUYr3NbWaJUphT7yjkkXvg/exec?puente=1"
+        style="display:none">
+    </iframe>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="logo">
+            GLAM
+            <small>PANEL DE CONTROL</small>
+        </div>
+
+        <a href="index.html" class="volver">
+            ← Volver a GLAM
+        </a>
+    </header>
+
+    <!-- INICIO DE SESIÓN -->
+    <main id="pantallaLogin" class="login-contenedor">
+
+        <section class="login">
+
+            <h1>BIENVENIDO</h1>
+
+            <p class="subtitulo">
+                Acceso exclusivo para el personal de GLAM
+            </p>
+
+            <form id="formLogin">
+
+                <div class="campo">
+                    <label for="usuario">USUARIO</label>
+                    <input
+                        type="text"
+                        id="usuario"
+                        placeholder="Ingresa tu usuario"
+                        autocomplete="username"
+                        required>
+                </div>
+
+                <div class="campo">
+                    <label for="password">CONTRASEÑA</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Ingresa tu contraseña"
+                        autocomplete="current-password"
+                        required>
+                </div>
+
+                <button type="submit" class="boton" id="botonLogin">
+                    INICIAR SESIÓN
+                </button>
+
+            </form>
+
+            <p id="mensajeLogin" class="mensaje"></p>
+
+        </section>
+
+    </main>
+
+    <!-- PANEL PRINCIPAL -->
+    <main id="pantallaPanel" class="panel oculto">
+
+        <section class="bienvenida">
+
+            <h1>
+                Hola, <span id="nombreUsuario">Personal GLAM</span>
+            </h1>
+
+            <p>
+                Bienvenido al centro de administración de eventos.
+            </p>
+
+            <div class="estado">
+                ● SESIÓN ACTIVA
+            </div>
+
+        </section>
+
+        <h2 class="titulo-seccion">
+            ADMINISTRACIÓN DE EVENTOS
+        </h2>
+
+        <section class="modulos">
+
+            <article class="modulo">
+                <div class="icono">▦</div>
+                <h3>Escáner QR</h3>
+                <p>
+                    Escanea los códigos QR y valida el ingreso
+                    de los invitados a cada evento.
+                </p>
+                <span class="etiqueta">MÓDULO EN INTEGRACIÓN</span>
+            </article>
+
+            <article class="modulo">
+                <div class="icono">♙</div>
+                <h3>Invitados</h3>
+                <p>
+                    Consulta, registra y administra
+                    la lista de invitados.
+                </p>
+                <span class="etiqueta">MÓDULO EN INTEGRACIÓN</span>
+            </article>
+
+            <article class="modulo">
+                <div class="icono">✓</div>
+                <h3>Asistencia</h3>
+                <p>
+                    Controla quiénes llegaron, quiénes faltan
+                    y quiénes confirmaron su asistencia.
+                </p>
+                <span class="etiqueta">MÓDULO EN INTEGRACIÓN</span>
+            </article>
+
+            <article class="modulo">
+                <div class="icono">▤</div>
+                <h3>Ingresos</h3>
+                <p>
+                    Consulta los registros de ingreso
+                    y los pases utilizados.
+                </p>
+                <span class="etiqueta">MÓDULO EN INTEGRACIÓN</span>
+            </article>
+
+        </section>
+
+        <div class="acciones">
+            <button class="cerrar" id="botonCerrar">
+                CERRAR SESIÓN
+            </button>
+        </div>
+
+    </main>
+
+    <footer>
+        GLAM · MIRROR EXPERIENCE
+    </footer>
+
+    <script>
+
+        const URL_ORIGEN = "https://goalkeepermaster19-svg.github.io";
+
+        const puente = document.getElementById("puenteGLAM");
+
+        let puenteCargado = false;
+        let tokenSesion = null;
+        let usuarioActual = null;
+
+        const solicitudes = {};
+
+        puente.addEventListener("load", function () {
+            puenteCargado = true;
+        });
+
+        // COMUNICACIÓN CON APPS SCRIPT
+
+        function enviarSolicitud(accion, datos = {}) {
+
+            return new Promise((resolve, reject) => {
+
+                if (!puenteCargado) {
+                    reject(new Error(
+                        "El sistema todavía está conectando. Espera unos segundos e inténtalo nuevamente."
+                    ));
+                    return;
+                }
+
+                const id = Date.now().toString() +
+                    Math.random().toString(16).slice(2);
+
+                solicitudes[id] = {
+                    resolve,
+                    reject
+                };
+
+                puente.contentWindow.postMessage({
+                    tipo: "GLAM_SOLICITUD",
+                    id: id,
+                    accion: accion,
+                    datos: datos
+                }, "*");
+
+                setTimeout(() => {
+                    if (solicitudes[id]) {
+                        delete solicitudes[id];
+
+                        reject(new Error(
+                            "El servidor no respondió. Inténtalo nuevamente."
+                        ));
+                    }
+                }, 20000);
+
+            });
+
+        }
+
+        // RECIBIR RESPUESTAS
+
+        window.addEventListener("message", function (event) {
+
+            if (event.source !== puente.contentWindow) return;
+
+            const origenValido =
+                event.origin === "https://script.google.com" ||
+                event.origin.endsWith(".googleusercontent.com");
+
+            if (!origenValido) return;
+
+            const respuesta = event.data;
+
+            if (!respuesta ||
+                respuesta.tipo !== "GLAM_RESPUESTA") return;
+
+            const solicitud = solicitudes[respuesta.id];
+
+            if (!solicitud) return;
+
+            delete solicitudes[respuesta.id];
+
+            solicitud.resolve(respuesta.resultado);
+
+        });
+
+        // ELEMENTOS DE PANTALLA
+
+        const pantallaLogin =
+            document.getElementById("pantallaLogin");
+
+        const pantallaPanel =
+            document.getElementById("pantallaPanel");
+
+        const mensajeLogin =
+            document.getElementById("mensajeLogin");
+
+        const botonLogin =
+            document.getElementById("botonLogin");
+
+        // INICIAR SESIÓN
+
+        document.getElementById("formLogin")
+            .addEventListener("submit", async function (e) {
+
+                e.preventDefault();
+
+                const usuario =
+                    document.getElementById("usuario").value.trim();
+
+                const password =
+                    document.getElementById("password").value;
+
+                botonLogin.disabled = true;
+                botonLogin.textContent = "CONECTANDO...";
+                mensajeLogin.textContent = "";
+                mensajeLogin.className = "mensaje";
+
+                try {
+
+                    const resultado = await enviarSolicitud(
+                        "login",
+                        {
+                            usuario: usuario,
+                            password: password
+                        }
+                    );
+
+                    if (!resultado || !resultado.correcto) {
+
+                        throw new Error(
+                            resultado?.mensaje ||
+                            "Usuario o contraseña incorrectos."
+                        );
+
+                    }
+
+                    tokenSesion = resultado.tokenSesion;
+                    usuarioActual = resultado.usuario || usuario;
+
+                    sessionStorage.setItem(
+                        "GLAM_TOKEN",
+                        tokenSesion
+                    );
+
+                    sessionStorage.setItem(
+                        "GLAM_USUARIO",
+                        usuarioActual
+                    );
+
+                    mostrarPanel();
+
+                } catch (error) {
+
+                    mensajeLogin.textContent = error.message;
+                    mensajeLogin.classList.add("error");
+
+                } finally {
+
+                    botonLogin.disabled = false;
+                    botonLogin.textContent = "INICIAR SESIÓN";
+
+                }
+
+            });
+
+        // MOSTRAR PANEL
+
+        function mostrarPanel() {
+
+            pantallaLogin.classList.add("oculto");
+            pantallaPanel.classList.remove("oculto");
+
+            document.getElementById("nombreUsuario")
+                .textContent = usuarioActual;
+
+        }
+
+        // CERRAR SESIÓN
+
+        document.getElementById("botonCerrar")
+            .addEventListener("click", async function () {
+
+                try {
+
+                    if (tokenSesion) {
+                        await enviarSolicitud(
+                            "cerrar",
+                            {
+                                tokenSesion: tokenSesion
+                            }
+                        );
+                    }
+
+                } catch (error) {
+                    console.log(error.message);
+                }
+
+                tokenSesion = null;
+                usuarioActual = null;
+
+                sessionStorage.removeItem("GLAM_TOKEN");
+                sessionStorage.removeItem("GLAM_USUARIO");
+
+                pantallaPanel.classList.add("oculto");
+                pantallaLogin.classList.remove("oculto");
+
+                document.getElementById("formLogin").reset();
+
+                mensajeLogin.textContent =
+                    "Sesión cerrada correctamente.";
+
+                mensajeLogin.className = "mensaje exito";
+
+            });
+
+        // RECUPERAR SESIÓN
+
+        async function recuperarSesion() {
+
+            const tokenGuardado =
+                sessionStorage.getItem("GLAM_TOKEN");
+
+            const usuarioGuardado =
+                sessionStorage.getItem("GLAM_USUARIO");
+
+            if (!tokenGuardado) return;
+
+            try {
+
+                const resultado = await enviarSolicitud(
+                    "validarSesion",
+                    {
+                        tokenSesion: tokenGuardado
+                    }
+                );
+
+                const sesionValida =
+                    resultado === true ||
+                    (resultado && resultado.correcto === true);
+
+                if (sesionValida) {
+
+                    tokenSesion = tokenGuardado;
+                    usuarioActual = usuarioGuardado || "Personal GLAM";
+
+                    mostrarPanel();
+
+                } else {
+
+                    sessionStorage.removeItem("GLAM_TOKEN");
+                    sessionStorage.removeItem("GLAM_USUARIO");
+
+                }
+
+            } catch (error) {
+
+                console.log("No se pudo recuperar la sesión:", error);
+
+            }
+
+        }
+
+        // ESPERAR CONEXIÓN Y RECUPERAR SESIÓN
+
+        puente.addEventListener("load", recuperarSesion);
+
+    </script>
+
+</body>
+</html>
