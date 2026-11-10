@@ -1003,9 +1003,7 @@ async function consultarQR(textoQR) {
         return;
     }
 
-
     const tokenQR = extraerToken(textoQR);
-
 
     if (!tokenQR) {
 
@@ -1016,27 +1014,19 @@ async function consultarQR(textoQR) {
         );
 
         return;
-
     }
 
-
     limpiarMensaje("mensajeEscaner");
-
 
     document.getElementById("tarjetaInvitado")
         .classList.add("oculto");
 
-
     try {
 
         const respuesta = await enviarSolicitud("consultar", {
-
             tokenSesion: tokenSesion,
-
             tokenQR: tokenQR
-
         });
-
 
         if (!respuesta || !respuesta.correcto) {
 
@@ -1047,31 +1037,33 @@ async function consultarQR(textoQR) {
             );
 
             return;
-
         }
 
+        // RECIBIR LOS DATOS DIRECTAMENTE DE APPS SCRIPT
 
         invitadoActual = {
-    ...respuesta.invitado,
-    tokenQR: tokenQR
-};
+            idInvitado: respuesta.idInvitado,
+            idEvento: respuesta.idEvento,
+            nombre: respuesta.nombre,
+            tokenQR: respuesta.tokenQR || tokenQR,
+            pasesPermitidos: respuesta.pasesPermitidos,
+            pasesUtilizados: respuesta.pasesUtilizados,
+            pasesDisponibles: respuesta.pasesDisponibles
+        };
 
         mostrarInvitado(invitadoActual);
-
 
     } catch (error) {
 
         mostrarMensaje(
             "mensajeEscaner",
-            error.message,
+            error.message || "Error al consultar el código QR.",
             "error"
         );
 
     }
 
 }
-
-
 // ============================================
 // CONSULTA MANUAL
 // ============================================
@@ -1106,37 +1098,41 @@ async function consultarManual() {
 
 function mostrarInvitado(invitado) {
 
+    if (!invitado) {
+        mostrarMensaje(
+            "mensajeEscaner",
+            "No se recibieron los datos del invitado.",
+            "error"
+        );
+        return;
+    }
+
+    const permitidos = Number(invitado.pasesPermitidos || 0);
+    const utilizados = Number(invitado.pasesUtilizados || 0);
+    const disponibles = Number(invitado.pasesDisponibles || 0);
+
     document.getElementById("nombreInvitado").textContent =
         invitado.nombre || "Invitado";
 
-
     document.getElementById("pasesPermitidos").textContent =
-        invitado.pasesPermitidos ?? 0;
-
+        permitidos;
 
     document.getElementById("pasesUtilizados").textContent =
-        invitado.pasesUtilizados ?? 0;
-
+        utilizados;
 
     document.getElementById("pasesDisponibles").textContent =
-        invitado.pasesDisponibles ?? 0;
-
+        disponibles;
 
     document.getElementById("cantidadPases").value = 1;
 
-
     document.getElementById("cantidadPases").max =
-        invitado.pasesDisponibles ?? 0;
-
+        disponibles;
 
     const boton = document.getElementById("btnRegistrar");
 
+    boton.disabled = disponibles <= 0;
 
-    boton.disabled =
-        Number(invitado.pasesDisponibles) <= 0;
-
-
-    if (Number(invitado.pasesDisponibles) <= 0) {
+    if (disponibles <= 0) {
 
         mostrarMensaje(
             "mensajeRegistro",
@@ -1149,7 +1145,6 @@ function mostrarInvitado(invitado) {
         limpiarMensaje("mensajeRegistro");
 
     }
-
 
     document.getElementById("tarjetaInvitado")
         .classList.remove("oculto");
