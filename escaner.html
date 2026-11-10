@@ -415,152 +415,163 @@
 
 <iframe
     id="glamBridge"
-    src="https://script.google.com/macros/s/AKfycbyCNw7z1eAWgfhUT-tpO7wNErQLXyZu9VvUVTBEWJLMwX2FuUYr3NbWaJUphT7yjkkXvg/exec?puente=1"
+    name="glamBridge"
+    src="about:blank"
+    style="display:none;"
 ></iframe>
 
 
 <script>
 
-    const ORIGEN_GITHUB =
-        "https://goalkeepermaster19-svg.github.io";
+   // ========================================
+// CONEXIÓN DIRECTA CON GOOGLE APPS SCRIPT
+// ========================================
 
-    const puente = document.getElementById("glamBridge");
+const URL_APPS_SCRIPT =
+"https://script.google.com/macros/s/AKfycbyCNw7z1eAWgfhUT-tpO7wNErQLXyZu9VvUVTBEWJLMwX2FuUYr3NbWaJUphT7yjkkXvg/exec";
 
-    // SOLICITAR CONEXIÓN CUANDO CARGUE EL PUENTE
+const solicitudes = {};
 
-    // CONEXIÓN AUTOMÁTICA CON APPS SCRIPT
+const puente = document.getElementById("glamBridge");
 
-let intentoConexion = 0;
+// Recibir respuestas JSONP del servidor.
+window.glamApiCallback = function(respuesta) {
 
-const temporizadorConexion = setInterval(function() {
+    if (!respuesta || !respuesta.idSolicitud) return;
 
-    if (puenteListo) {
-
-        clearInterval(temporizadorConexion);
-        return;
-
-    }
-
-    intentoConexion++;
-
-    console.log("Intentando conectar con Apps Script:", intentoConexion);
-
-    puente.contentWindow.postMessage({
-
-        tipo: "GLAM_PING"
-
-    }, "*");
-
-    if (intentoConexion >= 20) {
-
-        clearInterval(temporizadorConexion);
-
-        console.error("No se pudo establecer conexión con Apps Script.");
-
-    }
-
-}, 1000);
-
-
-    let tokenSesion = null;
-    let usuarioActivo = null;
-    let invitadoActual = null;
-    let lectorQR = null;
-    let camaraActiva = false;
-
-    const solicitudes = {};
-
-let puenteListo = false;
-let esperandoPuente = [];
-    // COMPROBAR ORIGEN DEL PUENTE
-
-    function esOrigenGoogle(origin) {
-
-        try {
-
-            const url = new URL(origin);
-
-            return (
-                url.hostname === "script.google.com" ||
-                url.hostname.endsWith(".googleusercontent.com")
-            );
-
-        } catch (e) {
-
-            return false;
-
-        }
-
-    }
-
-
-    // RECIBIR RESPUESTAS DEL PUENTE
-
-window.addEventListener("message", function(event) {
-
-    if (event.source !== puente.contentWindow) return;
-
-    if (!esOrigenGoogle(event.origin)) return;
-
-    const mensaje = event.data;
-
-    if (!mensaje) return;
-
-    // Confirmar que el puente está disponible.
-    if (mensaje.tipo === "GLAM_PUENTE_LISTO") {
-
-        puenteListo = true;
-
-        esperandoPuente.forEach(resolve => resolve());
-
-        esperandoPuente = [];
-
-        console.log("Puente GLAM conectado.");
-
-        return;
-    }
-
-    if (mensaje.tipo !== "GLAM_RESPUESTA") return;
-
-    const solicitud = solicitudes[mensaje.id];
+    const solicitud = solicitudes[respuesta.idSolicitud];
 
     if (!solicitud) return;
 
+    if (respuesta.pendiente) {
+        programarConsulta(respuesta.idSolicitud);
+        return;
+    }
+
     clearTimeout(solicitud.temporizador);
 
-    delete solicitudes[mensaje.id];
+    delete solicitudes[respuesta.idSolicitud];
 
-    solicitud.resolver(mensaje.resultado);
+    solicitud.resolver(respuesta.resultado);
+};
 
-});
-    // ENVIAR SOLICITUDES AL PUENTE
 
-   async function enviarSolicitud(accion, datos = {}) {
+// Consultar el resultado de una solicitud.
+function consultarRespuesta(id) {
 
-    // Esperar a que el puente esté disponible.
-    if (!puenteListo) {
+    const solicitud = solicitudes[id];
 
-        await new Promise((resolve, reject) => {
+    if (!solicitud) return;
 
-            const temporizador = setTimeout(() => {
+    const script = document.createElement("script");
 
-                reject(new Error(
-                    "No se pudo conectar con Google Apps Script. Recarga la página."
-                ));
+    script.src =
+        URL_APPS_SCRIPT +
+        "?apiPoll=1" +
+        "&id=" + encodeURIComponent(id) +
+        "&callback=glamApiCallback" +
+        "&t=" + Date.now();
 
-            }, 15000);
+    script.onerror = function() {
+        script.remove();
+        programarConsulta(id);
+    };
 
-            esperandoPuente.push(() => {
+    script.onload = function() {
+        script.remove();
+    };
 
-                clearTimeout(temporizador);
+    document.body.appendChild(script);
+}
 
-                resolve();
 
-            });
+// Repetir consulta mientras el servidor procesa.
+function programarConsulta(id) {
+
+    const solicitud = solicitudes[id];
+
+    if (!solicitud) return;
+
+    clearTimeout(solicitud.intervalo);
+
+    solicitud.intervalo = setTimeout(function() {
+        consultarRespuesta(id);
+    }, 500);
+
+}
+
+
+// Enviar una solicitud al servidor mediante POST.
+async function enviarSolicitud(accion, datos = {}) {
+
+    return new Promise(function(resolve, reject) {
+
+        const id =
+            "glam_" +
+            Date.now() +
+            "_" +
+            Math.random().toString(36).substring(2, 12);
+
+        const temporizador = setTimeout(function() {
+
+            delete solicitudes[id];
+
+            reject(new Error(
+                "El servidor no respondió. Comprueba tu conexión e inténtalo nuevamente."
+            ));
+
+        }, 45000);
+
+        solicitudes[id] = {
+            resolver: resolve,
+            temporizador: temporizador,
+            intervalo: null
+        };
+
+
+        // Crear formulario oculto.
+        const formulario = document.createElement("form");
+
+        formulario.method = "POST";
+        formulario.action = URL_APPS_SCRIPT;
+        formulario.target = "glamBridge";
+        formulario.style.display = "none";
+
+
+        const campos = {
+            tipo: "glam_api",
+            idSolicitud: id,
+            accion: accion,
+            datos: JSON.stringify(datos)
+        };
+
+
+        Object.keys(campos).forEach(function(nombre) {
+
+            const input = document.createElement("input");
+
+            input.type = "hidden";
+            input.name = nombre;
+            input.value = campos[nombre];
+
+            formulario.appendChild(input);
 
         });
 
-    }
+
+        document.body.appendChild(formulario);
+
+        formulario.submit();
+
+        formulario.remove();
+
+
+        // Comenzar a consultar la respuesta.
+        programarConsulta(id);
+
+    });
+
+}
 
     return new Promise(function(resolve, reject) {
 
