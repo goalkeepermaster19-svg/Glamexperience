@@ -499,41 +499,66 @@ window.addEventListener("message", function(event) {
 });
     // ENVIAR SOLICITUDES AL PUENTE
 
-    function enviarSolicitud(accion, datos = {}) {
+   async function enviarSolicitud(accion, datos = {}) {
 
-        return new Promise(function(resolve, reject) {
+    // Esperar a que el puente esté disponible.
+    if (!puenteListo) {
 
-            const id =
-                "glam_" + Date.now() + "_" +
-                Math.random().toString(36).substring(2, 9);
+        await new Promise((resolve, reject) => {
 
-            const temporizador = setTimeout(function() {
-
-                delete solicitudes[id];
+            const temporizador = setTimeout(() => {
 
                 reject(new Error(
-                    "La conexión tardó demasiado. Intenta nuevamente."
+                    "No se pudo conectar con Google Apps Script. Recarga la página."
                 ));
 
-            }, 30000);
+            }, 15000);
 
-            solicitudes[id] = {
-                resolver: resolve,
-                temporizador: temporizador
-            };
+            esperandoPuente.push(() => {
 
-            puente.contentWindow.postMessage({
+                clearTimeout(temporizador);
 
-                tipo: "GLAM_SOLICITUD",
-                id: id,
-                accion: accion,
-                datos: datos
+                resolve();
 
-            }, "*");
+            });
 
         });
 
     }
+
+    return new Promise(function(resolve, reject) {
+
+        const id =
+            "glam_" + Date.now() + "_" +
+            Math.random().toString(36).substring(2, 9);
+
+        const temporizador = setTimeout(function() {
+
+            delete solicitudes[id];
+
+            reject(new Error(
+                "Google Apps Script no respondió. Intenta nuevamente."
+            ));
+
+        }, 30000);
+
+        solicitudes[id] = {
+            resolver: resolve,
+            temporizador: temporizador
+        };
+
+        puente.contentWindow.postMessage({
+
+            tipo: "GLAM_SOLICITUD",
+            id: id,
+            accion: accion,
+            datos: datos
+
+        }, "*");
+
+    });
+
+}
 
 
     // MENSAJES EN PANTALLA
