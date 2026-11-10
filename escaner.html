@@ -434,7 +434,8 @@
 
     const solicitudes = {};
 
-
+let puenteListo = false;
+let esperandoPuente = [];
     // COMPROBAR ORIGEN DEL PUENTE
 
     function esOrigenGoogle(origin) {
@@ -459,29 +460,43 @@
 
     // RECIBIR RESPUESTAS DEL PUENTE
 
-    window.addEventListener("message", function(event) {
+window.addEventListener("message", function(event) {
 
-        if (event.source !== puente.contentWindow) return;
+    if (event.source !== puente.contentWindow) return;
 
-        if (!esOrigenGoogle(event.origin)) return;
+    if (!esOrigenGoogle(event.origin)) return;
 
-        const mensaje = event.data;
+    const mensaje = event.data;
 
-        if (!mensaje || mensaje.tipo !== "GLAM_RESPUESTA") return;
+    if (!mensaje) return;
 
-        const solicitud = solicitudes[mensaje.id];
+    // Confirmar que el puente está disponible.
+    if (mensaje.tipo === "GLAM_PUENTE_LISTO") {
 
-        if (!solicitud) return;
+        puenteListo = true;
 
-        clearTimeout(solicitud.temporizador);
+        esperandoPuente.forEach(resolve => resolve());
 
-        delete solicitudes[mensaje.id];
+        esperandoPuente = [];
 
-        solicitud.resolver(mensaje.resultado);
+        console.log("Puente GLAM conectado.");
 
-    });
+        return;
+    }
 
+    if (mensaje.tipo !== "GLAM_RESPUESTA") return;
 
+    const solicitud = solicitudes[mensaje.id];
+
+    if (!solicitud) return;
+
+    clearTimeout(solicitud.temporizador);
+
+    delete solicitudes[mensaje.id];
+
+    solicitud.resolver(mensaje.resultado);
+
+});
     // ENVIAR SOLICITUDES AL PUENTE
 
     function enviarSolicitud(accion, datos = {}) {
