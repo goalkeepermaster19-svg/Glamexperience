@@ -8,7 +8,7 @@
 
     <title>GLAM | Control de ingresos</title>
 
-<script src="https://unpkg.com/html5-qrcode@2.3.8"></script>
+    <script src="https://unpkg.com/html5-qrcode@2.3.8"></script>
 
     <style>
         * {
@@ -244,6 +244,7 @@
         </p>
 
         <label>Usuario</label>
+
         <input
             type="text"
             id="usuario"
@@ -252,6 +253,7 @@
         >
 
         <label>Contraseña</label>
+
         <input
             type="password"
             id="password"
@@ -275,7 +277,11 @@
         <div class="tarjeta">
 
             <div class="usuario-barra">
-                <span>Sesión: <strong id="nombreUsuario"></strong></span>
+
+                <span>
+                    Sesión:
+                    <strong id="nombreUsuario"></strong>
+                </span>
 
                 <button
                     class="boton-secundario"
@@ -284,6 +290,7 @@
                 >
                     Salir
                 </button>
+
             </div>
 
             <h2>Control de invitados</h2>
@@ -348,7 +355,10 @@
 
                 <h2>Información del invitado</h2>
 
-                <div class="nombre-invitado" id="nombreInvitado"></div>
+                <div
+                    class="nombre-invitado"
+                    id="nombreInvitado"
+                ></div>
 
                 <div class="estadisticas">
 
@@ -411,57 +421,82 @@
 </div>
 
 
-<!-- CONEXIÓN CON GOOGLE APPS SCRIPT -->
+<!-- MARCO OCULTO PARA ENVIAR SOLICITUDES -->
 
 <iframe
     id="glamBridge"
     name="glamBridge"
     src="about:blank"
-    style="display:none;"
 ></iframe>
 
 
 <script>
 
-   // ========================================
-// CONEXIÓN DIRECTA CON GOOGLE APPS SCRIPT
-// ========================================
+// ============================================
+// CONFIGURACIÓN GENERAL
+// ============================================
 
 const URL_APPS_SCRIPT =
 "https://script.google.com/macros/s/AKfycbyCNw7z1eAWgfhUT-tpO7wNErQLXyZu9VvUVTBEWJLMwX2FuUYr3NbWaJUphT7yjkkXvg/exec";
 
+
+// VARIABLES DEL SISTEMA
+
+let tokenSesion = null;
+let usuarioActivo = null;
+let invitadoActual = null;
+let lectorQR = null;
+let camaraActiva = false;
+
 const solicitudes = {};
 
-const puente = document.getElementById("glamBridge");
 
-// Recibir respuestas JSONP del servidor.
+// ============================================
+// RESPUESTAS DEL SERVIDOR
+// ============================================
+
 window.glamApiCallback = function(respuesta) {
 
-    if (!respuesta || !respuesta.idSolicitud) return;
+    if (!respuesta || !respuesta.idSolicitud) {
+        return;
+    }
 
     const solicitud = solicitudes[respuesta.idSolicitud];
 
-    if (!solicitud) return;
+    if (!solicitud) {
+        return;
+    }
 
+    // Si el servidor todavía está procesando.
     if (respuesta.pendiente) {
+
         programarConsulta(respuesta.idSolicitud);
+
         return;
     }
 
     clearTimeout(solicitud.temporizador);
 
+    clearTimeout(solicitud.intervalo);
+
     delete solicitudes[respuesta.idSolicitud];
 
     solicitud.resolver(respuesta.resultado);
+
 };
 
 
-// Consultar el resultado de una solicitud.
+// ============================================
+// CONSULTAR RESPUESTA DEL SERVIDOR
+// ============================================
+
 function consultarRespuesta(id) {
 
     const solicitud = solicitudes[id];
 
-    if (!solicitud) return;
+    if (!solicitud) {
+        return;
+    }
 
     const script = document.createElement("script");
 
@@ -473,35 +508,51 @@ function consultarRespuesta(id) {
         "&t=" + Date.now();
 
     script.onerror = function() {
+
         script.remove();
+
         programarConsulta(id);
+
     };
 
     script.onload = function() {
+
         script.remove();
+
     };
 
     document.body.appendChild(script);
+
 }
 
 
-// Repetir consulta mientras el servidor procesa.
+// ============================================
+// REPETIR CONSULTA
+// ============================================
+
 function programarConsulta(id) {
 
     const solicitud = solicitudes[id];
 
-    if (!solicitud) return;
+    if (!solicitud) {
+        return;
+    }
 
     clearTimeout(solicitud.intervalo);
 
     solicitud.intervalo = setTimeout(function() {
+
         consultarRespuesta(id);
-    }, 500);
+
+    }, 700);
 
 }
 
 
-// Enviar una solicitud al servidor mediante POST.
+// ============================================
+// ENVIAR SOLICITUD A APPS SCRIPT
+// ============================================
+
 async function enviarSolicitud(accion, datos = {}) {
 
     return new Promise(function(resolve, reject) {
@@ -512,7 +563,10 @@ async function enviarSolicitud(accion, datos = {}) {
             "_" +
             Math.random().toString(36).substring(2, 12);
 
+
         const temporizador = setTimeout(function() {
+
+            clearTimeout(solicitudes[id]?.intervalo);
 
             delete solicitudes[id];
 
@@ -522,27 +576,43 @@ async function enviarSolicitud(accion, datos = {}) {
 
         }, 45000);
 
+
         solicitudes[id] = {
+
             resolver: resolve,
+
             temporizador: temporizador,
+
             intervalo: null
+
         };
 
 
         // Crear formulario oculto.
+
         const formulario = document.createElement("form");
 
         formulario.method = "POST";
+
         formulario.action = URL_APPS_SCRIPT;
+
         formulario.target = "glamBridge";
+
         formulario.style.display = "none";
 
 
+        // Datos que recibirá Apps Script.
+
         const campos = {
+
             tipo: "glam_api",
+
             idSolicitud: id,
+
             accion: accion,
+
             datos: JSON.stringify(datos)
+
         };
 
 
@@ -551,7 +621,9 @@ async function enviarSolicitud(accion, datos = {}) {
             const input = document.createElement("input");
 
             input.type = "hidden";
+
             input.name = nombre;
+
             input.value = campos[nombre];
 
             formulario.appendChild(input);
@@ -561,92 +633,115 @@ async function enviarSolicitud(accion, datos = {}) {
 
         document.body.appendChild(formulario);
 
-        formulario.submit();
+
+        try {
+
+            formulario.submit();
+
+        } catch (error) {
+
+            clearTimeout(temporizador);
+
+            delete solicitudes[id];
+
+            formulario.remove();
+
+            reject(new Error(
+                "No se pudo enviar la solicitud al servidor."
+            ));
+
+            return;
+
+        }
+
 
         formulario.remove();
 
 
-        // Comenzar a consultar la respuesta.
+        // Consultar la respuesta.
+
         programarConsulta(id);
 
     });
 
 }
 
-    return new Promise(function(resolve, reject) {
 
-        const id =
-            "glam_" + Date.now() + "_" +
-            Math.random().toString(36).substring(2, 9);
+// ============================================
+// MENSAJES EN PANTALLA
+// ============================================
 
-        const temporizador = setTimeout(function() {
+function mostrarMensaje(elemento, texto, tipo) {
 
-            delete solicitudes[id];
+    const contenedor = document.getElementById(elemento);
 
-            reject(new Error(
-                "Google Apps Script no respondió. Intenta nuevamente."
-            ));
+    contenedor.className = "estado " + tipo;
 
-        }, 30000);
-
-        solicitudes[id] = {
-            resolver: resolve,
-            temporizador: temporizador
-        };
-
-        puente.contentWindow.postMessage({
-
-            tipo: "GLAM_SOLICITUD",
-            id: id,
-            accion: accion,
-            datos: datos
-
-        }, "*");
-
-    });
+    contenedor.textContent = texto;
 
 }
 
 
-    // MENSAJES EN PANTALLA
+function limpiarMensaje(elemento) {
 
-    function mostrarMensaje(elemento, texto, tipo) {
+    const contenedor = document.getElementById(elemento);
 
-        const contenedor = document.getElementById(elemento);
+    contenedor.className = "";
 
-        contenedor.className = "estado " + tipo;
+    contenedor.textContent = "";
 
-        contenedor.textContent = texto;
+}
+
+
+// ============================================
+// INICIAR SESIÓN
+// ============================================
+
+async function iniciarSesion() {
+
+    const usuario =
+        document.getElementById("usuario").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+
+    if (!usuario || !password) {
+
+        mostrarMensaje(
+            "mensajeLogin",
+            "Ingresa tu usuario y contraseña.",
+            "error"
+        );
+
+        return;
 
     }
 
 
-    function limpiarMensaje(elemento) {
+    const boton = document.getElementById("btnLogin");
 
-        const contenedor = document.getElementById(elemento);
+    boton.disabled = true;
 
-        contenedor.className = "";
-
-        contenedor.textContent = "";
-
-    }
+    boton.textContent = "VERIFICANDO...";
 
 
-    // INICIAR SESIÓN
+    try {
 
-    async function iniciarSesion() {
+        const respuesta = await enviarSolicitud("login", {
 
-        const usuario =
-            document.getElementById("usuario").value.trim();
+            usuario: usuario,
 
-        const password =
-            document.getElementById("password").value;
+            password: password
 
-        if (!usuario || !password) {
+        });
+
+
+        if (!respuesta || !respuesta.correcto) {
 
             mostrarMensaje(
                 "mensajeLogin",
-                "Ingresa tu usuario y contraseña.",
+                respuesta?.mensaje || "No se pudo iniciar sesión.",
                 "error"
             );
 
@@ -654,549 +749,631 @@ async function enviarSolicitud(accion, datos = {}) {
 
         }
 
-        const boton = document.getElementById("btnLogin");
 
-        boton.disabled = true;
+        tokenSesion = respuesta.tokenSesion;
 
-        boton.textContent = "VERIFICANDO...";
+        usuarioActivo = respuesta.usuario || usuario;
 
-        try {
 
-            const respuesta = await enviarSolicitud("login", {
+        document.getElementById("nombreUsuario").textContent =
+            usuarioActivo;
 
-                usuario: usuario,
-                password: password
-
-            });
-
-            if (!respuesta || !respuesta.correcto) {
-
-                mostrarMensaje(
-                    "mensajeLogin",
-                    respuesta?.mensaje || "No se pudo iniciar sesión.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-            tokenSesion = respuesta.tokenSesion;
-
-            usuarioActivo = respuesta.usuario || usuario;
-
-            document.getElementById("nombreUsuario").textContent =
-                usuarioActivo;
-
-            document.getElementById("seccionLogin")
-                .classList.add("oculto");
-
-            document.getElementById("seccionPanel")
-                .classList.remove("oculto");
-
-            document.getElementById("password").value = "";
-
-            limpiarMensaje("mensajeLogin");
-
-        } catch (error) {
-
-            mostrarMensaje(
-                "mensajeLogin",
-                error.message,
-                "error"
-            );
-
-        } finally {
-
-            boton.disabled = false;
-
-            boton.textContent = "INICIAR SESIÓN";
-
-        }
-
-    }
-
-
-    // ACTIVAR CÁMARA
-
-    async function iniciarCamara() {
-
-        if (camaraActiva) return;
-
-        const mensaje = document.getElementById("mensajeEscaner");
-
-        limpiarMensaje("mensajeEscaner");
-
-        try {
-
-            if (!window.Html5Qrcode) {
-
-                throw new Error(
-                    "No se pudo cargar el lector QR. Comprueba tu conexión."
-                );
-
-            }
-
-            lectorQR = new Html5Qrcode("lector");
-
-            await lectorQR.start(
-
-                { facingMode: "environment" },
-
-                {
-                    fps: 10,
-
-                    qrbox: function(ancho, alto) {
-
-                        const lado = Math.min(ancho, alto) * 0.75;
-
-                        return {
-                            width: lado,
-                            height: lado
-                        };
-
-                    }
-
-                },
-
-                async function(textoQR) {
-
-                    await detenerCamara();
-
-                    await consultarQR(textoQR);
-
-                },
-
-                function() {
-                    // Se ignoran los errores normales de lectura.
-                }
-
-            );
-
-            camaraActiva = true;
-
-            document.getElementById("btnIniciarCamara")
-                .classList.add("oculto");
-
-            document.getElementById("btnDetenerCamara")
-                .classList.remove("oculto");
-
-        } catch (error) {
-
-            lectorQR = null;
-
-            mostrarMensaje(
-                "mensajeEscaner",
-                "No se pudo activar la cámara. Comprueba los permisos del navegador.",
-                "error"
-            );
-
-        }
-
-    }
-
-
-    // DETENER CÁMARA
-
-    async function detenerCamara() {
-
-        if (lectorQR && camaraActiva) {
-
-            try {
-
-                await lectorQR.stop();
-
-            } catch (e) {
-
-                console.log("La cámara ya estaba detenida.");
-
-            }
-
-        }
-
-        camaraActiva = false;
-
-        document.getElementById("btnIniciarCamara")
-            .classList.remove("oculto");
-
-        document.getElementById("btnDetenerCamara")
-            .classList.add("oculto");
-
-    }
-
-
-    // EXTRAER TOKEN DEL QR
-
-    function extraerToken(texto) {
-
-        texto = String(texto).trim();
-
-        // Buscar UUID dentro del contenido del QR.
-
-        const uuid = texto.match(
-            /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
-        );
-
-        if (uuid) return uuid[0];
-
-        // Si el QR contiene una dirección web, buscar parámetros.
-
-        try {
-
-            const url = new URL(texto);
-
-            const posibles = [
-                "token",
-                "qr",
-                "tokenQR",
-                "codigo"
-            ];
-
-            for (const parametro of posibles) {
-
-                const valor = url.searchParams.get(parametro);
-
-                if (valor) return valor;
-
-            }
-
-        } catch (e) {
-
-            // El contenido no era una dirección web.
-
-        }
-
-        // Si no es una URL ni contiene UUID, usar el texto original.
-
-        return texto;
-
-    }
-
-
-    // CONSULTAR QR
-
-    async function consultarQR(textoQR) {
-
-        if (!tokenSesion) return;
-
-        const tokenQR = extraerToken(textoQR);
-
-        if (!tokenQR) {
-
-            mostrarMensaje(
-                "mensajeEscaner",
-                "El código QR no contiene un identificador válido.",
-                "error"
-            );
-
-            return;
-
-        }
-
-        limpiarMensaje("mensajeEscaner");
-
-        document.getElementById("tarjetaInvitado")
-            .classList.add("oculto");
-
-        try {
-
-            const respuesta = await enviarSolicitud("consultar", {
-
-                tokenSesion: tokenSesion,
-                tokenQR: tokenQR
-
-            });
-
-            if (!respuesta || !respuesta.correcto) {
-
-                mostrarMensaje(
-                    "mensajeEscaner",
-                    respuesta?.mensaje || "No se pudo validar el invitado.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-            invitadoActual = respuesta.invitado;
-
-            mostrarInvitado(invitadoActual);
-
-        } catch (error) {
-
-            mostrarMensaje(
-                "mensajeEscaner",
-                error.message,
-                "error"
-            );
-
-        }
-
-    }
-
-
-    // CONSULTA MANUAL
-
-    async function consultarManual() {
-
-        const codigo =
-            document.getElementById("codigoManual").value.trim();
-
-        if (!codigo) {
-
-            mostrarMensaje(
-                "mensajeEscaner",
-                "Introduce el código QR del invitado.",
-                "error"
-            );
-
-            return;
-
-        }
-
-        await consultarQR(codigo);
-
-    }
-
-
-    // MOSTRAR INFORMACIÓN DEL INVITADO
-
-    function mostrarInvitado(invitado) {
-
-        document.getElementById("nombreInvitado").textContent =
-            invitado.nombre || "Invitado";
-
-        document.getElementById("pasesPermitidos").textContent =
-            invitado.pasesPermitidos ?? 0;
-
-        document.getElementById("pasesUtilizados").textContent =
-            invitado.pasesUtilizados ?? 0;
-
-        document.getElementById("pasesDisponibles").textContent =
-            invitado.pasesDisponibles ?? 0;
-
-        document.getElementById("cantidadPases").value = 1;
-
-        document.getElementById("cantidadPases").max =
-            invitado.pasesDisponibles ?? 0;
-
-        const boton = document.getElementById("btnRegistrar");
-
-        boton.disabled = Number(invitado.pasesDisponibles) <= 0;
-
-        if (Number(invitado.pasesDisponibles) <= 0) {
-
-            mostrarMensaje(
-                "mensajeRegistro",
-                "Este invitado ya utilizó todos sus pases.",
-                "error"
-            );
-
-        } else {
-
-            limpiarMensaje("mensajeRegistro");
-
-        }
-
-        document.getElementById("tarjetaInvitado")
-            .classList.remove("oculto");
-
-    }
-
-
-    // REGISTRAR INGRESO
-
-    async function registrarIngreso() {
-
-        if (!invitadoActual || !tokenSesion) return;
-
-        const cantidad = Number(
-            document.getElementById("cantidadPases").value
-        );
-
-        const disponibles = Number(
-            invitadoActual.pasesDisponibles
-        );
-
-        if (!Number.isInteger(cantidad) || cantidad < 1) {
-
-            mostrarMensaje(
-                "mensajeRegistro",
-                "Introduce una cantidad válida de pases.",
-                "error"
-            );
-
-            return;
-
-        }
-
-        if (cantidad > disponibles) {
-
-            mostrarMensaje(
-                "mensajeRegistro",
-                "La cantidad supera los pases disponibles.",
-                "error"
-            );
-
-            return;
-
-        }
-
-        const boton = document.getElementById("btnRegistrar");
-
-        boton.disabled = true;
-
-        boton.textContent = "REGISTRANDO...";
-
-        try {
-
-            const respuesta = await enviarSolicitud("registrar", {
-
-                tokenSesion: tokenSesion,
-                tokenQR: invitadoActual.tokenQR,
-                cantidadPases: cantidad
-
-            });
-
-            if (!respuesta || !respuesta.correcto) {
-
-                mostrarMensaje(
-                    "mensajeRegistro",
-                    respuesta?.mensaje || "No se pudo registrar el ingreso.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-            mostrarMensaje(
-                "mensajeRegistro",
-                respuesta.mensaje || "¡Ingreso registrado correctamente!",
-                "exito"
-            );
-
-            // Consultar nuevamente para actualizar los pases.
-
-            const actualizacion = await enviarSolicitud("consultar", {
-
-                tokenSesion: tokenSesion,
-                tokenQR: invitadoActual.tokenQR
-
-            });
-
-            if (actualizacion && actualizacion.correcto) {
-
-                invitadoActual = actualizacion.invitado;
-
-                document.getElementById("pasesPermitidos").textContent =
-                    invitadoActual.pasesPermitidos;
-
-                document.getElementById("pasesUtilizados").textContent =
-                    invitadoActual.pasesUtilizados;
-
-                document.getElementById("pasesDisponibles").textContent =
-                    invitadoActual.pasesDisponibles;
-
-                document.getElementById("cantidadPases").value = 1;
-
-                document.getElementById("cantidadPases").max =
-                    invitadoActual.pasesDisponibles;
-
-                boton.disabled =
-                    Number(invitadoActual.pasesDisponibles) <= 0;
-
-            }
-
-        } catch (error) {
-
-            mostrarMensaje(
-                "mensajeRegistro",
-                error.message,
-                "error"
-            );
-
-        } finally {
-
-            boton.textContent = "REGISTRAR INGRESO";
-
-            if (
-                invitadoActual &&
-                Number(invitadoActual.pasesDisponibles) > 0
-            ) {
-
-                boton.disabled = false;
-
-            }
-
-        }
-
-    }
-
-
-    // LIMPIAR INFORMACIÓN DEL INVITADO
-
-    function limpiarInvitado() {
-
-        invitadoActual = null;
-
-        document.getElementById("tarjetaInvitado")
-            .classList.add("oculto");
-
-        document.getElementById("codigoManual").value = "";
-
-        limpiarMensaje("mensajeRegistro");
-
-        limpiarMensaje("mensajeEscaner");
-
-    }
-
-
-    // CERRAR SESIÓN
-
-    async function cerrarSesion() {
-
-        await detenerCamara();
-
-        try {
-
-            if (tokenSesion) {
-
-                await enviarSolicitud("cerrar", {
-
-                    tokenSesion: tokenSesion
-
-                });
-
-            }
-
-        } catch (e) {
-
-            console.log("No se pudo cerrar la sesión en el servidor.");
-
-        }
-
-        tokenSesion = null;
-
-        usuarioActivo = null;
-
-        invitadoActual = null;
-
-        document.getElementById("seccionPanel")
-            .classList.add("oculto");
 
         document.getElementById("seccionLogin")
+            .classList.add("oculto");
+
+
+        document.getElementById("seccionPanel")
             .classList.remove("oculto");
 
-        document.getElementById("usuario").value = "";
 
         document.getElementById("password").value = "";
 
-        limpiarInvitado();
+        limpiarMensaje("mensajeLogin");
+
+
+    } catch (error) {
+
+        mostrarMensaje(
+            "mensajeLogin",
+            error.message,
+            "error"
+        );
+
+    } finally {
+
+        boton.disabled = false;
+
+        boton.textContent = "INICIAR SESIÓN";
 
     }
 
+}
+
+
+// ============================================
+// ACTIVAR CÁMARA
+// ============================================
+
+async function iniciarCamara() {
+
+    if (camaraActiva) {
+        return;
+    }
+
+
+    limpiarMensaje("mensajeEscaner");
+
+
+    try {
+
+        if (!window.Html5Qrcode) {
+
+            throw new Error(
+                "No se pudo cargar el lector QR."
+            );
+
+        }
+
+
+        lectorQR = new Html5Qrcode("lector");
+
+
+        await lectorQR.start(
+
+            { facingMode: "environment" },
+
+            {
+
+                fps: 10,
+
+                qrbox: function(ancho, alto) {
+
+                    const lado = Math.min(ancho, alto) * 0.75;
+
+                    return {
+
+                        width: lado,
+
+                        height: lado
+
+                    };
+
+                }
+
+            },
+
+
+            async function(textoQR) {
+
+                await detenerCamara();
+
+                await consultarQR(textoQR);
+
+            },
+
+
+            function() {
+
+                // Se ignoran errores normales de lectura.
+
+            }
+
+        );
+
+
+        camaraActiva = true;
+
+
+        document.getElementById("btnIniciarCamara")
+            .classList.add("oculto");
+
+
+        document.getElementById("btnDetenerCamara")
+            .classList.remove("oculto");
+
+
+    } catch (error) {
+
+        lectorQR = null;
+
+        mostrarMensaje(
+            "mensajeEscaner",
+            "No se pudo activar la cámara. Comprueba los permisos del navegador.",
+            "error"
+        );
+
+    }
+
+}
+
+
+// ============================================
+// DETENER CÁMARA
+// ============================================
+
+async function detenerCamara() {
+
+    if (lectorQR && camaraActiva) {
+
+        try {
+
+            await lectorQR.stop();
+
+        } catch (error) {
+
+            console.log("La cámara ya estaba detenida.");
+
+        }
+
+    }
+
+
+    camaraActiva = false;
+
+
+    document.getElementById("btnIniciarCamara")
+        .classList.remove("oculto");
+
+
+    document.getElementById("btnDetenerCamara")
+        .classList.add("oculto");
+
+}
+
+
+// ============================================
+// EXTRAER TOKEN DEL QR
+// ============================================
+
+function extraerToken(texto) {
+
+    texto = String(texto).trim();
+
+
+    // Buscar UUID.
+
+    const uuid = texto.match(
+        /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
+    );
+
+
+    if (uuid) {
+        return uuid[0];
+    }
+
+
+    // Buscar token dentro de una dirección web.
+
+    try {
+
+        const url = new URL(texto);
+
+        const posibles = [
+
+            "token",
+
+            "qr",
+
+            "tokenQR",
+
+            "codigo"
+
+        ];
+
+
+        for (const parametro of posibles) {
+
+            const valor = url.searchParams.get(parametro);
+
+            if (valor) {
+                return valor;
+            }
+
+        }
+
+    } catch (error) {
+
+        // El contenido no era una dirección web.
+
+    }
+
+
+    return texto;
+
+}
+
+
+// ============================================
+// CONSULTAR QR
+// ============================================
+
+async function consultarQR(textoQR) {
+
+    if (!tokenSesion) {
+        return;
+    }
+
+
+    const tokenQR = extraerToken(textoQR);
+
+
+    if (!tokenQR) {
+
+        mostrarMensaje(
+            "mensajeEscaner",
+            "El código QR no contiene un identificador válido.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    limpiarMensaje("mensajeEscaner");
+
+
+    document.getElementById("tarjetaInvitado")
+        .classList.add("oculto");
+
+
+    try {
+
+        const respuesta = await enviarSolicitud("consultar", {
+
+            tokenSesion: tokenSesion,
+
+            tokenQR: tokenQR
+
+        });
+
+
+        if (!respuesta || !respuesta.correcto) {
+
+            mostrarMensaje(
+                "mensajeEscaner",
+                respuesta?.mensaje || "No se pudo validar el invitado.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        invitadoActual = respuesta.invitado;
+
+        mostrarInvitado(invitadoActual);
+
+
+    } catch (error) {
+
+        mostrarMensaje(
+            "mensajeEscaner",
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+// ============================================
+// CONSULTA MANUAL
+// ============================================
+
+async function consultarManual() {
+
+    const codigo =
+        document.getElementById("codigoManual").value.trim();
+
+
+    if (!codigo) {
+
+        mostrarMensaje(
+            "mensajeEscaner",
+            "Introduce el código QR del invitado.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    await consultarQR(codigo);
+
+}
+
+
+// ============================================
+// MOSTRAR INFORMACIÓN DEL INVITADO
+// ============================================
+
+function mostrarInvitado(invitado) {
+
+    document.getElementById("nombreInvitado").textContent =
+        invitado.nombre || "Invitado";
+
+
+    document.getElementById("pasesPermitidos").textContent =
+        invitado.pasesPermitidos ?? 0;
+
+
+    document.getElementById("pasesUtilizados").textContent =
+        invitado.pasesUtilizados ?? 0;
+
+
+    document.getElementById("pasesDisponibles").textContent =
+        invitado.pasesDisponibles ?? 0;
+
+
+    document.getElementById("cantidadPases").value = 1;
+
+
+    document.getElementById("cantidadPases").max =
+        invitado.pasesDisponibles ?? 0;
+
+
+    const boton = document.getElementById("btnRegistrar");
+
+
+    boton.disabled =
+        Number(invitado.pasesDisponibles) <= 0;
+
+
+    if (Number(invitado.pasesDisponibles) <= 0) {
+
+        mostrarMensaje(
+            "mensajeRegistro",
+            "Este invitado ya utilizó todos sus pases.",
+            "error"
+        );
+
+    } else {
+
+        limpiarMensaje("mensajeRegistro");
+
+    }
+
+
+    document.getElementById("tarjetaInvitado")
+        .classList.remove("oculto");
+
+}
+
+
+// ============================================
+// REGISTRAR INGRESO
+// ============================================
+
+async function registrarIngreso() {
+
+    if (!invitadoActual || !tokenSesion) {
+        return;
+    }
+
+
+    const cantidad = Number(
+        document.getElementById("cantidadPases").value
+    );
+
+
+    const disponibles = Number(
+        invitadoActual.pasesDisponibles
+    );
+
+
+    if (!Number.isInteger(cantidad) || cantidad < 1) {
+
+        mostrarMensaje(
+            "mensajeRegistro",
+            "Introduce una cantidad válida de pases.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if (cantidad > disponibles) {
+
+        mostrarMensaje(
+            "mensajeRegistro",
+            "La cantidad supera los pases disponibles.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const boton = document.getElementById("btnRegistrar");
+
+    boton.disabled = true;
+
+    boton.textContent = "REGISTRANDO...";
+
+
+    try {
+
+        const respuesta = await enviarSolicitud("registrar", {
+
+            tokenSesion: tokenSesion,
+
+            tokenQR: invitadoActual.tokenQR,
+
+            cantidadPases: cantidad
+
+        });
+
+
+        if (!respuesta || !respuesta.correcto) {
+
+            mostrarMensaje(
+                "mensajeRegistro",
+                respuesta?.mensaje || "No se pudo registrar el ingreso.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        mostrarMensaje(
+            "mensajeRegistro",
+            respuesta.mensaje || "¡Ingreso registrado correctamente!",
+            "exito"
+        );
+
+
+        // Actualizar información del invitado.
+
+        const actualizacion = await enviarSolicitud("consultar", {
+
+            tokenSesion: tokenSesion,
+
+            tokenQR: invitadoActual.tokenQR
+
+        });
+
+
+        if (actualizacion && actualizacion.correcto) {
+
+            invitadoActual = actualizacion.invitado;
+
+
+            document.getElementById("pasesPermitidos").textContent =
+                invitadoActual.pasesPermitidos;
+
+
+            document.getElementById("pasesUtilizados").textContent =
+                invitadoActual.pasesUtilizados;
+
+
+            document.getElementById("pasesDisponibles").textContent =
+                invitadoActual.pasesDisponibles;
+
+
+            document.getElementById("cantidadPases").value = 1;
+
+
+            document.getElementById("cantidadPases").max =
+                invitadoActual.pasesDisponibles;
+
+
+            boton.disabled =
+                Number(invitadoActual.pasesDisponibles) <= 0;
+
+        }
+
+    } catch (error) {
+
+        mostrarMensaje(
+            "mensajeRegistro",
+            error.message,
+            "error"
+        );
+
+    } finally {
+
+        boton.textContent = "REGISTRAR INGRESO";
+
+        if (
+            invitadoActual &&
+            Number(invitadoActual.pasesDisponibles) > 0
+        ) {
+
+            boton.disabled = false;
+
+        }
+
+    }
+
+}
+
+
+// ============================================
+// LIMPIAR INFORMACIÓN DEL INVITADO
+// ============================================
+
+function limpiarInvitado() {
+
+    invitadoActual = null;
+
+
+    document.getElementById("tarjetaInvitado")
+        .classList.add("oculto");
+
+
+    document.getElementById("codigoManual").value = "";
+
+
+    limpiarMensaje("mensajeRegistro");
+
+    limpiarMensaje("mensajeEscaner");
+
+}
+
+
+// ============================================
+// CERRAR SESIÓN
+// ============================================
+
+async function cerrarSesion() {
+
+    await detenerCamara();
+
+
+    try {
+
+        if (tokenSesion) {
+
+            await enviarSolicitud("cerrar", {
+
+                tokenSesion: tokenSesion
+
+            });
+
+        }
+
+    } catch (error) {
+
+        console.log(
+            "No se pudo cerrar la sesión en el servidor."
+        );
+
+    }
+
+
+    tokenSesion = null;
+
+    usuarioActivo = null;
+
+    invitadoActual = null;
+
+
+    document.getElementById("seccionPanel")
+        .classList.add("oculto");
+
+
+    document.getElementById("seccionLogin")
+        .classList.remove("oculto");
+
+
+    document.getElementById("usuario").value = "";
+
+    document.getElementById("password").value = "";
+
+
+    limpiarInvitado();
+
+}
 
 </script>
 
