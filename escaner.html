@@ -428,9 +428,22 @@
 
     // SOLICITAR CONEXIÓN CUANDO CARGUE EL PUENTE
 
-puente.addEventListener("load", function() {
+    // CONEXIÓN AUTOMÁTICA CON APPS SCRIPT
 
-    console.log("Puente cargado. Solicitando conexión...");
+let intentoConexion = 0;
+
+const temporizadorConexion = setInterval(function() {
+
+    if (puenteListo) {
+
+        clearInterval(temporizadorConexion);
+        return;
+
+    }
+
+    intentoConexion++;
+
+    console.log("Intentando conectar con Apps Script:", intentoConexion);
 
     puente.contentWindow.postMessage({
 
@@ -438,7 +451,16 @@ puente.addEventListener("load", function() {
 
     }, "*");
 
-});
+    if (intentoConexion >= 20) {
+
+        clearInterval(temporizadorConexion);
+
+        console.error("No se pudo establecer conexión con Apps Script.");
+
+    }
+
+}, 1000);
+
 
     let tokenSesion = null;
     let usuarioActivo = null;
