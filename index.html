@@ -20,6 +20,67 @@
 
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="glam-redesign.css">
+
+    <style>
+/* PORTAL GLAM */
+.portal-glam {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px 19px;
+
+    background: rgba(23, 19, 22, 0.88);
+    border: 1px solid rgba(212, 175, 110, 0.75);
+    border-radius: 30px;
+
+    color: #e5c58d;
+    text-decoration: none;
+
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
+
+    transition: all 0.3s ease;
+}
+
+.portal-glam:hover {
+    background: #c5a16b;
+    color: #171316;
+    border-color: #c5a16b;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(197, 161, 107, 0.25);
+}
+
+.portal-glam-icono {
+    font-size: 15px;
+}
+
+.portal-glam-flecha {
+    font-size: 14px;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 600px) {
+    .portal-glam {
+        top: 15px;
+        right: 14px;
+        padding: 10px 14px;
+        font-size: 9px;
+        gap: 7px;
+    }
+}
+</style>
 </head>
 
 <!-- BOTÓN FLOTANTE DE WHATSAPP -->
@@ -38,6 +99,16 @@
 </a>
 
 <body>
+    <!-- PORTAL GLAM -->
+<a href="https://script.google.com/macros/s/AKfycbyCNw7z1eAWgfhUT-tpO7wNErQLXyZu9VvUVTBEWJLMwX2FuUYr3NbWaJUphT7yjkkXvg/exec?panel=1"
+   class="portal-glam"
+   aria-label="Ingresar al Portal GLAM">
+
+    <span class="portal-glam-icono">✦</span>
+    <span>PORTAL GLAM</span>
+    <span class="portal-glam-flecha">↗</span>
+
+</a>
     <!-- PORTADA -->
     <section class="portada">
         <div class="portada-contenido">
