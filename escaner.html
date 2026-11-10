@@ -426,6 +426,20 @@
 
     const puente = document.getElementById("glamBridge");
 
+    // SOLICITAR CONEXIÓN CUANDO CARGUE EL PUENTE
+
+puente.addEventListener("load", function() {
+
+    console.log("Puente cargado. Solicitando conexión...");
+
+    puente.contentWindow.postMessage({
+
+        tipo: "GLAM_PING"
+
+    }, "*");
+
+});
+
     let tokenSesion = null;
     let usuarioActivo = null;
     let invitadoActual = null;
