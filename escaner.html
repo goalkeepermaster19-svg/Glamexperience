@@ -1042,7 +1042,10 @@ async function consultarQR(textoQR) {
         }
 
 
-        invitadoActual = respuesta.invitado;
+        invitadoActual = {
+    ...respuesta.invitado,
+    tokenQR: tokenQR
+};
 
         mostrarInvitado(invitadoActual);
 
@@ -1245,7 +1248,10 @@ async function registrarIngreso() {
 
         if (actualizacion && actualizacion.correcto) {
 
-            invitadoActual = actualizacion.invitado;
+            invitadoActual = {
+    ...actualizacion.invitado,
+    tokenQR: invitadoActual.tokenQR
+};
 
 
             document.getElementById("pasesPermitidos").textContent =
