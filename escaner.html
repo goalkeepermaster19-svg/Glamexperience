@@ -278,10 +278,12 @@
 
             <div class="usuario-barra">
 
-                <span>
-                    Sesión:
-                    <strong id="nombreUsuario"></strong>
-                </span>
+               <span>
+    Sesión:
+    <strong id="nombreUsuario"></strong>
+    <br>
+    <small id="rolUsuario" style="color:#999;"></small>
+</span>
 
                 <button
                     class="boton-secundario"
@@ -444,6 +446,7 @@ const URL_APPS_SCRIPT =
 
 let tokenSesion = null;
 let usuarioActivo = null;
+    let rolActivo = null;    
 let invitadoActual = null;
 let lectorQR = null;
 let camaraActiva = false;
@@ -753,10 +756,16 @@ async function iniciarSesion() {
         tokenSesion = respuesta.tokenSesion;
 
         usuarioActivo = respuesta.usuario || usuario;
+        rolActivo = respuesta.rol || "PERSONAL";
+        
 
 
         document.getElementById("nombreUsuario").textContent =
             usuarioActivo;
+        document.getElementById("rolUsuario").textContent =
+    rolActivo === "ADMINISTRADOR"
+        ? "ADMINISTRADOR GENERAL"
+        : "PERSONAL DEL EVENTO";
 
 
         document.getElementById("seccionLogin")
@@ -1248,8 +1257,8 @@ async function registrarIngreso() {
 
         if (actualizacion && actualizacion.correcto) {
 
-            invitadoActual = {
-    ...actualizacion.invitado,
+           invitadoActual = {
+    ...(actualizacion.invitado || actualizacion),
     tokenQR: invitadoActual.tokenQR
 };
 
@@ -1360,6 +1369,7 @@ async function cerrarSesion() {
     tokenSesion = null;
 
     usuarioActivo = null;
+    rolActivo = null;
 
     invitadoActual = null;
 
