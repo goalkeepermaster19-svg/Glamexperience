@@ -81,7 +81,7 @@ const glam = {
     {
       nombre: "BÁSICO",
       duracion: "2 HORAS",
-      precio: "Bs. 2.200",
+      precio: "Bs. 2.000",
       descripcion: "Una experiencia GLAM para disfrutar y compartir.",
       incluye: [
         "Fotos ilimitadas",
@@ -92,7 +92,7 @@ const glam = {
     {
       nombre: "PREMIUM",
       duracion: "3 HORAS",
-      precio: "Bs. 3.100",
+      precio: "Bs. 2.400",
       descripcion: "Más tiempo, más diversión y más recuerdos.",
       incluye: [
         "Fotos ilimitadas",
@@ -104,7 +104,7 @@ const glam = {
     {
       nombre: "DELUXE",
       duracion: "4 HORAS",
-      precio: "Bs. 4.000",
+      precio: "Bs. 2.800",
       descripcion: "La experiencia GLAM completa para tu evento.",
       incluye: [
         "Fotos ilimitadas",
