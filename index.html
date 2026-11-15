@@ -1,86 +1,71 @@
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#171316">
-    <title>GLAM | Mirror Experience para eventos en La Paz</title>
-    <meta name="description" content="Dale a tu evento una experiencia inolvidable con GLAM Mirror Experience. Fotos, videos y recuerdos personalizados para bodas, quince años y eventos corporativos en La Paz. Consulta por WhatsApp.">
-    <meta name="keywords" content="GLAM, Mirror Experience La Paz, espejo mágico, cabina de fotos, bodas La Paz, quince años, eventos corporativos">
-    <meta name="robots" content="index,follow,max-image-preview:large">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="GLAM">
-    <meta property="og:title" content="GLAM Mirror Experience | Recuerdos que se viven">
-    <meta property="og:description" content="Una experiencia interactiva para bodas, quince años y eventos especiales. Consulta disponibilidad por WhatsApp.">
-    <meta property="og:locale" content="es_BO">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GLAM Mirror Experience | Recuerdos que se viven">
-    <meta name="twitter:description" content="Una experiencia interactiva para bodas, quince años y eventos especiales. Consulta disponibilidad por WhatsApp.">
-
-    <link rel="stylesheet" href="estilos.css">
-    <link rel="stylesheet" href="glam-redesign.css">
-
-    <style>
-/* PORTAL GLAM */
-.portal-glam {
-    position: fixed;
-    top: 25px;
-    right: 30px;
-    z-index: 9999;
-
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    padding: 12px 19px;
-
-    background: rgba(23, 19, 22, 0.88);
-    border: 1px solid rgba(212, 175, 110, 0.75);
-    border-radius: 30px;
-
-    color: #e5c58d;
-    text-decoration: none;
-
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2px;
-
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
-
-    transition: all 0.3s ease;
+```html
+    font-size: 17px !important;
 }
 
-.portal-glam:hover {
-    background: #c5a16b;
-    color: #171316;
-    border-color: #c5a16b;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(197, 161, 107, 0.25);
-}
-
-.portal-glam-icono {
-    font-size: 15px;
-}
-
-.portal-glam-flecha {
-    font-size: 14px;
-}
-
-/* Adaptación para celulares */
+/* Portal administrativo en celulares */
 @media (max-width: 600px) {
+    body {
+        font-size: 17px !important;
+    }
+
+    .portada h1 {
+        font-size: clamp(38px, 10vw, 52px) !important;
+    }
+
+    .portada h1 .ampersand {
+        font-size: 19px !important;
+    }
+
+    .portada .mensaje {
+        font-size: 20px !important;
+    }
+
+    .selector-servicios h2,
+    .seccion-encabezado h2,
+    .glam-presentacion-texto h2,
+    .mirror-video-heading h2,
+    .contacto-texto h2,
+    .cotizacion-contenido h2 {
+        font-size: 29px !important;
+    }
+
+    p,
+    .descripcion-glam,
+    .selector-descripcion,
+    .glam-presentacion-texto p,
+    .seccion-encabezado > p,
+    .evento-glam-info > p,
+    .mirror-video-caption p,
+    .contacto-texto > p {
+        font-size: 17px !important;
+    }
+
+    .servicio-card h3,
+    .evento-glam-info h3,
+    .mirror-video-caption h3,
+    .servicio-opcion strong {
+        font-size: 20px !important;
+    }
+
     .portal-glam {
-        top: 15px;
-        right: 14px;
-        padding: 10px 14px;
-        font-size: 9px;
-        gap: 7px;
+        font-size: 12px !important;
+    }
+
+    .opcion-flotante {
+        font-size: 15px !important;
+    }
+
+    .campo-glam input,
+    .campo-glam select,
+    .campo-glam textarea,
+    #formularioCotizacion input,
+    #formularioCotizacion select,
+    #formularioCotizacion textarea {
+        font-size: 16px !important;
     }
 }
 </style>
+
 </head>
 
 <!-- BOTÓN FLOTANTE DE WHATSAPP -->
@@ -138,7 +123,7 @@
         </div>
     </section>
 
-    
+
 <!-- SELECTOR PRINCIPAL DE SERVICIOS GLAM -->
 <section id="selectorServicios" class="selector-servicios oculto">
     <div class="selector-servicios-contenido">
@@ -399,7 +384,7 @@
             <div class="mirror-video-grid">
                 <article class="mirror-video-card"><div class="mirror-video-frame"><video controls playsinline preload="metadata"><source src="videos/mirror-evento-01.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video></div><div class="mirror-video-caption"><span>01 / EN EL EVENTO</span><h3>La magia sucede frente al espejo</h3><p>Un momento divertido para compartir con tus invitados.</p></div></article>
                 <article class="mirror-video-card"><div class="mirror-video-frame mirror-video-frame-alt"><video controls playsinline preload="metadata"><source src="videos/mirror-recuerdos-02.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video></div><div class="mirror-video-caption"><span>02 / EL RECUERDO</span><h3>Tu estilo, tus fotos, tu historia</h3><p>Personalizamos la experiencia para que combine con tu celebración.</p></div></article>
-            
+
         </section>
 
         <!-- VISOR DE FOTOGRAFÍAS -->
